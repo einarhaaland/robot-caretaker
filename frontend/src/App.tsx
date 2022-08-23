@@ -22,7 +22,7 @@ function App() {
       <MoodCard title='Sad'/>
       <MoodCard title='Frustrated'/>
       <MoodCard title='Understanding'/>
-      <MoodCard title='Excited-understanding'/>
+      <MoodCard title='ExcitedUnderstanding'/>
     </>
   );
 }

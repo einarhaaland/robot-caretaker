@@ -8,7 +8,12 @@ interface MoodProps {
 function MoodCard(props: MoodProps) {
     
     const handleClick = () => {
-        console.log(props.title)
+        console.log(`SENDING MOOD ${props.title}..`)
+        fetch(`/mood/${props.title}`)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(`..${data.mood} HAS BEEN PERFORMED`)
+            })
     }
 
     return (
