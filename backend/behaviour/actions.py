@@ -1,13 +1,11 @@
 '''
-This file contains functions for body movements.
+This file contains functions for individual body movements.
 
 Bending is front-to-back.
 Tilt is side-to-side.
 
 Extending / Contracting is handled by the same function, but with negative(?) input.
 '''
-
-
 
 
 ########## HEAD ##########
