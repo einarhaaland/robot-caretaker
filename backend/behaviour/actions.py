@@ -5,6 +5,9 @@ Bending is front-to-back.
 Tilt is side-to-side.
 
 Extending / Contracting is handled by the same function, but with negative(?) input.
+
+It is unclear if these function actually perform the action, 
+or if they take in the robot type as an argument and returns the correct motors/joint to request.
 '''
 
 
@@ -93,6 +96,12 @@ def rotate_left_wrist():
 
 
 ########## FINGER ##########
+
+def curl_fingers_on_right_hand():
+    return
+
+def curl_fingers_on_left_hand():
+    return
 
 def bend_finger_on_right_hand(index):
     return
