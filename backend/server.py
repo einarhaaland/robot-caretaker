@@ -13,6 +13,10 @@ def test_robot_connection():
     status_code = 200
     return {"status": status_code}
 
+@app.route("/mood/<mood>")
+def mood(mood):
+    return {"mood": mood}
+
 
 if __name__ == "__main__":
     app.run(debug=True)
