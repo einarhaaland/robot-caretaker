@@ -6,11 +6,22 @@ This is a project aiming to aid remote caretakers with expressing body language 
 - Flask Backend
 - ..
 
-## How to run
-- `cd backend`
-    - create/activate venv
-    - install requirements (requirements.txt not created yet)
-    - run server.py `python server.py` (for windows)
+## Requirements
+- NodeJS
+    - yarn (`npm install -g yarn`)
+- Python
+
+## Setup (windows)
+- cd two terminals to project folder
+- Terminal 1:
+    - `cd backend`
+        - create/activate venv:
+            - `python venv venv`
+            - `.\venv\Scripts\activate`
+        - `pip install -r requirements.txt`
+        - `python server.py`
+- Terminal 2:
 - `cd frontend`
-    - `yarn install` or `npm install`
-    - `yarn start` or `npm start` (runs at http://localhost:3000)
+    - `yarn install`
+    - `yarn start`
+- Browser window should open automatically at `http://localhost:3000`
