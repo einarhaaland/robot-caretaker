@@ -15,7 +15,6 @@ def test_robot_connection():
 
 @app.route("/mood/<mood>")
 def mood(mood):
-    print(mood)
     return {"mood": mood}
 
 
