@@ -16,8 +16,10 @@ This is a project aiming to aid remote caretakers with expressing body language 
 - Terminal 1:
     - `cd backend`
         - create/activate venv:
-            - `python venv venv`
+            - `python -m venv venv`
             - `.\venv\Scripts\activate`
+                - If you encounter an error here: Open powershell as admin and type: `Set-ExecutionPolicy RemoteSigned`
+                - This will alow you to run the venv activation script
         - `pip install -r requirements.txt`
         - `python server.py`
 - Terminal 2:
