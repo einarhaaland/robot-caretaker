@@ -24,6 +24,6 @@ This is a project aiming to aid remote caretakers with expressing body language 
         - `python server.py`
 - Terminal 2:
 - `cd frontend`
-    - `yarn install`
+    - `npm install`
     - `yarn start`
 - Browser window should open automatically at `http://localhost:3000`
