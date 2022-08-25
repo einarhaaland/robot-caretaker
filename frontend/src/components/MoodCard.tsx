@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { Card, CardActionArea, Typography } from '@mui/material';
 
 interface MoodProps {
