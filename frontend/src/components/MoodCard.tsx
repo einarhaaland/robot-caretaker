@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Card } from '@mui/material';
 
 interface MoodProps {
     title: string,
