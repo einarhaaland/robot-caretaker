@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card } from '@mui/material';
+import { Card, CardActionArea, Typography } from '@mui/material';
 
 interface MoodProps {
     title: string,
@@ -18,9 +18,11 @@ function MoodCard(props: MoodProps) {
     }
 
     return (
-        <div className='moodCard'>
-            <button onClick={handleClick}>{props.title}</button>
-        </div>
+        <Card variant='outlined'>
+            <CardActionArea onClick={handleClick}>
+                <Typography>{props.title}</Typography>
+            </CardActionArea>
+        </Card>
     );
 }
 
