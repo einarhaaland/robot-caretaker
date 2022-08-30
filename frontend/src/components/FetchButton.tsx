@@ -16,8 +16,9 @@ function FetchButton() {
     }
 
     return (
-        <Box textAlign='center'>
-            <Button variant='contained'>Test Robot Connection</Button>
+        <Box textAlign='center' display="flex" justifyContent="center" alignItems="center" sx={{height: "200px"}}>
+            <Button variant='contained' onClick={handleClick}>Test Robot Connection</Button>
+            <p>{result && "STATUS: " + result.status}</p>
         </Box>
     );
 }

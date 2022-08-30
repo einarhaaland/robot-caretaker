@@ -5,7 +5,7 @@ const Navbar = () => {
     return (
         <AppBar position="static" sx={{bgcolor: "#3b3657"}}>
             <Toolbar>
-                <IconButton size="large" edge="start" color="inherit" aria-aria-label="logo">
+                <IconButton size="large" edge="start" color="inherit" aria-label="logo">
                     <SmartToy />
                 </IconButton>
                 <Typography variant="h6" sx={{flexGrow: 1}}>
