@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 
 function FetchButton() {
     const [result, setResult] = useState<{status: number}>()
@@ -14,10 +16,9 @@ function FetchButton() {
     }
 
     return (
-        <>
-            <button onClick={handleClick}>TEST ROBOT CONNECTION</button>
-            <p>{result && "STATUS: " + result.status}</p>
-        </>
+        <Box textAlign='center'>
+            <Button variant='contained'>Test Robot Connection</Button>
+        </Box>
     );
 }
 

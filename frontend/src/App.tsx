@@ -20,7 +20,6 @@ function App() {
   return (
     <>
       <NavBar />
-      <FetchButton />
       <Grid container spacing={3}>
         <Grid item xs>
           <MoodCard title='Excited'/>
@@ -38,6 +37,7 @@ function App() {
           <MoodCard title='ExcitedUnderstanding'/>
         </Grid>
       </Grid>
+      <FetchButton />
     </>
   );
 }
