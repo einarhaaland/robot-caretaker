@@ -3,6 +3,7 @@ import { Grid } from '@mui/material';
 import './App.css';
 import FetchButton from './components/FetchButton';
 import MoodCard from './components/MoodCard';
+import NavBar from './components/Navbar';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <>
+      <NavBar />
       <FetchButton />
       <Grid container spacing={3}>
         <Grid item xs>
