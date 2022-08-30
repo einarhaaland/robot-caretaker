@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 function FetchButton() {
     const [result, setResult] = useState<{status: number}>()

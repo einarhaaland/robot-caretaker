@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Grid } from '@mui/material';
 import './App.css';
 import FetchButton from './components/FetchButton';
