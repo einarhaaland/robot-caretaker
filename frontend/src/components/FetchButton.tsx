@@ -7,7 +7,7 @@ function FetchButton() {
 
     const handleClick = () => {
         console.log("TESTING ROBOT CONNECTION..")
-        fetch("/test_robot_connection")
+        fetch("http://localhost:5000/test_robot_connection")
             .then((res) => res.json())
             .then((data) => {
                 setResult(data)
