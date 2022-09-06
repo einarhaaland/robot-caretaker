@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     console.log("TESTING BACKEND CONNECTION..")
-    fetch("/test")
+    fetch("http://localhost:5000/test")
       .then((res) => res.json())
       .then((data) => {
         console.log(data)
