@@ -1,4 +1,11 @@
+'''
+This serves as an example of a way to receive messages from the web application 
+and use it to control a robot in a Webots simulator.
+'''
+
+
 def controller(body):
+    '''This uses the Webots API to control a robot'''
     from controller import Robot
 
     robot = Robot()
@@ -6,7 +13,10 @@ def controller(body):
     while robot.step(32) != -1:
         print(body+"!")
 
+
 def receiver():
+    '''Receives messages (Frontend -> Backend -> RabbitMQ -> HERE)'''
+
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
     channel = connection.channel()
 
