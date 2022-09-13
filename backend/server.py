@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
+from messaging.send import send
 
 app = Flask(__name__)
 CORS(app)
@@ -17,6 +18,7 @@ def test_robot_connection():
 
 @app.route("/mood/<mood>")
 def mood(mood):
+    send(mood)
     return {"mood": mood}
 
 
