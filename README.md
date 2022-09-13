@@ -1,6 +1,11 @@
 # Robot Caretaker
 This is a project aiming to aid remote caretakers with expressing body language to patients using humanoid robots.
 
+This repository contains 3 standalone applications:
+- Frontend
+- Backend
+- Webots example
+
 ## Stack
 - React Typescript Frontend
 - Flask Backend
@@ -36,13 +41,12 @@ RabbitMQ:
 - Go to `http://localhost:15672` to confirm that rabbitmq is running
 
 Robot Simulation:
-- Create a project with a robot that listens to the (external) controller `/webots_implementation/controllers/example/example.py`
-    - Webots doc: https://cyberbotics.com/doc/guide/index?tab-language=python
-- Run Webots simulation
-- Configure IDE
-    - https://cyberbotics.com/doc/guide/using-your-ide?tab-language=python&tab-os=windows
-    - https://cyberbotics.com/doc/guide/running-extern-robot-controllers?tab-language=python&tab-os=windows
-- Run `/webots_implementation/controllers/example/example.py`
+- Open `robot-caretaker\webots_implementation\worlds\example.wbt` in Webots
+- Currently have to `pip install pika` (TODO: make venv and requirements.txt)
+- Start simulation (should happpen automatically)
+
+The system should now be running end-to-end.
+Try clicking a button in the web-UI and see if it is sent to the robot simulation.
 
 ## Troubleshooting
 - Can't activate Virtual environment?
