@@ -42,7 +42,12 @@ RabbitMQ:
 
 Robot Simulation:
 - Open `robot-caretaker\webots_implementation\worlds\example.wbt` in Webots
-- Currently have to `pip install pika` (TODO: make venv and requirements.txt)
+- In another terminal:
+    - `cd webots_implementation`
+        - create/activate venv:
+            - `python -m venv venv`
+            - `.\venv\Scripts\activate`
+        - `pip install -r requirements.txt`
 - Start simulation (should happpen automatically)
 
 The system should now be running end-to-end.
