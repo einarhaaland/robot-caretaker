@@ -1,15 +1,16 @@
 import pika
 
-'''
-This is just a test file to ensure that the messaging system works as intended.
-'''
+def send(body, host='localhost', queue='hello', routing_key='hello', exchange=''):
+    '''
+    Sends a message using given args
+    '''
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
-channel = connection.channel()
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host))
+    channel = connection.channel()
 
-channel.queue_declare(queue='hello')
+    channel.queue_declare(queue=queue)
 
-channel.basic_publish(exchange='', routing_key='hello', body='Hello World!')
-print("Sent 'Hello World!'")
+    channel.basic_publish(exchange=exchange, routing_key=routing_key, body=body)
+    print(f"Sent '{body}'")
 
-connection.close()
+    connection.close()
