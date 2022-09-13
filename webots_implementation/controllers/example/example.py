@@ -15,7 +15,8 @@ def controller(body):
 
 
 def receiver():
-    '''Receives messages (Frontend -> Backend -> RabbitMQ -> HERE)'''
+    '''Receives messages (Frontend -> Backend -> RabbitMQ -> HERE"""  """)'''
+    import pika, sys, os
 
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
     channel = connection.channel()
