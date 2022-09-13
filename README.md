@@ -34,11 +34,11 @@ Web application:
 - `cd frontend`
     - `npm install`
     - `yarn start`
-- Browser window should open automatically at `http://localhost:3000`
+- Browser window should open automatically at http://localhost:3000
 
 RabbitMQ:
 - Open rabbitMQ as a windows service
-- Go to `http://localhost:15672` to confirm that rabbitmq is running
+- Go to http://localhost:15672 to confirm that rabbitmq is running
 
 Robot Simulation:
 - Open `robot-caretaker\webots_implementation\worlds\example.wbt` in Webots
