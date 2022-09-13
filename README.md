@@ -44,10 +44,13 @@ Robot Simulation:
 - Open `robot-caretaker\webots_implementation\worlds\example.wbt` in Webots
 - In another terminal:
     - `cd webots_implementation`
-        - create/activate venv:
-            - `python -m venv venv`
-            - `.\venv\Scripts\activate`
-        - `pip install -r requirements.txt`
+        - If your Webots version supports virtual environments:
+            - create/activate venv:
+                - `python -m venv venv`
+                - `.\venv\Scripts\activate`
+            - `pip install -r requirements.txt`
+        - Else
+            - `pip install pika`
 - Start simulation (should happpen automatically)
 
 The system should now be running end-to-end.
