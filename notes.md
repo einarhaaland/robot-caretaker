@@ -60,6 +60,9 @@ TODO:
 	* lag actions og behaviours tilsvarende hva QiSDK får til
 	* Lag QiSDK app som subscriber og få gjennom en bevegelse fra frontend -> backend -> pub -> sub -> QiSDK -> robot
 
+* Webots
+	* melding kommer kun frem når sim stopper
+
 
 
 
