@@ -11,7 +11,7 @@ def controller(body):
     robot = Robot()
 
     while robot.step(32) != -1:
-        print(body+"!")
+        print(body.decode("utf-8")+"!")
 
 
 def receiver():
