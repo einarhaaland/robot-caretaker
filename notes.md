@@ -62,7 +62,7 @@ TODO:
 
 * Webots
 	* melding kommer kun frem når sim stopper
-	* melding kommer frem hvis jeg omgår receiver funksjon
+	* melding kommer frem hvis jeg omgår receiver funksjon ->Les på pika/rabbitmq doc?
 
 
 
