@@ -34,7 +34,7 @@ def receiver():
 
 if __name__ == '__main__':
     try:
-        receiver()
+        controller(b"heisann")
     except KeyboardInterrupt:
         print('Interrupted')
         try:

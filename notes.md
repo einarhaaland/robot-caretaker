@@ -62,6 +62,7 @@ TODO:
 
 * Webots
 	* melding kommer kun frem når sim stopper
+	* melding kommer frem hvis jeg omgår receiver funksjon
 
 
 
