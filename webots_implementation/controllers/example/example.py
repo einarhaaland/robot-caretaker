@@ -10,6 +10,8 @@ def controller(body):
 
     robot = Robot()
 
+    print("before sim loop")
+
     while robot.step(32) != -1:
         print(body.decode("utf-8")+"!")
 
@@ -34,7 +36,7 @@ def receiver():
 
 if __name__ == '__main__':
     try:
-        controller(b"heisann")
+        receiver()
     except KeyboardInterrupt:
         print('Interrupted')
         try:

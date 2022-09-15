@@ -64,6 +64,8 @@ TODO:
 	* melding kommer kun frem når sim stopper
 	* melding kommer frem hvis jeg omgår receiver funksjon ->Les på pika/rabbitmq doc?
 
+	* lack of resources til rabbitmq? https://www.rabbitmq.com/connection-blocked.html
+
 
 
 
