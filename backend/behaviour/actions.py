@@ -10,6 +10,22 @@ It is unclear if these function actually perform the action,
 or if they take in the robot type as an argument and returns the correct motors/joint to request.
 '''
 
+'''
+Possible arguments to an action function can be
+
+ARGS            EXAMPLES                    TYPE
+Device          *The motor to move*         Unknown
+DeviceName      "Left Wheel motor"          String
+Power           3.4 (volt, watt ...)        Float
+Speed           10.6                        Float
+EndPosition     70.3                        Float
+EndAngle        60.5                        Float
+
+The current idea is to provide a universal interface with maximum capability so that all abstraction levels can be satisfied.
+It is then up to the implementation to adapt to abstraction level of Robot API in question.
+
+'''
+
 
 ########## HEAD ##########
 
@@ -170,6 +186,7 @@ def tilt_right_ankle():
     return
 
 def tilt_left_ankle():
+    return
 
 
 ########## TOE ##########

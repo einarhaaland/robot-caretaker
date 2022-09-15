@@ -17,6 +17,7 @@ the mood functions then need to contruct a request conforming to the robot in qu
 
 def default():
     # A default position for limbs, mood can still be displayed
+    return
 
 def excited():
     #nod_head()

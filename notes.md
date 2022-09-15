@@ -65,6 +65,21 @@ TODO:
 	* melding kommer frem hvis jeg omgår receiver funksjon ->Les på pika/rabbitmq doc?
 
 	* lack of resources til rabbitmq? https://www.rabbitmq.com/connection-blocked.html
+	* Funker nå uten endringer??
+
+* Emotional interface - hvilke bevegelser innegår i "Excited"
+	* Lage et interface som brukere kan implementere
+		* Language interoperability - hvordan lage et interface som kan implementeres i flere språk?
+			* Trengs flere språk? Lage et DSL for dette?
+			* CORBA - Common object Request Broker Architecture (utdatert måte?)
+			* COM - Common Object model (utdatert måte?)
+			* CORBA, COM ANSAware, DCOM, DCE (Distributed computing environments)
+			* RPC - Remote procedure Call
+			* Metadata? lage interface i XML eller lignende?
+			* Foreign function interfaces
+			* Wrapper library - adapter design pattern
+			* SWIG -nei, for C/C++ -> x
+	* Hvor skal dette ligge i infrastrukturen?
 
 
 
