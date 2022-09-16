@@ -81,6 +81,12 @@ TODO:
 			* SWIG -nei, for C/C++ -> x
 	* Hvor skal dette ligge i infrastrukturen?
 
+* Webots Emotion
+	* Nao kan bruke .motion filer. Tror det finnes noen i Choregraphe installation + mulighet for å lage nye.
+
+
+* https://github.com/gunnarkleiven/WiRoM2.0
+
 
 
 
