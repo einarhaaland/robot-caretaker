@@ -1,15 +1,19 @@
 '''
+DESCRIPTION:
 Script to help convert .xar files found /created in Choregraphe to .MOTION files that can be used by Webots.
+
+REQUIREMENTS:
 pip install beautifulsoup4
 pip install lxlml
 
-To use:
+TO USE:
 Paste path to xar file in global variable FILE_PATH
-Adjust N_POSTITIONS
-Run
+Adjust N_POSTITIONS to number of keyframes in animation
+Run script
 Needed output is printed to console
+Timestamps of keyframes and headers are not included in output.
 
-
+PROBLEMS:
 Might be off by 1 index
 '''
 
