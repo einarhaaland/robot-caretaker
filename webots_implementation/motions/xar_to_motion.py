@@ -18,11 +18,7 @@ TO USE:
 * Copy output from terminal
 
 PROBLEMS:
-* Values are in degrees, not Radians
-* Depending on terminal-screen-size, some lines may be auto-newlined in terminal.
-    * Fix manually:
-        * All Headers are to be on line 1
-        * All lines except Headers are to start with a time and end without a comma
+* LHand and RHand will not work due to being implemented as "phalanx" in Webots. See robot controller Nao_demo_python.py in Webots for more info.
 '''
 
 from bs4 import BeautifulSoup as bs
@@ -75,7 +71,7 @@ with open(FILE_PATH, "r") as file:
         # Add values to result
         for frame in keyframes:
             # Input is degrees, ouput is radians. Index + 2 because [time, pose, i+2, ...]
-            result[int(frame['frame'])][tags.index(tag)+2] = math.radians(frame['value'])
+            result[int(frame['frame'])][tags.index(tag)+2] = str(math.radians(float(frame['value'])))
 
     # Print result
     print(','.join(header))
