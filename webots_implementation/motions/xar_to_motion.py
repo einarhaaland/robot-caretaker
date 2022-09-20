@@ -1,40 +1,53 @@
 '''
+README!
+
 DESCRIPTION:
 Script to help convert .xar files found /created in Choregraphe to .MOTION files that can be used by Webots.
 
 REQUIREMENTS:
+Python
 pip install beautifulsoup4
 pip install lxlml
 
 TO USE:
-* Paste path to xar file in global variable FILE_PATH
-* Adjust N_POSTITIONS to number of keyframes in animation
-* Set time delta between keyframes
+* Set Global Variables:
+    * Set FILE_PATH to path to xar file
+    * Set N_POSTITIONS to number of keyframes in animation
+    * Set D_TIME to desired time between keyframes
 * Run script
-Needed output is printed to console
+* Copy output from terminal
 
 PROBLEMS:
-Values are in degrees, not Radians
-Make sure each line starts with the keyframe-time, all headers are to be on line 1
+* Values are in degrees, not Radians
+* Depending on terminal-screen-size, some lines may be auto-newlined in terminal.
+    * Fix manually:
+        * All Headers are to be on line 1
+        * All lines except Headers are to start with a time and end without a comma
 '''
 
 from bs4 import BeautifulSoup as bs
 import datetime
+import math
 
 FILE_PATH = "C:/Users/einar/Desktop/excited.xar"
 N_POSITIONS = 55
 D_TIME = datetime.timedelta(milliseconds=40)
 
 with open(FILE_PATH, "r") as file:
+    # Read file
     content = file.readlines()
     content = "".join(content)
+
+    # Init BeautifulSoup4
     bs_content = bs(content, "xml")
 
+    # Keeps track of keyframe-time, starts at 00:00:000
     time = datetime.datetime(1,1,1,minute=0, second=0, microsecond=0)
 
-    header = ['#WEBOTS_MOTION','V1.0'] # Top of .motion file, describes version and joints to be moved
+    # Top of .motion file, describes version and joints to be moved
+    header = ['#WEBOTS_MOTION','V1.0']
 
-    # All tags where a joint is moved
+    # All xml-tags where a joint is moved
     tags = bs_content.findAll("ActuatorCurve")
 
     # Populate result
@@ -46,8 +59,9 @@ with open(FILE_PATH, "r") as file:
         time += D_TIME
 
         # Add Pose-number
-        result[i].append("Pose"+str(i+1))
+        result[i].append("Pose"+str(i+1)) # Poses start at 1
 
+        # Populate with *, some to be replaced with values later
         for j in range(len(tags)):
             result[i].append('*')
 
@@ -57,14 +71,11 @@ with open(FILE_PATH, "r") as file:
 
         # All keyframes of a joint
         keyframes = list(tag.findAll("Key"))
-
-        # The frame-numbers animation is performed on
-        actionframes = []
-        for frame in keyframes:
-            actionframes.append(frame['frame'])
         
+        # Add values to result
         for frame in keyframes:
-            result[int(frame['frame'])][tags.index(tag)+2] = frame['value'] # +2 because of keyframe-time and pose-number at index 0,1
+            # Input is degrees, ouput is radians. Index + 2 because [time, pose, i+2, ...]
+            result[int(frame['frame'])][tags.index(tag)+2] = math.radians(frame['value'])
 
     # Print result
     print(','.join(header))
