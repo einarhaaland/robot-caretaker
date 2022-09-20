@@ -18,14 +18,18 @@ Might be off by 1 index
 '''
 
 from bs4 import BeautifulSoup as bs
+import datetime
 
 FILE_PATH = "C:/Users/einar/Desktop/excited.xar"
 N_POSITIONS = 55
+D_TIME = datetime.timedelta(milliseconds=40)
 
 with open(FILE_PATH, "r") as file:
     content = file.readlines()
     content = "".join(content)
     bs_content = bs(content, "xml")
+
+    time = datetime.datetime(1,1,1,minute=0, second=0, microsecond=0)
 
     # All tags where a joint is moved
     tags = bs_content.findAll("ActuatorCurve")
@@ -33,6 +37,11 @@ with open(FILE_PATH, "r") as file:
     # Populate result
     result = [ [] for i in range(N_POSITIONS) ]
     for i in range(N_POSITIONS):
+
+        # Add keyframe time
+        time += D_TIME
+        result[i].append(time.strftime('%M:%S:%f')[:-3])
+
         for j in range(len(tags)):
             result[i].append('*')
 
