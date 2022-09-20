@@ -86,7 +86,8 @@ TODO:
 	* Motorer RHand og LHand eksisterer ikke i webots, er sannsynligvis erstatter med flere "phalanx" motorer
 		* phalanx er finger-leddene. 2 i tommer, 3 i finger1, 3 i finger2
 	* Motor verdier fra Choregraphe stemmer ikke overens med verdiene Webots forventer fra en .motion fil
-	*	verdier i .motion filer er i radianer, ikke grader.
+		* verdier i .motion filer er i radianer, ikke grader.
+	* Konvertert script funker, men robot utfører en enkel bevegelse og stopper
 
 * https://github.com/gunnarkleiven/WiRoM2.0
 
