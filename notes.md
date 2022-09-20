@@ -83,7 +83,8 @@ TODO:
 
 * Webots Emotion
 	* Nao kan bruke .motion filer. Tror det finnes noen i Choregraphe installation + mulighet for å lage nye.
-
+	* Motorer RHand og LHand eksisterer ikke i webots, er sannsynligvis erstatter med flere "phalanx" motorer
+	* Motor verdier fra Choregraphe stemmer ikke overens med verdiene Webots forventer fra en .motion fil
 
 * https://github.com/gunnarkleiven/WiRoM2.0
 
