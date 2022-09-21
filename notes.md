@@ -121,6 +121,8 @@ TODO:
 	* Erstatt * -> 0?
 	* Fjernet masse desimaltall: Ingen endring.
 	* HeadYaw og LShoulderPitch kan gjøres samtidig, HeadPitch blir da gjort etterpå
+	* LØSNING: Webots liker ikke masse asterix's (*), alt funker når jeg erstatter med 0 istedet
+	* 0 er dog ikke "baseline" for alle joints, motions blir wonky uten riktige baselines
 
 
 

@@ -61,7 +61,7 @@ with open(FILE_PATH, "r") as file:
 
         # Populate with *, some to be replaced with values later
         for j in range(len(tags)):
-            result[i].append('*')
+            result[i].append('0')
 
     for tag in tags:
         # Populate .motion header
