@@ -15,10 +15,12 @@ TO USE:
     * Set N_POSTITIONS to number of keyframes in animation
     * Set D_TIME to desired time between keyframes
 * Run script
-* Copy output from terminal
+* Copy output from terminal into a raw text file and save as <filename>.motion
+* Can be tested in nao_demo_python.py controller in Webots
 
 PROBLEMS:
 * LHand and RHand will not work due to being implemented as "phalanx" in Webots. See robot controller Nao_demo_python.py in Webots for more info.
+* Motion file does not seem to work correctly even though format seems correct. Only 1 or 2 joints move as expected, and a joint move after motion is over.
 '''
 
 from bs4 import BeautifulSoup as bs
@@ -27,7 +29,7 @@ import math
 
 FILE_PATH = "C:/Users/einar/Desktop/excited.xar"
 N_POSITIONS = 55
-D_TIME = datetime.timedelta(milliseconds=40)
+D_TIME = datetime.timedelta(milliseconds=700)
 
 with open(FILE_PATH, "r") as file:
     # Read file

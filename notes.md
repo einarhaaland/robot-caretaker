@@ -88,11 +88,39 @@ TODO:
 	* Motor verdier fra Choregraphe stemmer ikke overens med verdiene Webots forventer fra en .motion fil
 		* verdier i .motion filer er i radianer, ikke grader.
 	* Konvertert script funker, men robot utfører en enkel bevegelse og stopper
+	* Bevegelse skjer etter motion keyframes er ferdig??
 
 * https://github.com/gunnarkleiven/WiRoM2.0
 
+TODO:
+* Sjekke ut flere roboter. Noen som er enklere å jobbe med?
+* Sjekke ut om bytte/enable GPU i Webots
 
-
+* Endre på test.motion for å se når den slutter å funke / finne limitation.
+	* funker med 12 poses -> burde da ikke være mengden poses fordi det burde skje en action på pose 7 i Excited.motion
+	* Funker med mange desimaltall på verdiene
+	* Funker ikke med whitespaces i motionfil -> tror ikke det er whitespaces i excited.motion heller
+		* Virker som ting kjører async, fikk feil på linje 2 før linje 1
+	* Funker med for store verdier, leddene går til max før en warning blir displayed. Motionen fortsetter etterpå
+	* LHand og RHand blir ignorert som forventet og motion kjører fortsatt med RHand,LHand som siste kolonner
+	* la til et ledd til bak LHand og LHand. Den bevegelsen skjedde først etter motion var ferdig. Bingo?
+		* Prøv å ta ut RHand og LHand av excited
+		* Prøv å erstatt RHand og LHand med andre for å sjekke om det kan være mengden ledd og ikke spesifkt Hand som gjør det.
+			* Skjer fortsatt etter å ha erstattet RHand og LHand med LElbowRoll og RElbowRoll
+		* Hjalp ikke å bruke flere threads (4 -> 8). samme resultat
+		* Fjernet ett ledd, nå 4 til sammen, funket ikke, nr.3 (LElbowRoll) utføres ikke og nr. 4 (LShoulderPitch) utføres etter motion er ferdig.
+		* Byttet om på nr. 3 og nr. 4, nå er det nr. 3 (LShoulderPitch) som skjer til slutt og nr. 4 (LElbowRoll) utføres ikke -> rekkefølgen irrelevant?
+		* Fjernet enda et ledd (LShoulderPitch): ElbowPitch blir fortsatt ikke utfør, ikke på slutten heller.
+			* Endret fjernet ledd til ElbowPitch: ShoulderPitch utføres etter.
+		* Byttet rekkefølge på ledd: ShoulderPitch først gjør at kun ShoulderPitch utføres. siste bevegelse skjer etterpå.
+	* prøv å ikke gå utenfor accepted values, warning gir ikke mening
+		* warning sier headyaw er > 0.5 , Det stemmer ikke. HeadPitch er > 0.5 , men 6 ganger, kun 4 warnings
+		* Endret verdier til å være under 0.5 (det tallet som står i warning i webots)
+			* Får ikke warnings nå, men samme resultat (LElbowRoll skjer ikke, LShoulderPitch skjer etter motion)
+	* Negative verdier brukes i filer som funker
+	* Erstatt * -> 0?
+	* Fjernet masse desimaltall: Ingen endring.
+	* HeadYaw og LShoulderPitch kan gjøres samtidig, HeadPitch blir da gjort etterpå
 
 
 
