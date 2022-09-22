@@ -20,7 +20,7 @@ TO USE:
 
 PROBLEMS:
 * LHand and RHand will not work due to being implemented as "phalanx" in Webots. See robot controller Nao_demo_python.py in Webots for more info.
-* Motion file does not seem to work correctly even though format seems correct. Only 1 or 2 joints move as expected, and a joint move after motion is over.
+* The robot now uses the value 0 as baseline start for motion. It is recommended to edit this to avoid the robot "T-Posing"
 '''
 
 from bs4 import BeautifulSoup as bs
@@ -29,7 +29,7 @@ import math
 
 FILE_PATH = "C:/Users/einar/Desktop/excited.xar"
 N_POSITIONS = 55
-D_TIME = datetime.timedelta(milliseconds=700)
+D_TIME = datetime.timedelta(milliseconds=40)
 
 with open(FILE_PATH, "r") as file:
     # Read file
@@ -61,7 +61,7 @@ with open(FILE_PATH, "r") as file:
 
         # Populate with *, some to be replaced with values later
         for j in range(len(tags)):
-            result[i].append('0')
+            result[i].append('*')
 
     for tag in tags:
         # Populate .motion header
@@ -73,7 +73,15 @@ with open(FILE_PATH, "r") as file:
         # Add values to result
         for frame in keyframes:
             # Input is degrees, ouput is radians. Index + 2 because [time, pose, i+2, ...]
-            result[int(frame['frame'])][tags.index(tag)+2] = str(math.radians(float(frame['value'])))
+            result[int(frame['frame'])][tags.index(tag)+2] = str(round(math.radians(float(frame['value'])), 2))
+
+    # Replace idle-symbols
+    for i in range(len(tags)): # Comlumns
+        current_value = 0 # The current holding value. The most recent update
+        for j in range(N_POSITIONS): # Rows
+            if result[j][i+2] == '*':
+                result[j][i+2] = str(current_value)
+            current_value = result[j][i+2]
 
     # Print result
     print(','.join(header))
