@@ -12,7 +12,7 @@ pip install lxlml
 TO USE:
 * Set Global Variables:
     * Set FILE_PATH to path to xar file
-    * Set N_POSTITIONS to number of keyframes in animation
+    * Set N_POSTITIONS to number of keyframes in animation (should be higher than highest frame in .xar file)
     * Set D_TIME to desired time between keyframes
 * Run script
 * Copy output from terminal into a raw text file and save as <filename>.motion
@@ -21,14 +21,16 @@ TO USE:
 PROBLEMS:
 * LHand and RHand will not work due to being implemented as "phalanx" in Webots. See robot controller Nao_demo_python.py in Webots for more info.
 * The robot now uses the value 0 as baseline start for motion. It is recommended to edit this to avoid the robot "T-Posing"
+* Webots can't handle N_POSITIONS > 120
+* You will get "IndexError: list index out of range" if N_POSITIONS < highest_frame_attribute_in_xar_file
 '''
 
 from bs4 import BeautifulSoup as bs
 import datetime
 import math
 
-FILE_PATH = "C:/Users/einar/Desktop/excited.xar"
-N_POSITIONS = 55
+FILE_PATH = "C:/Users/einar/Desktop/confused.xar"
+N_POSITIONS = 75
 D_TIME = datetime.timedelta(milliseconds=40)
 
 with open(FILE_PATH, "r") as file:

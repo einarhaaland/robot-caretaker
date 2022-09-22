@@ -1,0 +1,10 @@
+#WEBOTS_MOTION,V1.0,HeadPitch,LShoulderPitch,RShoulderPitch,LKneePitch,RKneePitch,LAnklePitch,RAnklePitch
+00:00:000,Pose1,0,1.5,1.5,0,0,0,0
+00:00:500,Pose2,0.4,-1,-1,0.5,0.5,-0.3,-0.3
+00:01:000,Pose3,0.4,-1,-1,0,0,0,0
+00:01:500,Pose4,0.4,-1,-1,0.5,0.5,-0.3,-0.3
+00:02:000,Pose5,0.4,-1,-1,0,0,0,0
+00:02:500,Pose6,0.4,-1,-1,0.5,0.5,-0.3,-0.3
+00:05:500,Pose12,0,1.5,1.5,0,0,0,0
+
+Legg til elbowroll
