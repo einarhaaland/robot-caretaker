@@ -17,22 +17,30 @@ def controller(body):
 
 
 def receiver():
-    '''Receives messages (Frontend -> Backend -> RabbitMQ -> HERE"""  """)'''
+    '''Receives messages (Frontend -> Backend -> RabbitMQ -> HERE)'''
     import pika, sys, os
 
+    # Init connection and channel
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
     channel = connection.channel()
 
-    channel.queue_declare(queue='hello')
+    # Declare queue with unique name
+    result = channel.queue_declare(queue='')
+    queue_name = result.method.queue
 
+    # Bind queue to existing exchange
+    channel.queue_bind(exchange='routing_exchange', queue=queue_name, routing_key='webots')
+
+    # Listen for messages
+    channel.basic_consume(queue=queue_name, on_message_callback=callback, auto_ack=True)
+    channel.start_consuming()
+    print(' [*] Waiting for messages. To exit press CTRL+C')
+    
+    # On message received
     def callback(ch, method, properties, body):
         print(" [x] Received %r" % body)
         controller(body)
 
-    channel.basic_consume(queue='hello', on_message_callback=callback, auto_ack=True)
-
-    print(' [*] Waiting for messages. To exit press CTRL+C')
-    channel.start_consuming()
 
 if __name__ == '__main__':
     try:
