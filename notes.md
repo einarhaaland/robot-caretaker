@@ -92,10 +92,8 @@ TODO:
 
 * https://github.com/gunnarkleiven/WiRoM2.0
 
-TODO:
-* Sjekke ut flere roboter. Noen som er enklere å jobbe med?
-* Sjekke ut om bytte/enable GPU i Webots
 
+# .motion converter troubleshooting
 * Endre på test.motion for å se når den slutter å funke / finne limitation.
 	* funker med 12 poses -> burde da ikke være mengden poses fordi det burde skje en action på pose 7 i Excited.motion
 	* Funker med mange desimaltall på verdiene
@@ -125,5 +123,30 @@ TODO:
 		* 0 er dog ikke "baseline" for alle joints, motions blir wonky uten riktige baselines
 		* Funker asterix hvis jeg har riktig baseline først?
 
+# Messaging
+* Sende JSON?
+	* {
+		emotion: sad,
+		actions: [
+			{
+				action: head down,
+				speed: slow,
+				deltaValue: high
+			},
+			{
+				action: turn wrists inward,
+				speed: slow,
+				deltaValue: high
+			}
+			{
+				action: bend forward,
+				speed: slow,
+				deltaValue: low
+			}
+		]
+	}
 
+# TODO:
+* Sjekke ut flere roboter. Noen som er enklere å jobbe med?
+* Sjekke ut om bytte/enable GPU i Webots
 
