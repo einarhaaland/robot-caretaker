@@ -145,6 +145,14 @@ TODO:
 			}
 		]
 	}
+* Sende webots function calls og si at hver bruker må implementere Webots API -> deres robot
+	* Parse strings som functioncalls
+		* Python, JS, MatLab: eval("function(arg1, arg2)")
+		* C/C++: https://stackoverflow.com/questions/11078267/is-there-c-c-equivalent-of-evalfunctionarg1-arg2
+		* Java: https://stackoverflow.com/questions/2605032/is-there-an-eval-function-in-java (JEval kanskje?)
+		* C#: https://stackoverflow.com/questions/6052640/is-there-an-eval-function-in-c
+	* Security risk: https://www.w3schools.com/jsref/jsref_eval.asp
+		* Mulig jeg ikke har satt opp messaging på en sikker måte heller
 
 # TODO:
 * Sjekke ut flere roboter. Noen som er enklere å jobbe med?
