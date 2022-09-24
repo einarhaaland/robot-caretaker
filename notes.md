@@ -151,6 +151,8 @@ TODO:
 		* C/C++: https://stackoverflow.com/questions/11078267/is-there-c-c-equivalent-of-evalfunctionarg1-arg2
 		* Java: https://stackoverflow.com/questions/2605032/is-there-an-eval-function-in-java (JEval kanskje?)
 		* C#: https://stackoverflow.com/questions/6052640/is-there-an-eval-function-in-c
+	* Args kan bli referere til en config fil implementert av bruker 
+		* function(config[ slowSpeed ], config[ angle ] )
 	* Security risk: https://www.w3schools.com/jsref/jsref_eval.asp
 		* Mulig jeg ikke har satt opp messaging på en sikker måte heller
 
