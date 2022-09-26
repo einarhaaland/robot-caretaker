@@ -158,5 +158,7 @@ TODO:
 
 # TODO:
 * Sjekke ut flere roboter. Noen som er enklere å jobbe med?
-* Sjekke ut om bytte/enable GPU i Webots
+	* QTrobot V2, (ROS, ansikt++)
+		* http://wiki.ros.org/Robots/qtrobot
+
 

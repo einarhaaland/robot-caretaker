@@ -5,15 +5,67 @@ and use it to control a robot in a Webots simulator.
 
 
 def controller(body):
-    '''This uses the Webots API to control a robot'''
-    from controller import Robot
+    from controller import Robot, Keyboard, Motion
 
-    robot = Robot()
 
-    print("before sim loop")
+    class Nao (Robot):
 
-    while robot.step(32) != -1:
-        print(body.decode("utf-8")+"!")
+        # load motion files
+        def loadMotionFiles(self):
+            self.handWave = Motion('../../motions/HandWave.motion')
+            self.nod = Motion('../../motions/Nod.motion')
+            self.cheer = Motion('../../motions/Cheer.motion')
+            self.shakeHead = Motion('../../motions/ShakeHead.motion')
+            self.excited = Motion('../../motions/Excited.motion')
+            self.thinking = Motion('../../motions/Thinking.motion')
+            
+
+        def startMotion(self, motion):
+            # interrupt current motion
+            if self.currentlyPlaying:
+                self.currentlyPlaying.stop()
+
+            # start new motion
+            motion.play()
+            self.currentlyPlaying = motion
+
+
+        def findAndEnableDevices(self):
+            # get the time step of the current world.
+            self.timeStep = int(self.getBasicTimeStep())
+
+            # shoulder pitch motors
+            self.RShoulderPitch = self.getDevice("RShoulderPitch")
+            self.LShoulderPitch = self.getDevice("LShoulderPitch")
+
+            # keyboard
+            self.keyboard = self.getKeyboard()
+            self.keyboard.enable(10 * self.timeStep)
+
+        def __init__(self):
+            Robot.__init__(self)
+            self.currentlyPlaying = False
+
+            # initialize stuff
+            self.findAndEnableDevices()
+            self.loadMotionFiles()
+
+        def run(self):
+            while True:
+                key = self.keyboard.getKey()
+
+                if key == Keyboard.LEFT:
+                    self.startMotion(self.handWave)
+                elif key == ord('W'):
+                    self.startMotion(self.wipeForhead)
+
+                if robot.step(self.timeStep) == -1:
+                    break
+
+
+    # create the Robot instance and run main loop
+    robot = Nao()
+    robot.run()
 
 
 def receiver():
