@@ -25,16 +25,16 @@ function App() {
           <MoodCard title='Excited'/>
         </Grid>
         <Grid item xs>
-          <MoodCard title='Sad'/>
+          <MoodCard title='Nod'/>
         </Grid>
         <Grid item xs>
-          <MoodCard title='Frustrated'/>
+          <MoodCard title='Wave'/>
         </Grid>
         <Grid item xs>
-          <MoodCard title='Understanding'/>
+          <MoodCard title='ShakeHead'/>
         </Grid>
         <Grid item xs>
-          <MoodCard title='ExcitedUnderstanding'/>
+          <MoodCard title='Thinking'/>
         </Grid>
       </Grid>
       <FetchButton />
