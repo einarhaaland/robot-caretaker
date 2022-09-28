@@ -156,6 +156,11 @@ TODO:
 	* Security risk: https://www.w3schools.com/jsref/jsref_eval.asp
 		* Mulig jeg ikke har satt opp messaging på en sikker måte heller
 
+# Threading
+* Er threading nødvendig i det hele tatt?
+	* Ja hvis controller har main loop
+	* Nei hvis ikke?
+
 # Andre roboter:
 * Sjekke ut flere roboter. Noen som er enklere å jobbe med?
 	* QTrobot V2, (ROS, ansikt++)

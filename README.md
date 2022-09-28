@@ -6,22 +6,22 @@ This repository contains 3 standalone applications:
 - Backend
 - Webots example
 
-## Stack
+# Stack
 - React Typescript Frontend
 - Flask Backend
 - RabbitMQ Messaging System
 - Webots Robot Simulator
 
-## Requirements
+# Requirements
 - NodeJS
-    - yarn (`npm install -g yarn`)
+    - Optional: yarn (`npm install -g yarn`) 
 - Python
 - RabbitMQ
     - `choco install rabbitmq`
-- Webots (to run robot receiver example)
+- Webots (to run robot example)
 
-## Setup (windows)
-Web application:
+# Setup (windows)
+## Web application:
 - `cd` two terminals to project folder
 - Terminal 1:
     - `cd backend`
@@ -33,33 +33,49 @@ Web application:
 - Terminal 2:
 - `cd frontend`
     - `npm install`
-    - `yarn start`
+    - `yarn start` or `npm start`
 - Browser window should open automatically at http://localhost:3000
 
-RabbitMQ:
+## RabbitMQ:
 - Open rabbitMQ as a windows service
 - Go to http://localhost:15672 to confirm that rabbitmq is running
+- Default credentials:
+    - Username: `guest`
+    - Password: `guest`
 
-Robot Simulation:
+## Robot Simulation:
+- `pip install pika` (Webots do not support Virtual environments)
 - Open `robot-caretaker\webots_implementation\worlds\example.wbt` in Webots
-- In another terminal:
-    - `cd webots_implementation`
-        - If your Webots version supports virtual environments:
-            - create/activate venv:
-                - `python -m venv venv`
-                - `.\venv\Scripts\activate`
-            - `pip install -r requirements.txt`
-        - Else
-            - `pip install pika`
-- Start simulation (should happpen automatically)
+- Simulation should start automatically
 
 The system should now be running end-to-end.
 Try clicking a button in the web-UI and see if it is sent to the robot simulation.
 
-## Troubleshooting
+# Troubleshooting
 - Can't activate Virtual environment?
     - Open powershell as admin and type: `Set-ExecutionPolicy RemoteSigned`
 - Frontend won't run?
     - Try `npm audit fix` (optionally with `--force`)
+- Webots simulator does not run (timestep stuck at 0.00)?
+    - Restart Webots. 
 - SSL tag mismatch?
     - Some requirements does not like to be downloaded/installed over 5Ghz connection. Try 2.4Ghz or Ethernet.
+
+# Navigating this repository
+- `backend` Contains the Flask server and is the backend of the web-app
+    - `behaviour` Not currently used
+    - `messaging` Publisher
+    - `server.py` API endpoints
+
+- `frontend` React app
+    - `src`
+        - `components` React components (navbar, moodcards..)
+        - `App.tsx` Main page, moodcards are added here
+
+- `webots_implementation`
+    - `controllers` 
+        - `nao_emotion_controller` Example implementation of Webots controller for the Nao robot.
+        - `subscriber.py` Subscriber logic. Used in `supercontroller.py`
+        - `super_controller.py` General controller. Robot-specific controllers inherit from this.
+    - `motions` .motion files used for pre-existing animations
+    - `worlds` .wbt file to open in Webots
