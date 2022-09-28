@@ -10,7 +10,7 @@ from controller import Robot, Motion
 from subscriber import Subscriber
 
 class SuperController(Robot):
-    def __init__():
+    def __init__(self):
         # Initialize Robot from Webots API
         super().__init__()
 
@@ -26,6 +26,9 @@ class SuperController(Robot):
         # The motion currently being played
         self.currentlyPlaying = False
 
+        # The instruction waiting to be performed
+        self.instruction = ''
+
 
     def startMotion(self, motion):
         '''
@@ -34,13 +37,16 @@ class SuperController(Robot):
         ARGS:
         motion: the motion to start (Motion)
         '''
-            # Interrupt current motion
-            if self.currentlyPlaying:
-                self.currentlyPlaying.stop()
+        # Interrupt current motion
+        if self.currentlyPlaying:
+            self.currentlyPlaying.stop()
 
-            # Start new motion
-            motion.play()
-            self.currentlyPlaying = motion
+        # Start new motion
+        motion.play()
+        self.currentlyPlaying = motion
+
+        # Clear performed instruction
+        self.instruction = ''
 
     def loadMotionFiles(self):
         '''
@@ -56,7 +62,7 @@ class SuperController(Robot):
         self.timeStep = int(self.getBasicTimeStep())
 
 
-    def messageCallback(channel, method, properties, body):
+    def messageCallback(self, channel, method, properties, body):
         '''
         The function called when a message is received by the subscriber
 
