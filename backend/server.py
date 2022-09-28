@@ -18,7 +18,6 @@ def test_robot_connection():
 
 @app.route("/mood/<mood>")
 def mood(mood):
-    mood = mood[0].lower + mood[1:]
     send(mood)
     return {"mood": mood}
 
