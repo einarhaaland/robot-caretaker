@@ -79,6 +79,14 @@ class SuperController(Robot):
         '''
         pass
 
+    def run(self):
+        '''
+        Function that contains the main controller loop.
+
+        This function should be run in a seperate thread.
+        '''
+        pass
+
 
 
     # Create general controller here (look at webots controller)
