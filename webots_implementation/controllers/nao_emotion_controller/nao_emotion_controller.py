@@ -2,9 +2,14 @@
 For this file to be found, folder needs to have same name as this file: 
     nao_emotion_controller/nao_emotion_controller.py
 '''
-
+import sys
+import os
 import threading
 from controller import Robot, Keyboard, Motion
+
+# import supercontroller
+controller_path = os.path.join(os.getcwd(), os.pardir)
+sys.path.insert(0, controller_path)
 from super_controller import SuperController
 
 
@@ -29,24 +34,33 @@ class NaoEmotionController(SuperController):
         self.thinking = Motion('../../motions/Thinking.motion')
 
     def messageCallback(self, channel, method, properties, body):
-        self.instruction = body
+        self.instruction = body.decode("utf-8")
+        print(self.instruction)
 
     def run(self):
         while True:
                 instruction = self.instruction
 
                 if instruction == 'Wave':
+                    print('Performed: ' + instruction)
                     self.startMotion(self.wave)
                 elif instruction == 'Nod':
+                    print('Performed: ' + instruction)
                     self.startMotion(self.nod)
                 elif instruction == 'Cheer':
+                    print('Performed: ' + instruction)
                     self.startMotion(self.cheer)
                 elif instruction == 'ShakeHead':
+                    print('Performed: ' + instruction)
                     self.startMotion(self.shakeHead)
                 elif instruction == 'Excited':
+                    print('Performed: ' + instruction)
                     self.startMotion(self.excited)
                 elif instruction == 'Thinking':
+                    print('Performed: ' + instruction)
                     self.startMotion(self.thinking)
+                elif instruction != '':
+                    print("Received unknown command")
 
 
                 if nao.step(self.timeStep) == -1:
