@@ -5,7 +5,7 @@ sceneTreePerspectives: 000000ff00000001000000030000001e00000298000000fa010000000
 maximizedDockId: -1
 centralWidgetVisible: 1
 orthographicViewHeight: 1
-textFiles: 0 "../../workspace/robot-caretaker/webots_implementation/controllers/example/example.py"
+textFiles: 0 "controllers/nao_emotion_controller/nao_emotion_controller.py"
 consoles: Console:All:All
 renderingDevicePerspectives: NAO:CameraBottom;1;1;0;0
 renderingDevicePerspectives: NAO:CameraTop;1;1;0;0
