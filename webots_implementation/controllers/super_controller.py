@@ -15,7 +15,7 @@ class SuperController(Robot):
         super().__init__()
 
         # Initialize subscriber/listener
-        self.subscriber = Subscriber('routing_exchange', 'webots', messageCallback)
+        self.subscriber = Subscriber('routing_exchange', 'webots', self.messageCallback)
 
         # Initialize devices (sensors..)
         self.findAndEnableDevices()
