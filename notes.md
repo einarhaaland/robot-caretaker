@@ -167,5 +167,9 @@ TODO:
 		* http://wiki.ros.org/Robots/qtrobot
 
 # TODO:
-* langium for generering
+* langium for generering av kontroller (ANTLR, Xtext..)
+	* generere ved hjelp av config (hvilket format? .json, .yaml ...) fil som fylles ut av bruker?
+	* sjekk ut hvordan roboter er lagt til i webots, kanskje bruke samme config format?
+* Skal dette legges til i browser? Ser ut som langium er ment til å kjøre i browser
+	* Frontend -> Add robot skjema som genererer controller?
 
