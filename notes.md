@@ -170,6 +170,8 @@ TODO:
 * langium for generering av kontroller (ANTLR, Xtext..)
 	* generere ved hjelp av config (hvilket format? .json, .yaml ...) fil som fylles ut av bruker?
 	* sjekk ut hvordan roboter er lagt til i webots, kanskje bruke samme config format?
+		* fant noen id'er i C:\Program Files\Webots\projects\robots\robotis\darwin-op\libraries\robotis-op2\robotis\Framework\src\motion
 * Skal dette legges til i browser? Ser ut som langium er ment til å kjøre i browser
 	* Frontend -> Add robot skjema som genererer controller?
+* Må nok også generere .motion filer hvis jeg beholder motion måten å bevege robot på.
 
