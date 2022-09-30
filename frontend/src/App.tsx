@@ -22,7 +22,7 @@ function App() {
       <NavBar />
       <Grid container spacing={3}>
         <Grid item xs>
-          <MoodCard title='Excited'/>
+          <MoodCard title='Cheer'/>
         </Grid>
         <Grid item xs>
           <MoodCard title='Nod'/>

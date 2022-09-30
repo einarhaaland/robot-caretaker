@@ -30,7 +30,6 @@ class NaoEmotionController(SuperController):
         self.nod = Motion('../../motions/Nod.motion')
         self.cheer = Motion('../../motions/Cheer.motion')
         self.shakeHead = Motion('../../motions/ShakeHead.motion')
-        self.excited = Motion('../../motions/Excited.motion')
         self.thinking = Motion('../../motions/Thinking.motion')
 
     def messageCallback(self, channel, method, properties, body):
@@ -53,15 +52,11 @@ class NaoEmotionController(SuperController):
                 elif instruction == 'ShakeHead':
                     print('Performed: ' + instruction)
                     self.startMotion(self.shakeHead)
-                elif instruction == 'Excited':
-                    print('Performed: ' + instruction)
-                    self.startMotion(self.excited)
                 elif instruction == 'Thinking':
                     print('Performed: ' + instruction)
                     self.startMotion(self.thinking)
                 elif instruction != '':
                     print("Received unknown command")
-
 
                 if nao.step(self.timeStep) == -1:
                     break
