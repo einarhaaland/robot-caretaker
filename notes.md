@@ -175,3 +175,23 @@ TODO:
 	* Frontend -> Add robot skjema som genererer controller?
 * Må nok også generere .motion filer hvis jeg beholder motion måten å bevege robot på.
 
+# Controller fil 
+* ved motor bevegelse:
+int main() {
+  WbDeviceTag motors[6];
+  const char *MOTOR_NAMES[] = {"hip0", "hip1", "hip2", "hip3", "spine", NULL};
+  const double freq = 1.7;   // motion frequency
+  double ampl = 1.0;         // motion amplitude
+  double spine_angle = 0.0;  // spine angle
+  double t = 0.0;            // elapsed simulation time
+  int mode = RUN;
+  int prev_key = 0;
+
+  wb_robot_init();
+
+  // get motor device tags
+  for (i = 0; MOTOR_NAMES[i]; i++) {
+    motors[i] = wb_robot_get_device(MOTOR_NAMES[i]);
+    assert(motors[i]);
+  }
+while (wb_robot_step(TIME_STEP) != -1) {}
