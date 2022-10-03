@@ -4,6 +4,8 @@ Superclass of all robot controllers.
 Inherits from Webots Robot.
 
 This class supplies boilerplate code for python controllers like subscribing to message queues and common functions.
+
+For a controller to be found be Webots, it needs to be in dir controllers/<controllername>/<controllername.py>
 '''
 import pika
 from controller import Robot, Motion
@@ -57,7 +59,7 @@ class SuperController(Robot):
 
     def findAndEnableDevices(self):
         '''
-        Enables devices on robot like sensors, bumpers etc..
+        Enables devices on robot like motors, sensors, cameras etc..
         '''
         self.timeStep = int(self.getBasicTimeStep())
 

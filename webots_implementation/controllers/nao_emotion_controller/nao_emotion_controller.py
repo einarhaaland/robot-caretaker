@@ -1,6 +1,5 @@
 '''
-For this file to be found, folder needs to have same name as this file: 
-    nao_emotion_controller/nao_emotion_controller.py
+This controller uses Webots Motion to perform animation. Motors are not directly accessed.
 '''
 import sys
 import os

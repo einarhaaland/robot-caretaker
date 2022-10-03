@@ -1,0 +1,5 @@
+# Config to set up devices
+
+name: "epfl_biorob_ghostdog"
+devices:
+  motors: ["hip0", "hip1", "hip2", "hip3", "spine", NULL]
