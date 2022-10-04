@@ -30,28 +30,25 @@ class MotorController(SuperController):
     def findAndEnableDevices(self):
         devices = self.config['devices']
 
-        # Motors
-        if devices['motors']:
-            self.motors = [ self.getDevice(motor) for motor in devices['motors'] ]
         '''
         # Gyroscopes
-        if devices['gyroscopes']:
+        if devices['gyroscopes'] is not None:
             self.gyroscopes = [ self.getDevice(motor) for motor in devices['gyroscopes'] ]
 
         # Accelerometers
-        if devices['accelerometers']:
+        if devices['accelerometers'] is not None:
             self.accelerometers = [ self.getDevice(motor) for motor in devices['accelerometers'] ]
 
         # Cameras
-        if devices['cameras']:
+        if devices['cameras'] is not None:
             self.cameras = [ self.getDevice(motor) for motor in devices['cameras'] ]
 
         # Inertial Units
-        if devices['intertial_units']:
+        if devices['intertial_units'] is not None:
             self.intertial_units = [ self.getDevice(motor) for motor in devices['inertial_units'] ]
 
         # Sensors
-        if devices['sensors']:
+        if devices['sensors'] is not None:
             self.sensors = [ self.getDevice(motor) for motor in devices['sensors'] ]
         '''
 

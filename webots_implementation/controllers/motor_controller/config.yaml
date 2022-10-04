@@ -1,5 +1,75 @@
-# Config to set up devices
+# Configure to your robot 
 
-name: "epfl_biorob_ghostdog"
+name: "Softbank_Nao"
 devices:
-  motors: ["hip0", "hip1", "hip2", "hip3", "spine", NULL]
+  cameras: NULL
+  gyroscopes: NULL
+  accelerometers: NULL
+  sensors: NULL
+
+motor_name_converter: {
+  # HEAD
+  "HeadYaw": NULL,
+  "HeadPitch": NULL,
+  "HeadRoll": NULL,
+  
+  # LEFT ARM
+  "LFinger1": NULL,
+  "LFinger2": NULL,
+  "LFinger3": NULL,
+
+  "LWristPitch": NULL,
+  "LWristYaw": NULL,
+  "LWristRoll": NULL,
+
+  "LElbowPitch": NULL,
+  "LElbowRoll": NULL,
+
+  "LSoulderPitch": NULL,
+  "LSoulderRoll": NULL,
+
+  # RIGHT ARM
+  "RFinger1": NULL,
+  "RFinger2": NULL,
+  "RFinger3": NULL,
+
+  "RWristPitch": NULL,
+  "RWristYaw": NULL,
+  "RWristRoll": NULL,
+
+  "RElbowPitch": NULL,
+  "RElbowRoll": NULL,
+
+  "RSoulderPitch": NULL,
+  "RSoulderRoll": NULL,
+  
+  # BODY
+  "Spine": NULL,
+  "LowerSpine": NULL,
+  
+  # LEFT LEG
+  "LHipPitch": NULL,
+  "LHipYaw": NULL,
+  "LHipRoll": NULL,
+
+  "LKneePitch": NULL,
+
+  "LAnklePitch": NULL,
+  "LAnkleYaw": NULL,
+  "LHRoll": NULL,
+
+  "LToes": NULL,
+
+  # RIGHT LEG
+  "RHipPitch": NULL,
+  "RHipYaw": NULL,
+  "RHipRoll": NULL,
+
+  "RKneePitch": NULL,
+
+  "RAnklePitch": NULL,
+  "RAnkleYaw": NULL,
+  "RHRoll": NULL,
+
+  "RToes": NULL,
+}

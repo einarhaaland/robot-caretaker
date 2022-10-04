@@ -195,3 +195,9 @@ int main() {
     assert(motors[i]);
   }
 while (wb_robot_step(TIME_STEP) != -1) {}
+
+# Problemer med motor control
+* Går det i det hele tatt an å utføre flere bevegelser samtidig?
+	* lage self.sequence[lift_arm, nod, ...] og lytte på den i run()?
+* Hvordan vite hvilke motorer er på hvilken index i motors[]?
+	* La konvertering som et bruker problem som fikses i config (bruker må legge inn hvilke motorer som er hvilke)
