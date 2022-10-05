@@ -74,7 +74,8 @@ Try clicking a button in the web-UI and see if it is sent to the robot simulatio
 
 - `webots_implementation`
     - `controllers` 
-        - `nao_emotion_controller` Example implementation of Webots controller for the Nao robot.
+        - `nao_emotion_controller` Example implementation of Webots controller for the Nao robot using MOTION files.
+        - `nao_motor_controller` Example implementation of Webots controller for the Nao robot using its motors.
         - `subscriber.py` Subscriber logic. Used in `supercontroller.py`
         - `super_controller.py` General controller. Robot-specific controllers inherit from this.
     - `motions` .motion files used for pre-existing animations
