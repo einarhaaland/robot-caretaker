@@ -1,6 +1,15 @@
 '''
 This controller accesses motors to perform animation. Webots Motions are not used.
-Params are defined in config.yaml
+
+HOW TO IMPLEMENT YOUR OWN:
+    * Copy file structure
+    * Rename files appropriatly
+    * Fill in relevant values in config file
+    * Design motion(s) (Create motion functions akin to those below (wave(), nod()...))
+    * Call motion function in run() ( add elif instruction == 'your instruction': self.<motionfunction()> )
+    * Add robot to webot world and change its controller
+    * Start system (see README.me)
+
 '''
 import sys
 import os
@@ -14,7 +23,7 @@ sys.path.insert(0, controller_path)
 from super_controller import SuperController
 
 
-class MotorController(SuperController):
+class NaoMotorController(SuperController):
     '''
     Motor controller.
     Sub class of ../Controller.py
@@ -107,7 +116,7 @@ with open('config.yaml') as f:
   config = yaml.load(f)
 
 # Init robotcontroller
-nao = MotorController(config)
+nao = NaoMotorController(config)
 
 # Create threads
 controller_thread = threading.Thread(target=nao.run)
