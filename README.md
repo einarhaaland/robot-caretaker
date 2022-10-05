@@ -80,3 +80,6 @@ Try clicking a button in the web-UI and see if it is sent to the robot simulatio
         - `super_controller.py` General controller. Robot-specific controllers inherit from this.
     - `motions` .motion files used for pre-existing animations
     - `worlds` .wbt file to open in Webots
+    
+# To Future Forkers:
+I recommend to look at and re-implement/revert commit `55d7766aae460bb51158d65ffc621db554ca462b` to make application more secure.
