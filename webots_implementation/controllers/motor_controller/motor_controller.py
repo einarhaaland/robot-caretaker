@@ -6,7 +6,7 @@ import sys
 import os
 import threading
 import yaml
-from controller import Robot, Keyboard, Motion
+from controller import Robot, Keyboard, Motion, Motor
 
 # import supercontroller
 controller_path = os.path.join(os.getcwd(), os.pardir)
@@ -52,26 +52,66 @@ class MotorController(SuperController):
             self.sensors = [ self.getDevice(motor) for motor in devices['sensors'] ]
         '''
 
-
+    # Callback when receiving message through messaging system
     def messageCallback(self, channel, method, properties, body):
         self.instruction = body.decode("utf-8")
         print(self.instruction)
 
-
+    # Controller loop
     def run(self):
+        while True:
+                instruction = self.instruction
+
+                if instruction == 'Wave':
+                    print('Performed: ' + instruction)
+                    self.wave()
+                elif instruction != '':
+                    print("Received unknown command")
+
+                if nao.step(self.timeStep) == -1:
+                    break
+
+
+    ##### MOTION FUNCTIONS #####
+    def wave(self):
+        r_shoulder_pitch = self.getDevice(self.config['motor_names']['RShoulderPitch'])
+        r_shoulder_roll = self.getDevice(self.config['motor_names']['RShoulderRoll'])
+        l_shoulder_pitch = self.getDevice(self.config['motor_names']['LShoulderPitch'])
+
+        r_shoulder_pitch.setPosition(-1.5)
+        l_shoulder_pitch.setPostition(1.49797)
+
+        r_shoulder_roll.setPostition(0.3)
+        r_shoulder_roll.setPostition(-0.5)
+        r_shoulder_roll.setPostition(0.3)
+        r_shoulder_roll.setPostition(-0.5)
+        r_shoulder_roll.setPostition(0)
+
+        r_shoulder_pitch.setPosition(1.4)
+        
+    def nod():
+        pass
+
+    def cheer():
+        pass
+
+    def shakeHead():
         pass
         
+    def thinking():
+        pass
+
             
 # Read config.yaml
 with open('config.yaml') as f:
   config = yaml.load(f)
 
 # Init robotcontroller
-robot = MotorController(config)
+nao = MotorController(config)
 
 # Create threads
-controller_thread = threading.Thread(target=robot.run)
-listener_thread = threading.Thread(target=robot.subscriber.listener)
+controller_thread = threading.Thread(target=nao.run)
+listener_thread = threading.Thread(target=nao.subscriber.listener)
 
 # Run threads
 controller_thread.start()

@@ -7,7 +7,7 @@ devices:
   accelerometers: NULL
   sensors: NULL
 
-motor_name_converter: {
+motor_names: {
   # HEAD
   "HeadYaw": NULL,
   "HeadPitch": NULL,
@@ -44,8 +44,13 @@ motor_name_converter: {
   "RSoulderRoll": NULL,
   
   # BODY
-  "Spine": NULL,
-  "LowerSpine": NULL,
+  "SpinePitch": NULL,
+  "SpineYaw": NULL,
+  "SpineRoll": NULL,
+
+  "LowerSpinePitch": NULL,
+  "LowerSpineYaw": NULL,
+  "LowerSpineRoll": NULL,
   
   # LEFT LEG
   "LHipPitch": NULL,
