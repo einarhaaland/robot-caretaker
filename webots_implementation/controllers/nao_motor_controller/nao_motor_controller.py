@@ -31,14 +31,14 @@ class NaoMotorController(SuperController):
 
     # Constructor
     def __init__(self, config):
-        super().__init__()
         self.config = config
         self.instruction = ''
+        super().__init__()
 
 
     def findAndEnableDevices(self):
         devices = self.config['devices']
-
+        self.timeStep = int(self.getBasicTimeStep())
         '''
         # Gyroscopes
         if devices['gyroscopes'] is not None:
@@ -72,13 +72,30 @@ class NaoMotorController(SuperController):
                 instruction = self.instruction
 
                 if instruction == 'Wave':
-                    print('Performed: ' + instruction)
-                    self.wave()
+                    self.wave1()
+                elif instruction == 'Nod':
+                    self.nod()
+                elif instruction == 'Cheer':
+                    self.cheer()
+                elif instruction == 'ShakeHead':
+                    self.shakeHead()
+                elif instruction == 'Thinking':
+                    self.thinking()
                 elif instruction != '':
-                    print("Received unknown command")
+                    print("Received unknown command:")
+                
+                # Reset instruction
+                if instruction != '':
+                    print('Performed: ' + instruction)
+                    self.instruction = ''
 
+                # Break simulation
                 if nao.step(self.timeStep) == -1:
                     break
+
+    def wave1(self):
+        rsp = self.getDevice(self.config['motor_names']['RShoulderPitch'])
+        rsp.setPosition(-1.5)
 
 
     ########## MOTION FUNCTIONS ##########
@@ -92,17 +109,17 @@ class NaoMotorController(SuperController):
         # Set motors (numbers are poses)
         # 1
         r_shoulder_pitch.setPosition(-1.5)
-        l_shoulder_pitch.setPostition(1.49797)
+        l_shoulder_pitch.setPosition(1.49797)
         # 2
-        r_shoulder_roll.setPostition(0.3)
+        r_shoulder_roll.setPosition(0.3)
         # 3
-        r_shoulder_roll.setPostition(-0.5)
+        r_shoulder_roll.setPosition(-0.5)
         # 4
-        r_shoulder_roll.setPostition(0.3)
+        r_shoulder_roll.setPosition(0.3)
         # 5
-        r_shoulder_roll.setPostition(-0.5)
+        r_shoulder_roll.setPosition(-0.5)
         # 6
-        r_shoulder_roll.setPostition(0)
+        r_shoulder_roll.setPosition(0)
         # Reset
         r_shoulder_pitch.setPosition(1.5)
         
@@ -258,27 +275,27 @@ class NaoMotorController(SuperController):
         # Set motors
         # 1 (only included in corresponding motion file)
         # 2
-        lsp.setposition(-1.5)
-        ler.setposition(-1.2)
-        lwy.setposition(-1.5)
-        hy.setposition(-0.5)
-        hy.setposition(0.5)
+        lsp.setPosition(-1.5)
+        ler.setPosition(-1.2)
+        lwy.setPosition(-1.5)
+        hy.setPosition(-0.5)
+        hy.setPosition(0.5)
         # 3
-        lsp.setposition(-1)
+        lsp.setPosition(-1)
         # 4
-        lsp.setposition(-1.5)
+        lsp.setPosition(-1.5)
         # 5
-        lsp.setposition(-1)
+        lsp.setPosition(-1)
         # 6
-        lsp.setposition(-1.5)
+        lsp.setPosition(-1.5)
         # 7
-        lsp.setposition(-1)
+        lsp.setPosition(-1)
         # Reset
-        lsp.setposition(1.5)
-        ler.setposition(0)
-        lwy.setposition(0)
-        hy.setposition(0)
-        hy.setposition(0)
+        lsp.setPosition(1.5)
+        ler.setPosition(0)
+        lwy.setPosition(0)
+        hy.setPosition(0)
+        hy.setPosition(0)
 
             
 # Read config.yaml

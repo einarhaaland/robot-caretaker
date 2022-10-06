@@ -209,4 +209,5 @@ while (wb_robot_step(TIME_STEP) != -1) {}
 # Known Bugs
 * Får `WARNING: nao_emotion_controller: Forced termination (because process didn't terminate itself after 1 second).` på stop av simulation.
 Using nao_motor_controller:
+* Robot vil ikke utføre bevegelse. mulig hver set_motor overskriver den forrige.
 * Bevegelse skjer ikke hvis jeg trykker for tidlig. Koden blir kjørt men bevegelse skjer ikke. (Kan være Webots API)
