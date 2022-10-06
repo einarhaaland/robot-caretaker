@@ -45,6 +45,7 @@ This repository contains 3 standalone applications:
 
 ## Robot Simulation:
 - `pip install pika` (Webots do not support Virtual environments)
+- `pip install pyyaml`
 - Open `robot-caretaker\webots_implementation\worlds\example.wbt` in Webots
 - Simulation should start automatically
 

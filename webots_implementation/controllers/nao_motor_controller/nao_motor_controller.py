@@ -81,39 +81,209 @@ class NaoMotorController(SuperController):
                     break
 
 
-    ##### MOTION FUNCTIONS #####
+    ########## MOTION FUNCTIONS ##########
+    # In the future, motions should be created through an editor and motion functions should be generated
     def wave(self):
+        # Get Motors
         r_shoulder_pitch = self.getDevice(self.config['motor_names']['RShoulderPitch'])
         r_shoulder_roll = self.getDevice(self.config['motor_names']['RShoulderRoll'])
         l_shoulder_pitch = self.getDevice(self.config['motor_names']['LShoulderPitch'])
 
+        # Set motors (numbers are poses)
+        # 1
         r_shoulder_pitch.setPosition(-1.5)
         l_shoulder_pitch.setPostition(1.49797)
-
+        # 2
         r_shoulder_roll.setPostition(0.3)
+        # 3
         r_shoulder_roll.setPostition(-0.5)
+        # 4
         r_shoulder_roll.setPostition(0.3)
+        # 5
         r_shoulder_roll.setPostition(-0.5)
+        # 6
         r_shoulder_roll.setPostition(0)
-
-        r_shoulder_pitch.setPosition(1.4)
+        # Reset
+        r_shoulder_pitch.setPosition(1.5)
         
-    def nod():
-        pass
+    def nod(self):
+        # Get motors
+        head_pitch = self.getDevice(self.config['motor_names']['HeadPitch'])
 
-    def cheer():
-        pass
+        # Set motors (numbers are poses)
+        # 1
+        head_pitch.setPosition(0)
+        # 2
+        head_pitch.setPosition(0.5)
+        # 3
+        head_pitch.setPosition(-0.5)
+        # 4
+        head_pitch.setPosition(0.5)
+        # 5
+        head_pitch.setPosition(-0.5)
+        # 6
+        head_pitch.setPosition(0.5)
+        # Reset
+        head_pitch.setPosition(0)
 
-    def shakeHead():
-        pass
+    def shakeHead(self):
+        # Get motors
+        head_yaw = self.getDevice(self.config['motor_names']['HeadYaw'])
+
+        # Set motors (numbers are poses)
+        # 1
+        head_yaw.setPosition(0)
+        # 2
+        head_yaw.setPosition(0.5)
+        # 3
+        head_yaw.setPosition(-0.5)
+        # 4
+        head_yaw.setPosition(0.5)
+        # 5
+        head_yaw.setPosition(-0.5)
+        # 6
+        head_yaw.setPosition(0.5)
+        # Reset
+        head_yaw.setPosition(0)
+
+    def cheer(self):
+        # Get motors
+        hp = self.getDevice(self.config['motor_names']['HeadPitch'])
+        lsp = self.getDevice(self.config['motor_names']['LShoulderPitch'])
+        rsp = self.getDevice(self.config['motor_names']['RShoulderPitch'])
+        lhp = self.getDevice(self.config['motor_names']['LHipPitch'])
+        rhp = self.getDevice(self.config['motor_names']['RHipPitch'])
+        lkp = self.getDevice(self.config['motor_names']['LKneePitch'])
+        rkp = self.getDevice(self.config['motor_names']['RKneePitch'])
+        lap = self.getDevice(self.config['motor_names']['LAnklePitch'])
+        rap = self.getDevice(self.config['motor_names']['RAnklePitch'])
+        ler = self.getDevice(self.config['motor_names']['LElbowRoll'])
+        rer = self.getDevice(self.config['motor_names']['RElbowRoll'])
+
+        # Set motors (numbers are poses)
+        # 1 (only included in corresponding motion file)
+        # 2
+        hp.setPosition(0.4)
+        lsp.setPosition(-1.5)
+        rsp.setPosition(-1.5)
+        lhp.setPosition(-0.2)
+        rhp.setPosition(-0.2)
+        lkp.setPosition(0.5)
+        rkp.setPosition(0.5)
+        lap.setPosition(-0.3)
+        rap.setPosition(-0.3)
+        ler.setPosition(-0.5)
+        rer.setPosition(0.5)
+        # 3
+        hp.setPosition(-0.2)
+        lhp.setPosition(0)
+        rhp.setPosition(0)
+        lkp.setPosition(0)
+        rkp.setPosition(0)
+        lap.setPosition(0)
+        rap.setPosition(0)
+        ler.setPosition(0)
+        rer.setPosition(0)
+        # 4
+        hp.setPosition(0.4)
+        lhp.setPosition(-0.2)
+        rhp.setPosition(-0.2)
+        lkp.setPosition(0.5)
+        rkp.setPosition(0.5)
+        lap.setPosition(-0.3)
+        rap.setPosition(-0.3)
+        ler.setPosition(-0.5)
+        rer.setPosition(0.5)
+        # 5
+        hp.setPosition(-0.2)
+        lhp.setPosition(0)
+        rhp.setPosition(0)
+        lkp.setPosition(0)
+        rkp.setPosition(0)
+        lap.setPosition(0)
+        rap.setPosition(0)
+        ler.setPosition(0)
+        rer.setPosition(0)
+        # 6
+        hp.setPosition(0.4)
+        lhp.setPosition(-0.2)
+        rhp.setPosition(-0.2)
+        lkp.setPosition(0.5)
+        rkp.setPosition(0.5)
+        lap.setPosition(-0.3)
+        rap.setPosition(-0.3)
+        ler.setPosition(-0.5)
+        rer.setPosition(0.5)
+        # 7
+        hp.setPosition(-0.2)
+        lhp.setPosition(0)
+        rhp.setPosition(0)
+        lkp.setPosition(0)
+        rkp.setPosition(0)
+        lap.setPosition(0)
+        rap.setPosition(0)
+        ler.setPosition(0)
+        rer.setPosition(0)
+        # 8
+        hp.setPosition(0.4)
+        lhp.setPosition(-0.2)
+        rhp.setPosition(-0.2)
+        lkp.setPosition(0.5)
+        rkp.setPosition(0.5)
+        lap.setPosition(-0.3)
+        rap.setPosition(-0.3)
+        ler.setPosition(-0.5)
+        rer.setPosition(0.5)
+        # reset
+        hp.setPosition(0)
+        lsp.setPosition(1.5)
+        rsp.setPosition(1.5)
+        lhp.setPosition(0)
+        rhp.setPosition(0)
+        lkp.setPosition(0)
+        rkp.setPosition(0)
+        lap.setPosition(0)
+        rap.setPosition(0)
+        ler.setPosition(0)
+        rer.setPosition(0)
         
-    def thinking():
-        pass
+    def thinking(self):
+        # Get motors
+        lsp = self.getDevice(self.config['motor_names']['LShoulderPitch'])
+        ler = self.getDevice(self.config['motor_names']['LElbowRoll'])
+        lwy = self.getDevice(self.config['motor_names']['LWristYaw'])
+        hy = self.getDevice(self.config['motor_names']['HeadYaw'])
+        hp = self.getDevice(self.config['motor_names']['HeadPitch'])
+
+        # Set motors
+        # 1 (only included in corresponding motion file)
+        # 2
+        lsp.setposition(-1.5)
+        ler.setposition(-1.2)
+        lwy.setposition(-1.5)
+        hy.setposition(-0.5)
+        hy.setposition(0.5)
+        # 3
+        lsp.setposition(-1)
+        # 4
+        lsp.setposition(-1.5)
+        # 5
+        lsp.setposition(-1)
+        # 6
+        lsp.setposition(-1.5)
+        # 7
+        lsp.setposition(-1)
+        # Reset
+        lsp.setposition(1.5)
+        ler.setposition(0)
+        lwy.setposition(0)
+        hy.setposition(0)
+        hy.setposition(0)
 
             
 # Read config.yaml
 with open('config.yaml') as f:
-  config = yaml.load(f)
+  config = yaml.safe_load(f)
 
 # Init robotcontroller
 nao = NaoMotorController(config)
