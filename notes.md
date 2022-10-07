@@ -211,3 +211,5 @@ while (wb_robot_step(TIME_STEP) != -1) {}
 Using nao_motor_controller:
 * Robot vil ikke utføre bevegelse. mulig hver set_motor overskriver den forrige.
 * Bevegelse skjer ikke hvis jeg trykker for tidlig. Koden blir kjørt men bevegelse skjer ikke. (Kan være Webots API)
+RabbitMQ:
+* nye queues blir laget hver gang uten at de blir slettet.
