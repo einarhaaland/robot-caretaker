@@ -78,3 +78,75 @@ motor_names: {
 
   "RToes": NULL
 }
+
+sensor_names: {
+  # HEAD
+  "HeadYaw": "HeadYawS",
+  "HeadPitch": "HeadPitchS",
+  "HeadRoll": NULL,
+  
+  # LEFT ARM
+  "LFinger1": NULL,
+  "LFinger2": NULL,
+  "LFinger3": NULL,
+
+  "LWristPitch": NULL,
+  "LWristYaw": "LWristYawS",
+  "LWristRoll": NULL,
+
+  "LElbowPitch": "LElbowYawS",
+  "LElbowRoll": "LElbowRollS",
+
+  "LShoulderPitch": "LShoulderPitchS",
+  "LShoulderRoll": "LShoulderRollS",
+
+  # RIGHT ARM
+  "RFinger1": NULL,
+  "RFinger2": NULL,
+  "RFinger3": NULL,
+
+  "RWristPitch": NULL,
+  "RWristYaw": "RWristYawS",
+  "RWristRoll": NULL,
+
+  "RElbowPitch": "RElbowYawS",
+  "RElbowRoll": "RElbowRollS",
+
+  "RShoulderPitch": "RShoulderPitchS",
+  "RShoulderRoll": "RShoulderRollS",
+  
+  # BODY
+  "SpinePitch": NULL,
+  "SpineYaw": NULL,
+  "SpineRoll": NULL,
+
+  "LowerSpinePitch": NULL,
+  "LowerSpineYaw": NULL,
+  "LowerSpineRoll": NULL,
+  
+  # LEFT LEG
+  "LHipPitch": "LHipPitchS",
+  "LHipYaw": NULL,
+  "LHipRoll": "LHipRollS",
+
+  "LKneePitch": "LKneePitchS",
+
+  "LAnklePitch": "LAnklePitchS",
+  "LAnkleYaw": NULL,
+  "LAnkleRoll": "LAnkleRollS",
+
+  "LToes": NULL,
+
+  # RIGHT LEG
+  "RHipPitch": "RHipPitchS",
+  "RHipYaw": NULL,
+  "RHipRoll": "RHipRollS",
+
+  "RKneePitch": "RKneePitchS",
+
+  "RAnklePitch": "RAnklePitchS",
+  "RAnkleYaw": NULL,
+  "RAnkleRoll": "RAnkleRollS",
+
+  "RToes": NULL
+}
