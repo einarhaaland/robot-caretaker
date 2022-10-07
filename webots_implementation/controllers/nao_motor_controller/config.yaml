@@ -22,11 +22,11 @@ motor_names: {
   "LWristYaw": "LWristYaw",
   "LWristRoll": NULL,
 
-  "LElbowPitch": "LElbowPitch",
+  "LElbowPitch": "LElbowYaw",
   "LElbowRoll": "LElbowRoll",
 
   "LShoulderPitch": "LShoulderPitch",
-  "LShoulderRoll": "LSHoulderRoll",
+  "LShoulderRoll": "LShoulderRoll",
 
   # RIGHT ARM
   "RFinger1": NULL,
@@ -37,7 +37,7 @@ motor_names: {
   "RWristYaw": "RWristYaw",
   "RWristRoll": NULL,
 
-  "RElbowPitch": "RElbowPitch",
+  "RElbowPitch": "RElbowYaw",
   "RElbowRoll": "RElbowRoll",
 
   "RShoulderPitch": "RShoulderPitch",
@@ -54,27 +54,27 @@ motor_names: {
   
   # LEFT LEG
   "LHipPitch": "LHipPitch",
-  "LHipYaw": "LHipYaw",
-  "LHipRoll": NULL,
+  "LHipYaw": NULL,
+  "LHipRoll": "LHipRoll",
 
   "LKneePitch": "LKneePitch",
 
   "LAnklePitch": "LAnklePitch",
   "LAnkleYaw": NULL,
-  "LAnkleRoll": NULL,
+  "LAnkleRoll": "LAnkleRoll",
 
   "LToes": NULL,
 
   # RIGHT LEG
   "RHipPitch": "RHipPitch",
-  "RHipYaw": "RHipYaw",
-  "RHipRoll": NULL,
+  "RHipYaw": NULL,
+  "RHipRoll": "RHipRoll",
 
   "RKneePitch": "RKneePitch",
 
   "RAnklePitch": "RAnklePitch",
   "RAnkleYaw": NULL,
-  "RHRoll": NULL,
+  "RAnkleRoll": "RAnkleRoll",
 
   "RToes": NULL
 }

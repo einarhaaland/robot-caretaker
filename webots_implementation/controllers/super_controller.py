@@ -89,6 +89,32 @@ class SuperController(Robot):
         '''
         pass
 
+    def motor_set_position_sync(self, tag_motor, tag_sensor, target, delay):
+        '''
+        Sets motor position and waits for it to reach target position.
+
+        ARGS:
+            tag_motor: (Str) tag of motor to activate
+            tag_sensor: (Str) tag of position sensor for motor
+            target: (Radians) target position of motor
+            delay: (int) delay to apply
+        '''
+        DELTA = 0.001;  # max tolerated difference
+        tag_motor.setPosition(target)
+        tag_sensor.enable(self.timeStep)
+
+        condition = True # flag for emulating "do while"
+
+        while condition:
+            # Break simulation
+            if self.step(self.timeStep) == -1:
+                break
+            delay -= self.timeStep
+            effective = tag_sensor.getValue() # effective position
+            condition = (abs(target - effective) > DELTA and delay > 0)
+        tag_sensor.disable()
+
+
 
 
     # Create general controller here (look at webots controller)
