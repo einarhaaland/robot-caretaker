@@ -1,152 +1,215 @@
 # Configure to your robot 
 
-name: "Softbank_Nao"
+name: "NAO"
 devices:
   cameras: NULL
   gyroscopes: NULL
   accelerometers: NULL
   sensors: NULL
 
-motor_names: {
+joints: {
   # HEAD
-  "HeadYaw": "HeadYaw",
-  "HeadPitch": "HeadPitch",
-  "HeadRoll": NULL,
+  "HeadYaw": {
+    motor: "HeadYaw",
+    sensor: "HeadYawS"
+  },
+  "HeadPitch": {
+    motor: "HeadPitch",
+    sensor: "HeadPitchS"
+  },
+  "HeadRoll": {
+    motor: NULL,
+    sensor: NULL
+  },
   
   # LEFT ARM
-  "LFinger1": NULL,
-  "LFinger2": NULL,
-  "LFinger3": NULL,
+  "LFinger1": {
+    motor: NULL,
+    sensor: NULL
+  },
+  "LFinger2": {
+    motor: NULL,
+    sensor: NULL
+  },
+  "LFinger3": {
+    motor: NULL,
+    sensor: NULL
+  },
 
-  "LWristPitch": NULL,
-  "LWristYaw": "LWristYaw",
-  "LWristRoll": NULL,
+  "LWristPitch": {
+    motor: NULL,
+    sensor: NULL
+  },
+  "LWristYaw": {
+    motor: "LWristYaw",
+    sensor: "LWristYawS"
+  },
+  "LWristRoll": {
+    motor: NULL,
+    sensor: NULL
+  },
 
-  "LElbowPitch": "LElbowYaw",
-  "LElbowRoll": "LElbowRoll",
+  "LElbowYaw": {
+    motor: "LElbowYaw",
+    sensor: "LElbowYawS"
+  },
+  "LElbowRoll": {
+    motor: "LElbowRoll",
+    sensor: "LElbowRollS"
+  },
 
-  "LShoulderPitch": "LShoulderPitch",
-  "LShoulderRoll": "LShoulderRoll",
-
-  # RIGHT ARM
-  "RFinger1": NULL,
-  "RFinger2": NULL,
-  "RFinger3": NULL,
-
-  "RWristPitch": NULL,
-  "RWristYaw": "RWristYaw",
-  "RWristRoll": NULL,
-
-  "RElbowPitch": "RElbowYaw",
-  "RElbowRoll": "RElbowRoll",
-
-  "RShoulderPitch": "RShoulderPitch",
-  "RShoulderRoll": "RShoulderRoll",
-  
-  # BODY
-  "SpinePitch": NULL,
-  "SpineYaw": NULL,
-  "SpineRoll": NULL,
-
-  "LowerSpinePitch": NULL,
-  "LowerSpineYaw": NULL,
-  "LowerSpineRoll": NULL,
-  
-  # LEFT LEG
-  "LHipPitch": "LHipPitch",
-  "LHipYaw": NULL,
-  "LHipRoll": "LHipRoll",
-
-  "LKneePitch": "LKneePitch",
-
-  "LAnklePitch": "LAnklePitch",
-  "LAnkleYaw": NULL,
-  "LAnkleRoll": "LAnkleRoll",
-
-  "LToes": NULL,
-
-  # RIGHT LEG
-  "RHipPitch": "RHipPitch",
-  "RHipYaw": NULL,
-  "RHipRoll": "RHipRoll",
-
-  "RKneePitch": "RKneePitch",
-
-  "RAnklePitch": "RAnklePitch",
-  "RAnkleYaw": NULL,
-  "RAnkleRoll": "RAnkleRoll",
-
-  "RToes": NULL
-}
-
-sensor_names: {
-  # HEAD
-  "HeadYaw": "HeadYawS",
-  "HeadPitch": "HeadPitchS",
-  "HeadRoll": NULL,
-  
-  # LEFT ARM
-  "LFinger1": NULL,
-  "LFinger2": NULL,
-  "LFinger3": NULL,
-
-  "LWristPitch": NULL,
-  "LWristYaw": "LWristYawS",
-  "LWristRoll": NULL,
-
-  "LElbowPitch": "LElbowYawS",
-  "LElbowRoll": "LElbowRollS",
-
-  "LShoulderPitch": "LShoulderPitchS",
-  "LShoulderRoll": "LShoulderRollS",
+  "LShoulderPitch": {
+    motor: "LSHoulderPitch",
+    sensor: "LShoulderPitchS"
+  },
+  "LShoulderRoll": {
+    motor: "LShoulderRoll",
+    sensor: "LShoulderRollS"
+  },
 
   # RIGHT ARM
-  "RFinger1": NULL,
-  "RFinger2": NULL,
-  "RFinger3": NULL,
+  "RFinger1": {
+    motor: NULL,
+    sensor: NULL
+  },
+  "RFinger2": {
+    motor: NULL,
+    sensor: NULL
+  },
+  "RFinger3": {
+    motor: NULL,
+    sensor: NULL
+  },
 
-  "RWristPitch": NULL,
-  "RWristYaw": "RWristYawS",
-  "RWristRoll": NULL,
+  "RWristPitch": {
+    motor: NULL,
+    sensor: NULL
+  },
+  "RWristYaw": {
+    motor: "RWristYaw",
+    sensor: "RWristYawS"
+  },
+  "RWristRoll": {
+    motor: NULL,
+    sensor: NULL
+  },
 
-  "RElbowPitch": "RElbowYawS",
-  "RElbowRoll": "RElbowRollS",
+  "RElbowYaw": {
+    motor: "RElbowYaw",
+    sensor: "RElbowYawS"
+  },
+  "RElbowRoll": {
+    motor: "RElbowRoll",
+    sensor: "RElbowRollS"
+  },
 
-  "RShoulderPitch": "RShoulderPitchS",
-  "RShoulderRoll": "RShoulderRollS",
+  "RShoulderPitch": {
+    motor: "RShoulderPitch",
+    sensor: "RShoulderPitchS"
+  },
+  "RShoulderRoll": {
+    motor: "RShoulderRoll",
+    sensor: "RShoulderRollS"
+  },
   
   # BODY
-  "SpinePitch": NULL,
-  "SpineYaw": NULL,
-  "SpineRoll": NULL,
+  "SpinePitch": {
+    motor: NULL,
+    sensor: NULL
+  },
+  "SpineYaw": {
+    motor: NULL,
+    sensor: NULL
+  },
+  "SpineRoll": {
+    motor: NULL,
+    sensor: NULL
+  },
 
-  "LowerSpinePitch": NULL,
-  "LowerSpineYaw": NULL,
-  "LowerSpineRoll": NULL,
+  "LowerSpinePitch": {
+    motor: NULL,
+    sensor: NULL
+  },
+  "LowerSpineYaw": {
+    motor: NULL,
+    sensor: NULL
+  },
+  "LowerSpineRoll": {
+    motor: NULL,
+    sensor: NULL
+  },
   
   # LEFT LEG
-  "LHipPitch": "LHipPitchS",
-  "LHipYaw": NULL,
-  "LHipRoll": "LHipRollS",
+  "LHipPitch": {
+    motor: "LHipPitch",
+    sensor: "LHipPitchS"
+  },
+  "LHipYaw": {
+    motor: "LHipYawPitch",
+    sensor: "LHipYawPitchS"
+  },
+  "LHipRoll": {
+    motor: "LHipRoll",
+    sensor: "LHipRollS"
+  },
 
-  "LKneePitch": "LKneePitchS",
+  "LKneePitch": {
+    motor: "LKneePitch",
+    sensor: "LKneePitchS"
+  },
 
-  "LAnklePitch": "LAnklePitchS",
-  "LAnkleYaw": NULL,
-  "LAnkleRoll": "LAnkleRollS",
+  "LAnklePitch": {
+    motor: "LAnklePitch",
+    sensor: "LAnklePitchS"
+  },
+  "LAnkleYaw": {
+    motor: NULL,
+    sensor: NULL
+  },
+  "LAnkleRoll": {
+    motor: "LAnkleRoll",
+    sensor: "LAnkleRollS"
+  },
 
-  "LToes": NULL,
+  "LToes": {
+    motor: NULL,
+    sensor: NULL
+  },
 
   # RIGHT LEG
-  "RHipPitch": "RHipPitchS",
-  "RHipYaw": NULL,
-  "RHipRoll": "RHipRollS",
+  "RHipPitch": {
+    motor: "RHipPitch",
+    sensor: "RHipPitchS"
+  },
+  "RHipYaw": {
+    motor: "RHipYawPitch",
+    sensor: "RHipYawPitchS"
+  },
+  "RHipRoll": {
+    motor: "RHipRoll",
+    sensor: "RHipRollS"
+  },
 
-  "RKneePitch": "RKneePitchS",
+  "RKneePitch": {
+    motor: "RKneePitch",
+    sensor: "RKneePitchS"
+  },
 
-  "RAnklePitch": "RAnklePitchS",
-  "RAnkleYaw": NULL,
-  "RAnkleRoll": "RAnkleRollS",
+  "RAnklePitch": {
+    motor: "RAnklePitch",
+    sensor: "RAnklePitchS"
+  },
+  "RAnkleYaw": {
+    motor: NULL,
+    sensor: NULL
+  },
+  "RAnkleRoll": {
+    motor: "RAnkleRoll",
+    sensor: "RAnkleRollS"
+  },
 
-  "RToes": NULL
+  "RToes": {
+    motor: NULL,
+    sensor: NULL
+  }
 }
