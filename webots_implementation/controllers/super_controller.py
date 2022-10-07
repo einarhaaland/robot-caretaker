@@ -92,12 +92,16 @@ class SuperController(Robot):
     def motor_set_position_sync(self, tag_motor, tag_sensor, target, delay):
         '''
         Sets motor position and waits for it to reach target position.
+        This stops target-positions to be overwritten.
 
         ARGS:
             tag_motor: (Str) tag of motor to activate
             tag_sensor: (Str) tag of position sensor for motor
             target: (Radians) target position of motor
             delay: (int) delay to apply
+
+        USAGE:
+            Use for one motion every keyframe (preferably on motor where target position is changed next keyframe). 
         '''
         DELTA = 0.001;  # max tolerated difference
         tag_motor.setPosition(target)

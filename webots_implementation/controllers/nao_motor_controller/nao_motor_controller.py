@@ -95,7 +95,10 @@ class NaoMotorController(SuperController):
 
     def wave1(self):
         rsp = self.getDevice(self.config['motor_names']['RShoulderPitch'])
-        rsp.setPosition(-1.5)
+        rsps = self.getDevice(self.config['sensor_names']['RShoulderPitch'])
+        #1
+        self.motor_set_position_sync(rsp, rsps, -1.5, 200)
+        #2
         rsp.setPosition(1.5)
 
 
