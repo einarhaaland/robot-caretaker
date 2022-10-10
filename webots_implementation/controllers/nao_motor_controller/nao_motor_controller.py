@@ -15,7 +15,7 @@ import sys
 import os
 import threading
 import yaml
-from controller import Robot, Keyboard, Motion, Motor
+from controller import Robot, Motor
 
 # import supercontroller
 controller_path = os.path.join(os.getcwd(), os.pardir)
@@ -39,32 +39,11 @@ class NaoMotorController(SuperController):
     def findAndEnableDevices(self):
         devices = self.config['devices']
         self.timeStep = int(self.getBasicTimeStep())
-        '''
-        # Gyroscopes
-        if devices['gyroscopes'] is not None:
-            self.gyroscopes = [ self.getDevice(motor) for motor in devices['gyroscopes'] ]
-
-        # Accelerometers
-        if devices['accelerometers'] is not None:
-            self.accelerometers = [ self.getDevice(motor) for motor in devices['accelerometers'] ]
-
-        # Cameras
-        if devices['cameras'] is not None:
-            self.cameras = [ self.getDevice(motor) for motor in devices['cameras'] ]
-
-        # Inertial Units
-        if devices['intertial_units'] is not None:
-            self.intertial_units = [ self.getDevice(motor) for motor in devices['inertial_units'] ]
-
-        # Sensors
-        if devices['sensors'] is not None:
-            self.sensors = [ self.getDevice(motor) for motor in devices['sensors'] ]
-        '''
+        
 
     # Callback when receiving message through messaging system
     def messageCallback(self, channel, method, properties, body):
         self.instruction = body.decode("utf-8")
-        print(self.instruction)
 
     # Controller loop
     def run(self):
@@ -94,8 +73,13 @@ class NaoMotorController(SuperController):
                     break
 
 
-    ########## MOTION FUNCTIONS ##########
-    # In the future, motions should be created through an editor and motion functions should be generated
+    ############################### MOTION FUNCTIONS ###############################
+    ''' 
+        Future Work: 
+            * Get devices should be relocated
+            * Motions should be created using an editor 
+            * Motion functions should be generated
+    '''
     def wave(self):
         # Get motors
         r_shoulder_pitch = self.getDevice(self.config['joints']['RShoulderPitch']['motor'])
@@ -108,20 +92,20 @@ class NaoMotorController(SuperController):
         l_shoulder_pitch_s = self.getDevice(self.config['joints']['LShoulderPitch']['sensor'])
 
         # Set motors (numbers are poses)
-        # 1
+        # Keyframe 1
         l_shoulder_pitch.setPosition(1.49797)
         self.motor_set_position_sync(r_shoulder_pitch, r_shoulder_pitch_s, -1.5, 250)
-        # 2
+        # Keyframe 2
         self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, 0.3, 250)
-        # 3
+        # Keyframe 3
         self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, -0.5, 250)
-        # 4
+        # Keyframe 4
         self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, 0.3, 250)
-        # 5
+        # Keyframe 5
         self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, -0.5, 250)
-        # 6
+        # Keyframe 6
         self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, 0, 250)
-        # Reset
+        # Reset motor positions
         self.motor_set_position_sync(r_shoulder_pitch, r_shoulder_pitch_s, 1.5, 250)
         
     def nod(self):
@@ -132,19 +116,19 @@ class NaoMotorController(SuperController):
         head_pitch_s = self.getDevice(self.config['joints']['HeadPitch']['sensor'])
 
         # Set motors (numbers are poses)
-        # 1
+        # Keyframe 1
         self.motor_set_position_sync(head_pitch, head_pitch_s, 0, 250)
-        # 2
+        # Keyframe 2
         self.motor_set_position_sync(head_pitch, head_pitch_s, 0.5, 250)
-        # 3
+        # Keyframe 3
         self.motor_set_position_sync(head_pitch, head_pitch_s, -0.5, 250)
-        # 4
+        # Keyframe 4
         self.motor_set_position_sync(head_pitch, head_pitch_s, 0.5, 250)
-        # 5
+        # Keyframe 5
         self.motor_set_position_sync(head_pitch, head_pitch_s, -0.5, 250)
-        # 6
+        # Keyframe 6
         self.motor_set_position_sync(head_pitch, head_pitch_s, 0.5, 250)
-        # Reset
+        # Reset motor positions
         self.motor_set_position_sync(head_pitch, head_pitch_s, 0, 250)
 
     def shakeHead(self):
@@ -155,19 +139,19 @@ class NaoMotorController(SuperController):
         head_yaw_s = self.getDevice(self.config['joints']['HeadYaw']['sensor'])
 
         # Set motors (numbers are poses)
-        # 1
+        # Keyframe 1
         self.motor_set_position_sync(head_yaw, head_yaw_s, 0, 250)
-        # 2
+        # Keyframe 2
         self.motor_set_position_sync(head_yaw, head_yaw_s, 0.5, 250)
-        # 3
+        # Keyframe 3
         self.motor_set_position_sync(head_yaw, head_yaw_s, -0.5, 250)
-        # 4
+        # Keyframe 4
         self.motor_set_position_sync(head_yaw, head_yaw_s, 0.5, 250)
-        # 5
+        # Keyframe 5
         self.motor_set_position_sync(head_yaw, head_yaw_s, -0.5, 250)
-        # 6
+        # Keyframe 6
         self.motor_set_position_sync(head_yaw, head_yaw_s, 0.5, 250)
-        # Reset
+        # Reset motor positions
         self.motor_set_position_sync(head_yaw, head_yaw_s, 0, 250)
 
     def cheer(self):
@@ -198,8 +182,8 @@ class NaoMotorController(SuperController):
         r_elbow_roll_s = self.getDevice(self.config['joints']['RElbowRoll']['sensor'])
 
         # Set motors (numbers are poses)
-        # 1 (only included in corresponding motion file)
-        # 2
+        # Keyframe 1 (only included in corresponding motion file)
+        # Keyframe 2
         head_pitch.setPosition(0.4)
         l_shoulder_pitch.setPosition(-1.5)
         r_shoulder_pitch.setPosition(-1.5)
@@ -211,7 +195,7 @@ class NaoMotorController(SuperController):
         r_ankle_pitch.setPosition(-0.25)
         l_elbow_roll.setPosition(-0.5)
         self.motor_set_position_sync(r_elbow_roll, r_elbow_roll_s, 0.5, 250)
-        # 3
+        # Keyframe 3
         head_pitch.setPosition(-0.2)
         l_hip_pitch.setPosition(0)
         r_hip_pitch.setPosition(0)
@@ -221,7 +205,7 @@ class NaoMotorController(SuperController):
         r_ankle_pitch.setPosition(0)
         l_elbow_roll.setPosition(0)
         self.motor_set_position_sync(r_elbow_roll, r_elbow_roll_s, 0, 250)
-        # 4
+        # Keyframe 4
         head_pitch.setPosition(0.4)
         l_hip_pitch.setPosition(-0.2)
         r_hip_pitch.setPosition(-0.2)
@@ -231,7 +215,7 @@ class NaoMotorController(SuperController):
         r_ankle_pitch.setPosition(-0.3)
         l_elbow_roll.setPosition(-0.5)
         self.motor_set_position_sync(r_elbow_roll, r_elbow_roll_s, 0.5, 250)
-        # 5
+        # Keyframe 5
         head_pitch.setPosition(-0.2)
         l_hip_pitch.setPosition(0)
         r_hip_pitch.setPosition(0)
@@ -241,7 +225,7 @@ class NaoMotorController(SuperController):
         r_ankle_pitch.setPosition(0)
         l_elbow_roll.setPosition(0)
         self.motor_set_position_sync(r_elbow_roll, r_elbow_roll_s, 0, 250)
-        # 6
+        # Keyframe 6
         head_pitch.setPosition(0.4)
         l_hip_pitch.setPosition(-0.2)
         r_hip_pitch.setPosition(-0.2)
@@ -251,7 +235,7 @@ class NaoMotorController(SuperController):
         r_ankle_pitch.setPosition(-0.3)
         l_elbow_roll.setPosition(-0.5)
         self.motor_set_position_sync(r_elbow_roll, r_elbow_roll_s, 0.5, 250)
-        # 7
+        # Keyframe 7
         head_pitch.setPosition(-0.2)
         l_hip_pitch.setPosition(0)
         r_hip_pitch.setPosition(0)
@@ -261,7 +245,7 @@ class NaoMotorController(SuperController):
         r_ankle_pitch.setPosition(0)
         l_elbow_roll.setPosition(0)
         self.motor_set_position_sync(r_elbow_roll, r_elbow_roll_s, 0, 250)
-        # 8
+        # Keyframe 8
         head_pitch.setPosition(0.4)
         l_hip_pitch.setPosition(-0.2)
         r_hip_pitch.setPosition(-0.2)
@@ -271,7 +255,7 @@ class NaoMotorController(SuperController):
         r_ankle_pitch.setPosition(-0.3)
         l_elbow_roll.setPosition(-0.5)
         self.motor_set_position_sync(r_elbow_roll, r_elbow_roll_s, 0.5, 250)
-        # reset
+        # Reset motor positions
         head_pitch.setPosition(0)
         l_shoulder_pitch.setPosition(1.5)
         r_shoulder_pitch.setPosition(1.5)
@@ -300,24 +284,24 @@ class NaoMotorController(SuperController):
         head_pitch_s = self.getDevice(self.config['joints']['HeadPitch']['sensor'])
 
         # Set motors
-        # 1 (only included in corresponding motion file)
-        # 2
+        # Keyframe 1 (only included in corresponding motion file)
+        # Keyframe 2
         l_elbow_roll.setPosition(-1.2)
         l_wrist_yaw.setPosition(-1.5)
         head_yaw.setPosition(-0.5)
         head_pitch.setPosition(0.5)
         self.motor_set_position_sync(l_shoulder_pitch, l_shoulder_pitch_s, -1.5, 250)
-        # 3
+        # Keyframe 3
         self.motor_set_position_sync(l_shoulder_pitch, l_shoulder_pitch_s, -1, 250)
-        # 4
+        # Keyframe 4
         self.motor_set_position_sync(l_shoulder_pitch, l_shoulder_pitch_s, -1.5, 250)
-        # 5
+        # Keyframe 5
         self.motor_set_position_sync(l_shoulder_pitch, l_shoulder_pitch_s, -1, 250)
-        # 6
+        # Keyframe 6
         self.motor_set_position_sync(l_shoulder_pitch, l_shoulder_pitch_s, -1.5, 250)
-        # 7
+        # Keyframe 7
         self.motor_set_position_sync(l_shoulder_pitch, l_shoulder_pitch_s, -1, 250)
-        # Reset
+        # Reset motor positions
         l_elbow_roll.setPosition(0)
         l_wrist_yaw.setPosition(0)
         head_yaw.setPosition(0)
