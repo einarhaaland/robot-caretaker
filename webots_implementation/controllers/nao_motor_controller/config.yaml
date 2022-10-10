@@ -59,7 +59,7 @@ joints: {
   },
 
   "LShoulderPitch": {
-    motor: "LSHoulderPitch",
+    motor: "LShoulderPitch",
     sensor: "LShoulderPitchS"
   },
   "LShoulderRoll": {

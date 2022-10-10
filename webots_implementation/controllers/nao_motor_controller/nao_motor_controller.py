@@ -72,7 +72,7 @@ class NaoMotorController(SuperController):
                 instruction = self.instruction
 
                 if instruction == 'Wave':
-                    self.wave1()
+                    self.wave()
                 elif instruction == 'Nod':
                     self.nod()
                 elif instruction == 'Cheer':
@@ -93,43 +93,57 @@ class NaoMotorController(SuperController):
                 if nao.step(self.timeStep) == -1:
                     break
 
+    '''
+    # temp test function
     def wave1(self):
-        rsp = self.getDevice(self.config['motor_names']['RShoulderPitch'])
+        rsp = self.getDevice(self.config['joints']['RShoulderPitch'])
         rsps = self.getDevice(self.config['sensor_names']['RShoulderPitch'])
         #1
         self.motor_set_position_sync(rsp, rsps, -1.5, 200)
         #2
         rsp.setPosition(1.5)
-
+    '''
 
     ########## MOTION FUNCTIONS ##########
     # In the future, motions should be created through an editor and motion functions should be generated
     def wave(self):
         # Get Motors
-        r_shoulder_pitch = self.getDevice(self.config['motor_names']['RShoulderPitch'])
-        r_shoulder_roll = self.getDevice(self.config['motor_names']['RShoulderRoll'])
-        l_shoulder_pitch = self.getDevice(self.config['motor_names']['LShoulderPitch'])
+        r_shoulder_pitch = self.getDevice(self.config['joints']['RShoulderPitch']['motor'])
+        r_shoulder_roll = self.getDevice(self.config['joints']['RShoulderRoll']['motor'])
+        l_shoulder_pitch = self.getDevice(self.config['joints']['LShoulderPitch']['motor'])
+
+        # Get sensors
+        r_shoulder_pitch_s = self.getDevice(self.config['joints']['RShoulderPitch']['sensor'])
+        r_shoulder_roll_s = self.getDevice(self.config['joints']['RShoulderRoll']['sensor'])
+        l_shoulder_pitch_s = self.getDevice(self.config['joints']['LShoulderPitch']['sensor'])
 
         # Set motors (numbers are poses)
         # 1
-        r_shoulder_pitch.setPosition(-1.5)
         l_shoulder_pitch.setPosition(1.49797)
+        self.motor_set_position_sync(r_shoulder_pitch, r_shoulder_pitch_s, -1.5, 250)
+        #r_shoulder_pitch.setPosition(-1.5)
         # 2
-        r_shoulder_roll.setPosition(0.3)
+        #r_shoulder_roll.setPosition(0.3)
+        self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, 0.3, 250)
         # 3
-        r_shoulder_roll.setPosition(-0.5)
+        #r_shoulder_roll.setPosition(-0.5)
+        self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, -0.5, 250)
         # 4
-        r_shoulder_roll.setPosition(0.3)
+        #r_shoulder_roll.setPosition(0.3)
+        self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, 0.3, 250)
         # 5
-        r_shoulder_roll.setPosition(-0.5)
+        #r_shoulder_roll.setPosition(-0.5)
+        self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, -0.5, 250)
         # 6
-        r_shoulder_roll.setPosition(0)
+        #r_shoulder_roll.setPosition(0)
+        self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, 0, 250)
         # Reset
-        r_shoulder_pitch.setPosition(1.5)
+        #r_shoulder_pitch.setPosition(1.5)
+        self.motor_set_position_sync(r_shoulder_pitch, r_shoulder_pitch_s, 1.5, 250)
         
     def nod(self):
         # Get motors
-        head_pitch = self.getDevice(self.config['motor_names']['HeadPitch'])
+        head_pitch = self.getDevice(self.config['joints']['HeadPitch']['motor'])
 
         # Set motors (numbers are poses)
         # 1
@@ -149,7 +163,7 @@ class NaoMotorController(SuperController):
 
     def shakeHead(self):
         # Get motors
-        head_yaw = self.getDevice(self.config['motor_names']['HeadYaw'])
+        head_yaw = self.getDevice(self.config['joints']['HeadYaw']['motor'])
 
         # Set motors (numbers are poses)
         # 1
@@ -169,17 +183,19 @@ class NaoMotorController(SuperController):
 
     def cheer(self):
         # Get motors
-        hp = self.getDevice(self.config['motor_names']['HeadPitch'])
-        lsp = self.getDevice(self.config['motor_names']['LShoulderPitch'])
-        rsp = self.getDevice(self.config['motor_names']['RShoulderPitch'])
-        lhp = self.getDevice(self.config['motor_names']['LHipPitch'])
-        rhp = self.getDevice(self.config['motor_names']['RHipPitch'])
-        lkp = self.getDevice(self.config['motor_names']['LKneePitch'])
-        rkp = self.getDevice(self.config['motor_names']['RKneePitch'])
-        lap = self.getDevice(self.config['motor_names']['LAnklePitch'])
-        rap = self.getDevice(self.config['motor_names']['RAnklePitch'])
-        ler = self.getDevice(self.config['motor_names']['LElbowRoll'])
-        rer = self.getDevice(self.config['motor_names']['RElbowRoll'])
+        hp = self.getDevice(self.config['joints']['HeadPitch']['motor'])
+        lsp = self.getDevice(self.config['joints']['LShoulderPitch']['motor'])
+        rsp = self.getDevice(self.config['joints']['RShoulderPitch']['motor'])
+        lhp = self.getDevice(self.config['joints']['LHipPitch']['motor'])
+        rhp = self.getDevice(self.config['joints']['RHipPitch']['motor'])
+        lkp = self.getDevice(self.config['joints']['LKneePitch']['motor'])
+        rkp = self.getDevice(self.config['joints']['RKneePitch']['motor'])
+        lap = self.getDevice(self.config['joints']['LAnklePitch']['motor'])
+        rap = self.getDevice(self.config['joints']['RAnklePitch']['motor'])
+        ler = self.getDevice(self.config['joints']['LElbowRoll']['motor'])
+        rer = self.getDevice(self.config['joints']['RElbowRoll']['motor'])
+
+        # Get sensors
 
         # Set motors (numbers are poses)
         # 1 (only included in corresponding motion file)
@@ -270,11 +286,11 @@ class NaoMotorController(SuperController):
         
     def thinking(self):
         # Get motors
-        lsp = self.getDevice(self.config['motor_names']['LShoulderPitch'])
-        ler = self.getDevice(self.config['motor_names']['LElbowRoll'])
-        lwy = self.getDevice(self.config['motor_names']['LWristYaw'])
-        hy = self.getDevice(self.config['motor_names']['HeadYaw'])
-        hp = self.getDevice(self.config['motor_names']['HeadPitch'])
+        lsp = self.getDevice(self.config['joints']['LShoulderPitch']['motor'])
+        ler = self.getDevice(self.config['joints']['LElbowRoll']['motor'])
+        lwy = self.getDevice(self.config['joints']['LWristYaw']['motor'])
+        hy = self.getDevice(self.config['joints']['HeadYaw']['motor'])
+        hp = self.getDevice(self.config['joints']['HeadPitch']['motor'])
 
         # Set motors
         # 1 (only included in corresponding motion file)
