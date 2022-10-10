@@ -97,7 +97,7 @@ class NaoMotorController(SuperController):
     ########## MOTION FUNCTIONS ##########
     # In the future, motions should be created through an editor and motion functions should be generated
     def wave(self):
-        # Get Motors
+        # Get motors
         r_shoulder_pitch = self.getDevice(self.config['joints']['RShoulderPitch']['motor'])
         r_shoulder_roll = self.getDevice(self.config['joints']['RShoulderRoll']['motor'])
         l_shoulder_pitch = self.getDevice(self.config['joints']['LShoulderPitch']['motor'])
@@ -128,41 +128,47 @@ class NaoMotorController(SuperController):
         # Get motors
         head_pitch = self.getDevice(self.config['joints']['HeadPitch']['motor'])
 
+        # Get sensors
+        head_pitch_s = self.getDevice(self.config['joints']['HeadPitch']['sensor'])
+
         # Set motors (numbers are poses)
         # 1
-        head_pitch.setPosition(0)
+        self.motor_set_position_sync(head_pitch, head_pitch_s, 0, 250)
         # 2
-        head_pitch.setPosition(0.5)
+        self.motor_set_position_sync(head_pitch, head_pitch_s, 0.5, 250)
         # 3
-        head_pitch.setPosition(-0.5)
+        self.motor_set_position_sync(head_pitch, head_pitch_s, -0.5, 250)
         # 4
-        head_pitch.setPosition(0.5)
+        self.motor_set_position_sync(head_pitch, head_pitch_s, 0.5, 250)
         # 5
-        head_pitch.setPosition(-0.5)
+        self.motor_set_position_sync(head_pitch, head_pitch_s, -0.5, 250)
         # 6
-        head_pitch.setPosition(0.5)
+        self.motor_set_position_sync(head_pitch, head_pitch_s, 0.5, 250)
         # Reset
-        head_pitch.setPosition(0)
+        self.motor_set_position_sync(head_pitch, head_pitch_s, 0, 250)
 
     def shakeHead(self):
         # Get motors
         head_yaw = self.getDevice(self.config['joints']['HeadYaw']['motor'])
 
+        # Get sensors
+        head_yaw_s = self.getDevice(self.config['joints']['HeadYaw']['sensor'])
+
         # Set motors (numbers are poses)
         # 1
-        head_yaw.setPosition(0)
+        self.motor_set_position_sync(head_yaw, head_yaw_s, 0, 250)
         # 2
-        head_yaw.setPosition(0.5)
+        self.motor_set_position_sync(head_yaw, head_yaw_s, 0.5, 250)
         # 3
-        head_yaw.setPosition(-0.5)
+        self.motor_set_position_sync(head_yaw, head_yaw_s, -0.5, 250)
         # 4
-        head_yaw.setPosition(0.5)
+        self.motor_set_position_sync(head_yaw, head_yaw_s, 0.5, 250)
         # 5
-        head_yaw.setPosition(-0.5)
+        self.motor_set_position_sync(head_yaw, head_yaw_s, -0.5, 250)
         # 6
-        head_yaw.setPosition(0.5)
+        self.motor_set_position_sync(head_yaw, head_yaw_s, 0.5, 250)
         # Reset
-        head_yaw.setPosition(0)
+        self.motor_set_position_sync(head_yaw, head_yaw_s, 0, 250)
 
     def cheer(self):
         # Get motors
