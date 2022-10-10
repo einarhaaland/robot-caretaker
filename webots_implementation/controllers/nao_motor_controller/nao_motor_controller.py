@@ -93,16 +93,6 @@ class NaoMotorController(SuperController):
                 if nao.step(self.timeStep) == -1:
                     break
 
-    '''
-    # temp test function
-    def wave1(self):
-        rsp = self.getDevice(self.config['joints']['RShoulderPitch'])
-        rsps = self.getDevice(self.config['sensor_names']['RShoulderPitch'])
-        #1
-        self.motor_set_position_sync(rsp, rsps, -1.5, 200)
-        #2
-        rsp.setPosition(1.5)
-    '''
 
     ########## MOTION FUNCTIONS ##########
     # In the future, motions should be created through an editor and motion functions should be generated
@@ -121,24 +111,17 @@ class NaoMotorController(SuperController):
         # 1
         l_shoulder_pitch.setPosition(1.49797)
         self.motor_set_position_sync(r_shoulder_pitch, r_shoulder_pitch_s, -1.5, 250)
-        #r_shoulder_pitch.setPosition(-1.5)
         # 2
-        #r_shoulder_roll.setPosition(0.3)
         self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, 0.3, 250)
         # 3
-        #r_shoulder_roll.setPosition(-0.5)
         self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, -0.5, 250)
         # 4
-        #r_shoulder_roll.setPosition(0.3)
         self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, 0.3, 250)
         # 5
-        #r_shoulder_roll.setPosition(-0.5)
         self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, -0.5, 250)
         # 6
-        #r_shoulder_roll.setPosition(0)
         self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, 0, 250)
         # Reset
-        #r_shoulder_pitch.setPosition(1.5)
         self.motor_set_position_sync(r_shoulder_pitch, r_shoulder_pitch_s, 1.5, 250)
         
     def nod(self):
