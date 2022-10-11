@@ -42,7 +42,7 @@ class SuperController(Robot):
         Starts a motion.
 
         ARGS:
-        motion: the motion to start (Motion)
+            motion: the motion to start (Motion)
         '''
         # Interrupt current motion
         if self.currentlyPlaying:
@@ -80,16 +80,11 @@ class SuperController(Robot):
         '''
         The function called when a message is received by the subscriber
 
-        This function can do anything you want:
-            * call startMotion()
-            * call eval(body)
-            * point to an emotion-controller 
-
         ARGS:
-        channel: pika.channel.Channel
-        method: pika.spec.Basic.Deliver
-        properties: pika.spec.BasicProperties
-        body: bytes
+            channel: pika.channel.Channel
+            method: pika.spec.Basic.Deliver
+            properties: pika.spec.BasicProperties
+            body: bytes
         '''
         pass
 
@@ -97,7 +92,7 @@ class SuperController(Robot):
         '''
         Function that contains the main controller loop.
 
-        This function should be run in a seperate thread.
+        This function should be run in a seperate thread from the subscriber.
         '''
         pass
 
@@ -107,8 +102,8 @@ class SuperController(Robot):
         This stops target-positions to be overwritten.
 
         ARGS:
-            tag_motor: (Str) tag of motor to activate
-            tag_sensor: (Str) tag of position sensor for motor
+            tag_motor: (Webots tag) tag of motor to activate
+            tag_sensor: (Webots tag) tag of position sensor for motor
             target: (Radians) target position of motor
             delay: (int) delay to apply
 
@@ -130,8 +125,4 @@ class SuperController(Robot):
             condition = (abs(target - effective) > DELTA and delay > 0)
         tag_sensor.disable()
 
-
-
-
-    # Create general controller here (look at webots controller)
     
