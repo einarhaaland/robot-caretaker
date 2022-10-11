@@ -1,5 +1,5 @@
 # **Robot Caretaker**
-This is a project aiming to aid remote caretakers with expressing body language to patients using humanoid robots.
+*This is a project aiming to aid remote caretakers with expressing body language to patients using humanoid robots.*
 
 # Table of Contents
 - [Stack](#stack)
@@ -60,7 +60,7 @@ This is a project aiming to aid remote caretakers with expressing body language 
 *Try clicking a button in the web-UI and see if it is sent to the robot simulation.*
 
 # Adding a new robot
-This system allows you to easily add any robot:
+**This system allows you to easily add any robot:**
 * Create a new folder `<your_controller_name>` in `/webots_implementation/controllers`
 * Create a controller `<your_controller_name>.py` in `/controllers/<your_controller_name>`
 * Fill in values for joint motors and sensors in `/controllers/<your_controller_name>/config.yaml`
