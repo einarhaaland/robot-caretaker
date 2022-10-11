@@ -12,15 +12,20 @@ from controller import Robot, Motion
 from subscriber import Subscriber
 
 class SuperController(Robot):
-    def __init__(self):
+    def __init__(self, config):
+        '''
+        ARGS:
+            config: a config file with info on devices (see ./nao_motor_controller/config.yaml)
+        '''
+
         # Initialize Robot from Webots API
         super().__init__()
 
         # Initialize subscriber/listener
         self.subscriber = Subscriber('routing_exchange', 'webots', self.messageCallback)
 
-        # Initialize devices (sensors..)
-        self.findAndEnableDevices()
+        # Initialize devices (motors, sensors, cameras..)
+        self.findAndEnableDevices(config)
 
         # Initialize animation files (.motion)
         self.loadMotionFiles()
@@ -56,12 +61,19 @@ class SuperController(Robot):
         self.handWave = Motion('../../motions/HandWave.motion')
         '''
         pass
-
-    def findAndEnableDevices(self):
+        
+    def findAndEnableDevices(self, config):
         '''
         Enables devices on robot like motors, sensors, cameras etc..
         '''
+        # Time step (Webots)
         self.timeStep = int(self.getBasicTimeStep())
+        
+        # Motors (dict of {joint_name : Webots motor_tag})
+        self.motors = {key : self.getDevice(val['motor']) for key, val in config['joints'].items()}
+
+        # Motor Sensors (dict of {joint_name : Webots sensor_tag})
+        self.sensors = {key : self.getDevice(val['sensor']) for key, val in config['joints'].items()}
 
 
     def messageCallback(self, channel, method, properties, body):

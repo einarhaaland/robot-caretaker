@@ -1,11 +1,11 @@
 '''
 This controller accesses motors to perform animation. Webots Motions are not used.
 
-HOW TO IMPLEMENT YOUR OWN:
+HOW TO IMPLEMENT YOUR OWN ROBOT:
     * Copy file structure
     * Rename files appropriatly
-    * Fill in relevant values in config file
-    * Design motion(s) (Create motion functions akin to those below (wave(), nod()...))
+    * Fill in relevant values in config file (you can add more devices)
+    * Create motion functions akin to those below: wave(), nod()..
     * Call motion function in run() ( add elif instruction == 'your instruction': self.<motionfunction()> )
     * Add robot to webot world and change its controller
     * Start system (see README.me)
@@ -33,13 +33,7 @@ class NaoMotorController(SuperController):
     def __init__(self, config):
         self.config = config
         self.instruction = ''
-        super().__init__()
-
-
-    def findAndEnableDevices(self):
-        devices = self.config['devices']
-        self.timeStep = int(self.getBasicTimeStep())
-        
+        super().__init__(config)
 
     # Callback when receiving message through messaging system
     def messageCallback(self, channel, method, properties, body):
@@ -76,9 +70,8 @@ class NaoMotorController(SuperController):
     ############################### MOTION FUNCTIONS ###############################
     ''' 
         Future Work: 
-            * Get devices should be relocated
             * Motions should be created using an editor 
-            * Motion functions should be generated
+            * Motion functions should be generated along with run()
     '''
     def wave(self):
         # Get motors
@@ -91,7 +84,7 @@ class NaoMotorController(SuperController):
         r_shoulder_roll_s = self.getDevice(self.config['joints']['RShoulderRoll']['sensor'])
         l_shoulder_pitch_s = self.getDevice(self.config['joints']['LShoulderPitch']['sensor'])
 
-        # Set motors (numbers are poses)
+        # Set motors
         # Keyframe 1
         l_shoulder_pitch.setPosition(1.49797)
         self.motor_set_position_sync(r_shoulder_pitch, r_shoulder_pitch_s, -1.5, 250)
@@ -115,7 +108,7 @@ class NaoMotorController(SuperController):
         # Get sensors
         head_pitch_s = self.getDevice(self.config['joints']['HeadPitch']['sensor'])
 
-        # Set motors (numbers are poses)
+        # Set motors
         # Keyframe 1
         self.motor_set_position_sync(head_pitch, head_pitch_s, 0, 250)
         # Keyframe 2
@@ -138,7 +131,7 @@ class NaoMotorController(SuperController):
         # Get sensors
         head_yaw_s = self.getDevice(self.config['joints']['HeadYaw']['sensor'])
 
-        # Set motors (numbers are poses)
+        # Set motors
         # Keyframe 1
         self.motor_set_position_sync(head_yaw, head_yaw_s, 0, 250)
         # Keyframe 2
@@ -181,8 +174,8 @@ class NaoMotorController(SuperController):
         l_elbow_roll_s = self.getDevice(self.config['joints']['LElbowRoll']['sensor'])
         r_elbow_roll_s = self.getDevice(self.config['joints']['RElbowRoll']['sensor'])
 
-        # Set motors (numbers are poses)
-        # Keyframe 1 (only included in corresponding motion file)
+        # Set motors 
+        # Keyframe 1
         # Keyframe 2
         head_pitch.setPosition(0.4)
         l_shoulder_pitch.setPosition(-1.5)
@@ -284,7 +277,7 @@ class NaoMotorController(SuperController):
         head_pitch_s = self.getDevice(self.config['joints']['HeadPitch']['sensor'])
 
         # Set motors
-        # Keyframe 1 (only included in corresponding motion file)
+        # Keyframe 1
         # Keyframe 2
         l_elbow_roll.setPosition(-1.2)
         l_wrist_yaw.setPosition(-1.5)
@@ -318,9 +311,9 @@ nao = NaoMotorController(config)
 
 # Create threads
 controller_thread = threading.Thread(target=nao.run)
-listener_thread = threading.Thread(target=nao.subscriber.listener)
+message_listener_thread = threading.Thread(target=nao.subscriber.listener)
 
 # Run threads
 controller_thread.start()
-listener_thread.start()
+message_listener_thread.start()
 
