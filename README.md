@@ -67,7 +67,7 @@ This system allows you to easily add any robot:
 * Create Motion-Functions akin to functions `wave(), nod(), etc` in `/controllers/nao_motor_controller/nao_motor_controller`
 * Call Motion-Function in the run() function of your controller i.e `elif instruction == 'your_instruction': self.<motion_function>()`
 * To send custom instructions from frontend, you currently have to add your own MoodCard in `frontend/src/App.tsx` with `title='<YourInstuction>'`
-* Done!
+* **Done!**
 
 # Troubleshooting
 - **Added a new robot and it won't run an instruction?**
@@ -115,4 +115,4 @@ This system allows you to easily add any robot:
     - The cards/button in the frontend you click to make the robot perform an instruction
     
 # To Forkers:
-I recommend to look at and re-implement/revert commit `55d7766aae460bb51158d65ffc621db554ca462b` to make application more secure.
+*I recommend to look at and re-implement/revert commit `55d7766aae460bb51158d65ffc621db554ca462b` to make application more secure.*
