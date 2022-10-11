@@ -69,9 +69,13 @@ class SuperController(Robot):
         # Time step (Webots)
         self.timeStep = int(self.getBasicTimeStep())
         
-        # Motors and Motor Position Sensors (dict of {joint_name : Webots unique_tag})
+        # Motors
         self.motors = {}
+
+        # Motor Position Sensors
         self.sensors = {}
+
+        # Populate Motors and motor position sensors from config file (dict of {joint_name : Webots unique_tag})
         for key, val in config['joints'].items():
             if val['motor'] is not None:
                 self.motors[key] = self.getDevice(val['motor'])

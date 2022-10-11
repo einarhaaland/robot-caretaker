@@ -45,7 +45,7 @@ class NaoMotorController(SuperController):
                 instruction = self.instruction
 
                 if instruction == 'Wave':
-                    self.wave1()
+                    self.wave()
                 elif instruction == 'Nod':
                     self.nod()
                 elif instruction == 'Cheer':
@@ -73,8 +73,7 @@ class NaoMotorController(SuperController):
             * Motions should be created using an editor 
             * Motion functions should be generated along with run()
     '''
-    def wave1(self):
-        print("cOOLIO ITS WORKING")
+    def wave(self):
         # Keyframe 1
         self.motors['LShoulderPitch'].setPosition(1.49797)
         self.motor_set_position_sync(self.motors['RShoulderPitch'], self.sensors['RShoulderPitch'], -1.5, 250)
@@ -90,234 +89,148 @@ class NaoMotorController(SuperController):
         self.motor_set_position_sync(self.motors['RShoulderRoll'], self.sensors['RShoulderRoll'], 0, 250)
         # Reset motor positions
         self.motor_set_position_sync(self.motors['RShoulderPitch'], self.sensors['RShoulderPitch'], 1.5, 250)
-
-    def wave(self):
-        # Get motors
-        r_shoulder_pitch = self.getDevice(self.config['joints']['RShoulderPitch']['motor'])
-        r_shoulder_roll = self.getDevice(self.config['joints']['RShoulderRoll']['motor'])
-        l_shoulder_pitch = self.getDevice(self.config['joints']['LShoulderPitch']['motor'])
-
-        # Get sensors
-        r_shoulder_pitch_s = self.getDevice(self.config['joints']['RShoulderPitch']['sensor'])
-        r_shoulder_roll_s = self.getDevice(self.config['joints']['RShoulderRoll']['sensor'])
-        l_shoulder_pitch_s = self.getDevice(self.config['joints']['LShoulderPitch']['sensor'])
-
-        # Set motors
-        # Keyframe 1
-        l_shoulder_pitch.setPosition(1.49797)
-        self.motor_set_position_sync(r_shoulder_pitch, r_shoulder_pitch_s, -1.5, 250)
-        # Keyframe 2
-        self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, 0.3, 250)
-        # Keyframe 3
-        self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, -0.5, 250)
-        # Keyframe 4
-        self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, 0.3, 250)
-        # Keyframe 5
-        self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, -0.5, 250)
-        # Keyframe 6
-        self.motor_set_position_sync(r_shoulder_roll, r_shoulder_roll_s, 0, 250)
-        # Reset motor positions
-        self.motor_set_position_sync(r_shoulder_pitch, r_shoulder_pitch_s, 1.5, 250)
         
     def nod(self):
-        # Get motors
-        head_pitch = self.getDevice(self.config['joints']['HeadPitch']['motor'])
-
-        # Get sensors
-        head_pitch_s = self.getDevice(self.config['joints']['HeadPitch']['sensor'])
-
-        # Set motors
         # Keyframe 1
-        self.motor_set_position_sync(head_pitch, head_pitch_s, 0, 250)
+        self.motor_set_position_sync(self.motors['HeadPitch'], self.sensors['HeadPitch'], 0, 250)
         # Keyframe 2
-        self.motor_set_position_sync(head_pitch, head_pitch_s, 0.5, 250)
+        self.motor_set_position_sync(self.motors['HeadPitch'], self.sensors['HeadPitch'], 0.5, 250)
         # Keyframe 3
-        self.motor_set_position_sync(head_pitch, head_pitch_s, -0.5, 250)
+        self.motor_set_position_sync(self.motors['HeadPitch'], self.sensors['HeadPitch'], -0.5, 250)
         # Keyframe 4
-        self.motor_set_position_sync(head_pitch, head_pitch_s, 0.5, 250)
+        self.motor_set_position_sync(self.motors['HeadPitch'], self.sensors['HeadPitch'], 0.5, 250)
         # Keyframe 5
-        self.motor_set_position_sync(head_pitch, head_pitch_s, -0.5, 250)
+        self.motor_set_position_sync(self.motors['HeadPitch'], self.sensors['HeadPitch'], -0.5, 250)
         # Keyframe 6
-        self.motor_set_position_sync(head_pitch, head_pitch_s, 0.5, 250)
+        self.motor_set_position_sync(self.motors['HeadPitch'], self.sensors['HeadPitch'], 0.5, 250)
         # Reset motor positions
-        self.motor_set_position_sync(head_pitch, head_pitch_s, 0, 250)
+        self.motor_set_position_sync(self.motors['HeadPitch'], self.sensors['HeadPitch'], 0, 250)
 
     def shakeHead(self):
-        # Get motors
-        head_yaw = self.getDevice(self.config['joints']['HeadYaw']['motor'])
-
-        # Get sensors
-        head_yaw_s = self.getDevice(self.config['joints']['HeadYaw']['sensor'])
-
-        # Set motors
         # Keyframe 1
-        self.motor_set_position_sync(head_yaw, head_yaw_s, 0, 250)
+        self.motor_set_position_sync(self.motors['HeadYaw'], self.sensors['HeadYaw'], 0, 250)
         # Keyframe 2
-        self.motor_set_position_sync(head_yaw, head_yaw_s, 0.5, 250)
+        self.motor_set_position_sync(self.motors['HeadYaw'], self.sensors['HeadYaw'], 0.5, 250)
         # Keyframe 3
-        self.motor_set_position_sync(head_yaw, head_yaw_s, -0.5, 250)
+        self.motor_set_position_sync(self.motors['HeadYaw'], self.sensors['HeadYaw'], -0.5, 250)
         # Keyframe 4
-        self.motor_set_position_sync(head_yaw, head_yaw_s, 0.5, 250)
+        self.motor_set_position_sync(self.motors['HeadYaw'], self.sensors['HeadYaw'], 0.5, 250)
         # Keyframe 5
-        self.motor_set_position_sync(head_yaw, head_yaw_s, -0.5, 250)
+        self.motor_set_position_sync(self.motors['HeadYaw'], self.sensors['HeadYaw'], -0.5, 250)
         # Keyframe 6
-        self.motor_set_position_sync(head_yaw, head_yaw_s, 0.5, 250)
+        self.motor_set_position_sync(self.motors['HeadYaw'], self.sensors['HeadYaw'], 0.5, 250)
         # Reset motor positions
-        self.motor_set_position_sync(head_yaw, head_yaw_s, 0, 250)
+        self.motor_set_position_sync(self.motors['HeadYaw'], self.sensors['HeadYaw'], 0, 250)
 
     def cheer(self):
-        # Get motors
-        head_pitch = self.getDevice(self.config['joints']['HeadPitch']['motor'])
-        l_shoulder_pitch = self.getDevice(self.config['joints']['LShoulderPitch']['motor'])
-        r_shoulder_pitch = self.getDevice(self.config['joints']['RShoulderPitch']['motor'])
-        l_hip_pitch = self.getDevice(self.config['joints']['LHipPitch']['motor'])
-        r_hip_pitch = self.getDevice(self.config['joints']['RHipPitch']['motor'])
-        l_knee_pitch = self.getDevice(self.config['joints']['LKneePitch']['motor'])
-        r_knee_pitch = self.getDevice(self.config['joints']['RKneePitch']['motor'])
-        l_ankle_pitch = self.getDevice(self.config['joints']['LAnklePitch']['motor'])
-        r_ankle_pitch = self.getDevice(self.config['joints']['RAnklePitch']['motor'])
-        l_elbow_roll = self.getDevice(self.config['joints']['LElbowRoll']['motor'])
-        r_elbow_roll = self.getDevice(self.config['joints']['RElbowRoll']['motor'])
-
-        # Get sensors
-        head_pitch_s = self.getDevice(self.config['joints']['HeadPitch']['sensor'])
-        l_shoulder_pitch_s = self.getDevice(self.config['joints']['LShoulderPitch']['sensor'])
-        r_shoulder_pitch_s = self.getDevice(self.config['joints']['RShoulderPitch']['sensor'])
-        l_hip_pitch_s = self.getDevice(self.config['joints']['LHipPitch']['sensor'])
-        r_hip_pitch_s = self.getDevice(self.config['joints']['RHipPitch']['sensor'])
-        l_knee_pitch_s = self.getDevice(self.config['joints']['LKneePitch']['sensor'])
-        r_knee_pitch_s = self.getDevice(self.config['joints']['RKneePitch']['sensor'])
-        l_ankle_pitch_s = self.getDevice(self.config['joints']['LAnklePitch']['sensor'])
-        r_ankle_pitch_s = self.getDevice(self.config['joints']['RAnklePitch']['sensor'])
-        l_elbow_roll_s = self.getDevice(self.config['joints']['LElbowRoll']['sensor'])
-        r_elbow_roll_s = self.getDevice(self.config['joints']['RElbowRoll']['sensor'])
-
-        # Set motors 
         # Keyframe 1
+        self.motors['HeadPitch'].setPosition(0.4)
+        self.motors['LShoulderPitch'].setPosition(-1.5)
+        self.motors['RShoulderPitch'].setPosition(-1.5)
+        self.motors['LHipPitch'].setPosition(-0.2)
+        self.motors['RHipPitch'].setPosition(-0.2)
+        self.motors['LKneePitch'].setPosition(0.5)
+        self.motors['RKneePitch'].setPosition(0.5)
+        self.motors['LAnklePitch'].setPosition(-0.25)
+        self.motors['RAnklePitch'].setPosition(-0.25)
+        self.motors['LElbowRoll'].setPosition(-0.5)
+        self.motor_set_position_sync(self.motors['RElbowRoll'], self.sensors['RElbowRoll'], 0.5, 250)
         # Keyframe 2
-        head_pitch.setPosition(0.4)
-        l_shoulder_pitch.setPosition(-1.5)
-        r_shoulder_pitch.setPosition(-1.5)
-        l_hip_pitch.setPosition(-0.2)
-        r_hip_pitch.setPosition(-0.2)
-        l_knee_pitch.setPosition(0.5)
-        r_knee_pitch.setPosition(0.5)
-        l_ankle_pitch.setPosition(-0.25)
-        r_ankle_pitch.setPosition(-0.25)
-        l_elbow_roll.setPosition(-0.5)
-        self.motor_set_position_sync(r_elbow_roll, r_elbow_roll_s, 0.5, 250)
+        self.motors['HeadPitch'].setPosition(-0.2)
+        self.motors['LHipPitch'].setPosition(0)
+        self.motors['RHipPitch'].setPosition(0)
+        self.motors['LKneePitch'].setPosition(0)
+        self.motors['RKneePitch'].setPosition(0)
+        self.motors['LAnklePitch'].setPosition(0)
+        self.motors['RAnklePitch'].setPosition(0)
+        self.motors['LElbowRoll'].setPosition(0)
+        self.motor_set_position_sync(self.motors['RElbowRoll'], self.sensors['RElbowRoll'], 0, 250)
         # Keyframe 3
-        head_pitch.setPosition(-0.2)
-        l_hip_pitch.setPosition(0)
-        r_hip_pitch.setPosition(0)
-        l_knee_pitch.setPosition(0)
-        r_knee_pitch.setPosition(0)
-        l_ankle_pitch.setPosition(0)
-        r_ankle_pitch.setPosition(0)
-        l_elbow_roll.setPosition(0)
-        self.motor_set_position_sync(r_elbow_roll, r_elbow_roll_s, 0, 250)
+        self.motors['HeadPitch'].setPosition(0.4)
+        self.motors['LHipPitch'].setPosition(-0.2)
+        self.motors['RHipPitch'].setPosition(-0.2)
+        self.motors['LKneePitch'].setPosition(0.5)
+        self.motors['RKneePitch'].setPosition(0.5)
+        self.motors['LAnklePitch'].setPosition(-0.25)
+        self.motors['RAnklePitch'].setPosition(-0.25)
+        self.motors['LElbowRoll'].setPosition(-0.5)
+        self.motor_set_position_sync(self.motors['RElbowRoll'], self.sensors['RElbowRoll'], 0.5, 250)
         # Keyframe 4
-        head_pitch.setPosition(0.4)
-        l_hip_pitch.setPosition(-0.2)
-        r_hip_pitch.setPosition(-0.2)
-        l_knee_pitch.setPosition(0.5)
-        r_knee_pitch.setPosition(0.5)
-        l_ankle_pitch.setPosition(-0.3)
-        r_ankle_pitch.setPosition(-0.3)
-        l_elbow_roll.setPosition(-0.5)
-        self.motor_set_position_sync(r_elbow_roll, r_elbow_roll_s, 0.5, 250)
+        self.motors['HeadPitch'].setPosition(-0.2)
+        self.motors['LHipPitch'].setPosition(0)
+        self.motors['RHipPitch'].setPosition(0)
+        self.motors['LKneePitch'].setPosition(0)
+        self.motors['RKneePitch'].setPosition(0)
+        self.motors['LAnklePitch'].setPosition(0)
+        self.motors['RAnklePitch'].setPosition(0)
+        self.motors['LElbowRoll'].setPosition(0)
+        self.motor_set_position_sync(self.motors['RElbowRoll'], self.sensors['RElbowRoll'], 0, 250)
         # Keyframe 5
-        head_pitch.setPosition(-0.2)
-        l_hip_pitch.setPosition(0)
-        r_hip_pitch.setPosition(0)
-        l_knee_pitch.setPosition(0)
-        r_knee_pitch.setPosition(0)
-        l_ankle_pitch.setPosition(0)
-        r_ankle_pitch.setPosition(0)
-        l_elbow_roll.setPosition(0)
-        self.motor_set_position_sync(r_elbow_roll, r_elbow_roll_s, 0, 250)
+        self.motors['HeadPitch'].setPosition(0.4)
+        self.motors['LHipPitch'].setPosition(-0.2)
+        self.motors['RHipPitch'].setPosition(-0.2)
+        self.motors['LKneePitch'].setPosition(0.5)
+        self.motors['RKneePitch'].setPosition(0.5)
+        self.motors['LAnklePitch'].setPosition(-0.25)
+        self.motors['RAnklePitch'].setPosition(-0.25)
+        self.motors['LElbowRoll'].setPosition(-0.5)
+        self.motor_set_position_sync(self.motors['RElbowRoll'], self.sensors['RElbowRoll'], 0.5, 250)
         # Keyframe 6
-        head_pitch.setPosition(0.4)
-        l_hip_pitch.setPosition(-0.2)
-        r_hip_pitch.setPosition(-0.2)
-        l_knee_pitch.setPosition(0.5)
-        r_knee_pitch.setPosition(0.5)
-        l_ankle_pitch.setPosition(-0.3)
-        r_ankle_pitch.setPosition(-0.3)
-        l_elbow_roll.setPosition(-0.5)
-        self.motor_set_position_sync(r_elbow_roll, r_elbow_roll_s, 0.5, 250)
+        self.motors['HeadPitch'].setPosition(-0.2)
+        self.motors['LHipPitch'].setPosition(0)
+        self.motors['RHipPitch'].setPosition(0)
+        self.motors['LKneePitch'].setPosition(0)
+        self.motors['RKneePitch'].setPosition(0)
+        self.motors['LAnklePitch'].setPosition(0)
+        self.motors['RAnklePitch'].setPosition(0)
+        self.motors['LElbowRoll'].setPosition(0)
+        self.motor_set_position_sync(self.motors['RElbowRoll'], self.sensors['RElbowRoll'], 0, 250)
         # Keyframe 7
-        head_pitch.setPosition(-0.2)
-        l_hip_pitch.setPosition(0)
-        r_hip_pitch.setPosition(0)
-        l_knee_pitch.setPosition(0)
-        r_knee_pitch.setPosition(0)
-        l_ankle_pitch.setPosition(0)
-        r_ankle_pitch.setPosition(0)
-        l_elbow_roll.setPosition(0)
-        self.motor_set_position_sync(r_elbow_roll, r_elbow_roll_s, 0, 250)
-        # Keyframe 8
-        head_pitch.setPosition(0.4)
-        l_hip_pitch.setPosition(-0.2)
-        r_hip_pitch.setPosition(-0.2)
-        l_knee_pitch.setPosition(0.5)
-        r_knee_pitch.setPosition(0.5)
-        l_ankle_pitch.setPosition(-0.3)
-        r_ankle_pitch.setPosition(-0.3)
-        l_elbow_roll.setPosition(-0.5)
-        self.motor_set_position_sync(r_elbow_roll, r_elbow_roll_s, 0.5, 250)
+        self.motors['HeadPitch'].setPosition(0.4)
+        self.motors['LHipPitch'].setPosition(-0.2)
+        self.motors['RHipPitch'].setPosition(-0.2)
+        self.motors['LKneePitch'].setPosition(0.5)
+        self.motors['RKneePitch'].setPosition(0.5)
+        self.motors['LAnklePitch'].setPosition(-0.25)
+        self.motors['RAnklePitch'].setPosition(-0.25)
+        self.motors['LElbowRoll'].setPosition(-0.5)
+        self.motor_set_position_sync(self.motors['RElbowRoll'], self.sensors['RElbowRoll'], 0.5, 250)
         # Reset motor positions
-        head_pitch.setPosition(0)
-        l_shoulder_pitch.setPosition(1.5)
-        r_shoulder_pitch.setPosition(1.5)
-        l_hip_pitch.setPosition(0)
-        r_hip_pitch.setPosition(0)
-        l_knee_pitch.setPosition(0)
-        r_knee_pitch.setPosition(0)
-        l_ankle_pitch.setPosition(0)
-        r_ankle_pitch.setPosition(0)
-        l_elbow_roll.setPosition(0)
-        self.motor_set_position_sync(r_elbow_roll, r_elbow_roll_s, 0, 250)
+        self.motors['HeadPitch'].setPosition(0)
+        self.motors['LShoulderPitch'].setPosition(1.5)
+        self.motors['RShoulderPitch'].setPosition(1.5)
+        self.motors['LHipPitch'].setPosition(0)
+        self.motors['RHipPitch'].setPosition(0)
+        self.motors['LKneePitch'].setPosition(0)
+        self.motors['RKneePitch'].setPosition(0)
+        self.motors['LAnklePitch'].setPosition(0)
+        self.motors['RAnklePitch'].setPosition(0)
+        self.motors['LElbowRoll'].setPosition(0)
+        self.motor_set_position_sync(self.motors['RElbowRoll'], self.sensors['RElbowRoll'], 0, 250)
         
     def thinking(self):
-        # Get motors
-        l_shoulder_pitch = self.getDevice(self.config['joints']['LShoulderPitch']['motor'])
-        l_elbow_roll = self.getDevice(self.config['joints']['LElbowRoll']['motor'])
-        l_wrist_yaw = self.getDevice(self.config['joints']['LWristYaw']['motor'])
-        head_yaw = self.getDevice(self.config['joints']['HeadYaw']['motor'])
-        head_pitch = self.getDevice(self.config['joints']['HeadPitch']['motor'])
-
-        # Get sensors
-        l_shoulder_pitch_s = self.getDevice(self.config['joints']['LShoulderPitch']['sensor'])
-        l_elbow_roll_s = self.getDevice(self.config['joints']['LElbowRoll']['sensor'])
-        l_wrist_yaw_s = self.getDevice(self.config['joints']['LWristYaw']['sensor'])
-        head_yaw_s = self.getDevice(self.config['joints']['HeadYaw']['sensor'])
-        head_pitch_s = self.getDevice(self.config['joints']['HeadPitch']['sensor'])
-
-        # Set motors
         # Keyframe 1
+        self.motors['LElbowRoll'].setPosition(-1.2)
+        self.motors['LWristYaw'].setPosition(-1.5)
+        self.motors['HeadYaw'].setPosition(-0.5)
+        self.motors['HeadPitch'].setPosition(0.5)
+        self.motor_set_position_sync(self.motors['LShoulderPitch'], self.sensors['LShoulderPitch'], -1.5, 250)
         # Keyframe 2
-        l_elbow_roll.setPosition(-1.2)
-        l_wrist_yaw.setPosition(-1.5)
-        head_yaw.setPosition(-0.5)
-        head_pitch.setPosition(0.5)
-        self.motor_set_position_sync(l_shoulder_pitch, l_shoulder_pitch_s, -1.5, 250)
+        self.motor_set_position_sync(self.motors['LShoulderPitch'], self.sensors['LShoulderPitch'], -1, 250)
         # Keyframe 3
-        self.motor_set_position_sync(l_shoulder_pitch, l_shoulder_pitch_s, -1, 250)
+        self.motor_set_position_sync(self.motors['LShoulderPitch'], self.sensors['LShoulderPitch'], -1.5, 250)
         # Keyframe 4
-        self.motor_set_position_sync(l_shoulder_pitch, l_shoulder_pitch_s, -1.5, 250)
+        self.motor_set_position_sync(self.motors['LShoulderPitch'], self.sensors['LShoulderPitch'], -1, 250)
         # Keyframe 5
-        self.motor_set_position_sync(l_shoulder_pitch, l_shoulder_pitch_s, -1, 250)
+        self.motor_set_position_sync(self.motors['LShoulderPitch'], self.sensors['LShoulderPitch'], -1.5, 250)
         # Keyframe 6
-        self.motor_set_position_sync(l_shoulder_pitch, l_shoulder_pitch_s, -1.5, 250)
-        # Keyframe 7
-        self.motor_set_position_sync(l_shoulder_pitch, l_shoulder_pitch_s, -1, 250)
+        self.motor_set_position_sync(self.motors['LShoulderPitch'], self.sensors['LShoulderPitch'], -1, 250)
         # Reset motor positions
-        l_elbow_roll.setPosition(0)
-        l_wrist_yaw.setPosition(0)
-        head_yaw.setPosition(0)
-        head_pitch.setPosition(0)
-        self.motor_set_position_sync(l_shoulder_pitch, l_shoulder_pitch_s, 1.5, 250)
+        self.motors['LElbowRoll'].setPosition(0)
+        self.motors['LWristYaw'].setPosition(0)
+        self.motors['HeadYaw'].setPosition(0)
+        self.motors['HeadPitch'].setPosition(0)
+        self.motor_set_position_sync(self.motors['LShoulderPitch'], self.sensors['LShoulderPitch'], 1.5, 250)
 
             
 # Read config.yaml
