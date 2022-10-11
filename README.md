@@ -52,7 +52,19 @@ This repository contains 3 standalone applications:
 The system should now be running end-to-end.
 Try clicking a button in the web-UI and see if it is sent to the robot simulation.
 
+# Adding a new robot
+This system allows you to easily add any robot:
+* Create a new folder `<your_controller_name>` in `/webots_implementation/controllers`
+* Create a controller `<your_controller_name>.py` in `/controllers/<your_controller_name>`
+* Fill in values for joint motors and sensors in `/controllers/<your_controller_name>/config.yaml`
+* Create Motion-Functions akin to functions `wave(), nod(), etc` in `/controllers/nao_motor_controller/nao_motor_controller`
+* Call Motion-Function in the run() function of your controller i.e `elif instruction == 'your_instruction': self.<motion_function>()`
+* To send custom instructions from frontend, you currently have to add your own MoodCard in `frontend/src/App.tsx` with `title='<YourInstuction>'`
+* Done!
+
 # Troubleshooting
+- Added a new robot and it won't run an instruction?
+    - Make sure all motors and sensors in the Motion-Function you are trying to run is set in your config.yaml
 - Can't activate Virtual environment?
     - Open powershell as admin and type: `Set-ExecutionPolicy RemoteSigned`
 - Frontend won't run?
@@ -79,10 +91,21 @@ Try clicking a button in the web-UI and see if it is sent to the robot simulatio
     - `controllers` 
         - `nao_emotion_controller` Example implementation of Webots controller for the Nao robot using MOTION files.
         - `nao_motor_controller` Example implementation of Webots controller for the Nao robot using its motors.
+            - `config.yaml` Config file used when initializing the robots devices
         - `subscriber.py` Subscriber logic. Used in `supercontroller.py`
         - `super_controller.py` General controller. Robot-specific controllers inherit from this.
     - `motions` .motion files used for pre-existing animations
     - `worlds` .wbt file to open in Webots
+    
+# Glossary
+- Controller or Robot Controller
+    - This is a script that tells the robot what to do.
+- Motion-Function
+    - A function motor-setting sequences resulting in an animation/motion. Use motor_set_position_sync() once every keyframe to avoid async issues.
+- Instruction
+    - What the robot will perform e.g wave, smile, cheer...
+- MoodCard
+    - The cards/button in the frontend you click to make the robot perform an instruction
     
 # To Forkers:
 I recommend to look at and re-implement/revert commit `55d7766aae460bb51158d65ffc621db554ca462b` to make application more secure.
