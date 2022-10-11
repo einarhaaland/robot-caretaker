@@ -57,6 +57,8 @@ Try clicking a button in the web-UI and see if it is sent to the robot simulatio
     - Open powershell as admin and type: `Set-ExecutionPolicy RemoteSigned`
 - Frontend won't run?
     - Try `npm audit fix` (optionally with `--force`)
+- `Fatal error in launcher` when trying to `pip install`?
+    - Use `python -m pip install <package_to_be_installed>`
 - Webots simulator does not run (timestep stuck at 0.00)?
     - Restart Webots. 
 - SSL tag mismatch?
@@ -82,5 +84,5 @@ Try clicking a button in the web-UI and see if it is sent to the robot simulatio
     - `motions` .motion files used for pre-existing animations
     - `worlds` .wbt file to open in Webots
     
-# To Future Forkers:
+# To Forkers:
 I recommend to look at and re-implement/revert commit `55d7766aae460bb51158d65ffc621db554ca462b` to make application more secure.

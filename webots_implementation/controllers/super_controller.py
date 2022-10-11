@@ -69,11 +69,14 @@ class SuperController(Robot):
         # Time step (Webots)
         self.timeStep = int(self.getBasicTimeStep())
         
-        # Motors (dict of {joint_name : Webots motor_tag})
-        self.motors = {key : self.getDevice(val['motor']) for key, val in config['joints'].items()}
-
-        # Motor Sensors (dict of {joint_name : Webots sensor_tag})
-        self.sensors = {key : self.getDevice(val['sensor']) for key, val in config['joints'].items()}
+        # Motors and Motor Position Sensors (dict of {joint_name : Webots unique_tag})
+        self.motors = {}
+        self.sensors = {}
+        for key, val in config['joints'].items():
+            if val['motor'] is not None:
+                self.motors[key] = self.getDevice(val['motor'])
+            if val['sensor'] is not None:
+                self.sensors[key] = self.getDevice(val['sensor'])
 
 
     def messageCallback(self, channel, method, properties, body):

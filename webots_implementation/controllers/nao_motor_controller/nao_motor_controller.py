@@ -45,7 +45,7 @@ class NaoMotorController(SuperController):
                 instruction = self.instruction
 
                 if instruction == 'Wave':
-                    self.wave()
+                    self.wave1()
                 elif instruction == 'Nod':
                     self.nod()
                 elif instruction == 'Cheer':
@@ -73,6 +73,24 @@ class NaoMotorController(SuperController):
             * Motions should be created using an editor 
             * Motion functions should be generated along with run()
     '''
+    def wave1(self):
+        print("cOOLIO ITS WORKING")
+        # Keyframe 1
+        self.motors['LShoulderPitch'].setPosition(1.49797)
+        self.motor_set_position_sync(self.motors['RShoulderPitch'], self.sensors['RShoulderPitch'], -1.5, 250)
+        # Keyframe 2
+        self.motor_set_position_sync(self.motors['RShoulderRoll'], self.sensors['RShoulderRoll'], 0.3, 250)
+        # Keyframe 3
+        self.motor_set_position_sync(self.motors['RShoulderRoll'], self.sensors['RShoulderRoll'], -0.5, 250)
+        # Keyframe 4
+        self.motor_set_position_sync(self.motors['RShoulderRoll'], self.sensors['RShoulderRoll'], 0.3, 250)
+        # Keyframe 5
+        self.motor_set_position_sync(self.motors['RShoulderRoll'], self.sensors['RShoulderRoll'], -0.5, 250)
+        # Keyframe 6
+        self.motor_set_position_sync(self.motors['RShoulderRoll'], self.sensors['RShoulderRoll'], 0, 250)
+        # Reset motor positions
+        self.motor_set_position_sync(self.motors['RShoulderPitch'], self.sensors['RShoulderPitch'], 1.5, 250)
+
     def wave(self):
         # Get motors
         r_shoulder_pitch = self.getDevice(self.config['joints']['RShoulderPitch']['motor'])
