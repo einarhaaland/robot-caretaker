@@ -1,4 +1,4 @@
-# Robot Caretaker
+# **Robot Caretaker**
 This is a project aiming to aid remote caretakers with expressing body language to patients using humanoid robots.
 
 # Table of Contents
@@ -55,8 +55,9 @@ This is a project aiming to aid remote caretakers with expressing body language 
 - Open `robot-caretaker\webots_implementation\worlds\example.wbt` in Webots
 - Simulation should start automatically
 
-The system should now be running end-to-end.
-Try clicking a button in the web-UI and see if it is sent to the robot simulation.
+**The system should now be running end-to-end.**
+
+*Try clicking a button in the web-UI and see if it is sent to the robot simulation.*
 
 # Adding a new robot
 This system allows you to easily add any robot:
@@ -69,17 +70,17 @@ This system allows you to easily add any robot:
 * Done!
 
 # Troubleshooting
-- Added a new robot and it won't run an instruction?
+- **Added a new robot and it won't run an instruction?**
     - Make sure all motors and sensors in the Motion-Function you are trying to run is set in your config.yaml
-- Can't activate Virtual environment?
+- **Can't activate Virtual environment?**
     - Open powershell as admin and type: `Set-ExecutionPolicy RemoteSigned`
-- Frontend won't run?
+- **Frontend won't run?**
     - Try `npm audit fix` (optionally with `--force`)
-- `Fatal error in launcher` when trying to `pip install`?
+- **Fatal error in launcher when trying to `pip install`?**
     - Use `python -m pip install <package_to_be_installed>`
-- Webots simulator does not run (timestep stuck at 0.00)?
+- **Webots simulator does not run (timestep stuck at 0.00)?**
     - Restart Webots. 
-- SSL tag mismatch?
+- **SSL tag mismatch?**
     - Some requirements does not like to be downloaded/installed over 5Ghz connection. Try 2.4Ghz or Ethernet.
 
 # Navigating this repository
@@ -104,13 +105,13 @@ This system allows you to easily add any robot:
     - `worlds` .wbt file to open in Webots
     
 # Glossary
-- Controller or Robot Controller
+- **Controller** or **Robot Controller**
     - This is a script that tells the robot what to do.
-- Motion-Function
+- **Motion-Function**
     - A function motor-setting sequences resulting in an animation/motion. Use motor_set_position_sync() once every keyframe to avoid async issues.
-- Instruction
+- **Instruction**
     - What the robot will perform e.g wave, smile, cheer...
-- MoodCard
+- **MoodCard**
     - The cards/button in the frontend you click to make the robot perform an instruction
     
 # To Forkers:
