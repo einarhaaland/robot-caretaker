@@ -1,10 +1,16 @@
 # Robot Caretaker
 This is a project aiming to aid remote caretakers with expressing body language to patients using humanoid robots.
 
-This repository contains 3 standalone applications:
-- Frontend
-- Backend
-- Webots example
+# Table of Contents
+- [Stack](#stack)
+- [Requirements](#requirements)
+- [Setup (Windows)](#setup-windows)
+- [Adding a new Robot](#adding-a-new-robot)
+- [Troubleshooting](#troubleshooting)
+- [Navigating this Repository](#navigating-this-repository)
+- [Glossary](#glossary)
+- [To Forkers](#to-forkers)
+
 
 # Stack
 - React Typescript Frontend
@@ -20,7 +26,7 @@ This repository contains 3 standalone applications:
     - `choco install rabbitmq`
 - Webots (to run robot example)
 
-# Setup (windows)
+# Setup (Windows)
 ## Web application:
 - `cd` two terminals to project folder
 - Terminal 1:
