@@ -194,17 +194,6 @@ while (wb_robot_step(TIME_STEP) != -1) {}
 * Hvordan vite hvilke motorer er på hvilken index i motors[]?
 	* La konvertering som et bruker problem som fikses i config (bruker må legge inn hvilke motorer som er hvilke)
 
-# TODO:
-* langium for generering av kontroller (ANTLR, Xtext..)
-	* generere ved hjelp av config (hvilket format? .json, .yaml ...) fil som fylles ut av bruker?
-	* sjekk ut hvordan roboter er lagt til i webots, kanskje bruke samme config format?
-		* fant noen id'er i C:\Program Files\Webots\projects\robots\robotis\darwin-op\libraries\robotis-op2\robotis\Framework\src\motion
-	* Skal dette legges til i browser? Ser ut som langium er ment til å kjøre i browser
-		* Frontend -> Add robot skjema som genererer controller?
-	* Må nok også generere .motion filer hvis jeg beholder motion måten å bevege robot på.
-* motor bevegelse
-* use case diagram (se dat250/1 rapport)
-* deep dive i litteratur (husk å dokumentere søk)
 
 # Known Bugs
 * Får `WARNING: nao_emotion_controller: Forced termination (because process didn't terminate itself after 1 second).` på stop av simulation.
@@ -213,3 +202,16 @@ Using nao_motor_controller:
 * Bevegelse skjer ikke hvis jeg trykker for tidlig. Koden blir kjørt men bevegelse skjer ikke. (Kan være Webots API)
 RabbitMQ:
 * nye queues blir laget hver gang uten at de blir slettet.
+
+# TODO:
+* motor bevegelse Done
+* use case diagram (se dat250/1 rapport) Done
+* deep dive i litteratur (husk å dokumentere søk)
+* langium for generering av kontroller (ANTLR, Xtext..)
+	* generere ved hjelp av config (hvilket format? .json, .yaml ...) fil som fylles ut av bruker?
+	* sjekk ut hvordan roboter er lagt til i webots, kanskje bruke samme config format?
+		* fant noen id'er i C:\Program Files\Webots\projects\robots\robotis\darwin-op\libraries\robotis-op2\robotis\Framework\src\motion
+	* Skal dette legges til i browser? Ser ut som langium er ment til å kjøre i browser
+		* Frontend -> Add robot skjema som genererer controller?
+	* Må nok også generere .motion filer hvis jeg beholder motion måten å bevege robot på.
+	* UPDATE: Her tenker jeg nå langium med editor på subside "add robot" i browser. Langium DSL genererer controller script som kan lagres og legges inn i tilhørende mappe eller erstatte nåværende kontroller.

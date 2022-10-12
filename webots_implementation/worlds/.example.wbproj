@@ -7,5 +7,5 @@ centralWidgetVisible: 1
 orthographicViewHeight: 1
 textFiles: 0 "controllers/nao_motor_controller/nao_motor_controller.py"
 consoles: Console:All:All
-renderingDevicePerspectives: NAO:CameraBottom;1;1;0;0
+renderingDevicePerspectives: NAO:CameraBottom;0;1;0;0
 renderingDevicePerspectives: NAO:CameraTop;1;1;0;0
