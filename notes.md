@@ -215,3 +215,5 @@ RabbitMQ:
 		* Frontend -> Add robot skjema som genererer controller?
 	* Må nok også generere .motion filer hvis jeg beholder motion måten å bevege robot på.
 	* UPDATE: Her tenker jeg nå langium med editor på subside "add robot" i browser. Langium DSL genererer controller script som kan lagres og legges inn i tilhørende mappe eller erstatte nåværende kontroller.
+		* Problem her er at for å generere kontroller trengs config filen. Ikke nødvendigvis et problem fordi for å legge til kontrolleren har man allerede tilgang til config filen. 
+		* Ikke sikkert .yaml er lett å lese inn i langium
