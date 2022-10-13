@@ -217,3 +217,7 @@ RabbitMQ:
 	* UPDATE: Her tenker jeg nå langium med editor på subside "add robot" i browser. Langium DSL genererer controller script som kan lagres og legges inn i tilhørende mappe eller erstatte nåværende kontroller.
 		* Problem her er at for å generere kontroller trengs config filen. Ikke nødvendigvis et problem fordi for å legge til kontrolleren har man allerede tilgang til config filen. 
 		* Ikke sikkert .yaml er lett å lese inn i langium
+		* Motion functions er ganske enklelt representert nå. Ikke sikkert et DSL vil gjøre ting enklere.
+	* Simplifisere kontroller ved å flytte alle motionfunctions til egen fil. Har da separerert motion functions fra resten av kode.
+		* Flytt motion functions og la de ta inn robot som argument.
+	
