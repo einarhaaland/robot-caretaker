@@ -99,6 +99,8 @@
         - `nao_emotion_controller` Example implementation of Webots controller for the Nao robot using MOTION files.
         - `nao_motor_controller` Example implementation of Webots controller for the Nao robot using its motors.
             - `config.yaml` Config file used when initializing the robots devices
+            - `motion_functions.py` Here you can add more motion-functions for your robot to perform.
+            - `nao_motor_controller.py` This is the robot controller. Edit run() to make your robot perform more motion-functions.
         - `subscriber.py` Subscriber logic. Used in `supercontroller.py`
         - `super_controller.py` General controller. Robot-specific controllers inherit from this.
     - `motions` .motion files used for pre-existing animations
