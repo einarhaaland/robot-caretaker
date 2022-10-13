@@ -2,7 +2,6 @@
 *This is a project aiming to aid remote caretakers with expressing body language to patients using humanoid robots.*
 
 # Table of Contents
-- [Stack](#stack)
 - [Requirements](#requirements)
 - [Setup (Windows)](#setup-windows)
 - [Adding a new Robot](#adding-a-new-robot)
@@ -10,13 +9,6 @@
 - [Navigating this Repository](#navigating-this-repository)
 - [Glossary](#glossary)
 - [To Forkers](#to-forkers)
-
-
-# Stack
-- React Typescript Frontend
-- Flask Backend
-- RabbitMQ Messaging System
-- Webots Robot Simulator
 
 # Requirements
 - NodeJS
@@ -110,11 +102,11 @@
 - **Controller** or **Robot Controller**
     - This is a script that tells the robot what to do.
 - **Motion-Function**
-    - A function motor-setting sequences resulting in an animation/motion. Use motor_set_position_sync() once every keyframe to avoid async issues.
+    - A function of motor-setting sequences resulting in an animation/motion. Use motor_set_position_sync() once every keyframe to avoid async issues.
 - **Instruction**
     - What the robot will perform e.g wave, smile, cheer...
 - **MoodCard**
     - The cards/button in the frontend you click to make the robot perform an instruction
     
 # To Forkers:
-*I recommend to look at and re-implement/revert commit `55d7766aae460bb51158d65ffc621db554ca462b` to make application more secure.*
+*I recommend to take a look at and re-implement/revert commit `55d7766aae460bb51158d65ffc621db554ca462b` to make application more secure.*
