@@ -20,24 +20,25 @@ function App() {
   return (
     <>
       <NavBar />
-      <Grid container spacing={3}>
-        <Grid item xs>
-          <MoodCard title='Cheer'/>
+      <div style={{margin:50}}>
+        <Grid container spacing={3}>
+          <Grid item>
+            <MoodCard title='Cheer'/>
+          </Grid>
+          <Grid item>
+            <MoodCard title='Nod'/>
+          </Grid>
+          <Grid item>
+            <MoodCard title='Wave'/>
+          </Grid>
+          <Grid item>
+            <MoodCard title='ShakeHead'/>
+          </Grid>
+          <Grid item>
+            <MoodCard title='Thinking'/>
+          </Grid>
         </Grid>
-        <Grid item xs>
-          <MoodCard title='Nod'/>
-        </Grid>
-        <Grid item xs>
-          <MoodCard title='Wave'/>
-        </Grid>
-        <Grid item xs>
-          <MoodCard title='ShakeHead'/>
-        </Grid>
-        <Grid item xs>
-          <MoodCard title='Thinking'/>
-        </Grid>
-      </Grid>
-      <FetchButton />
+      </div>
     </>
   );
 }

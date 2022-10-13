@@ -18,8 +18,8 @@ function MoodCard(props: MoodProps) {
     }
 
     return (
-        <Card variant='outlined' sx={{ maxWidth: 275, minHeight: 200 }}>
-            <CardActionArea onClick={handleClick} sx={{ maxWidth: 275, minHeight: 200 }}>
+        <Card variant='outlined' sx={{ width: 275, height: 200 }}>
+            <CardActionArea onClick={handleClick} sx={{ width: 275, height: 200 }}>
                 <Typography align='center'>{props.title}</Typography>
             </CardActionArea>
         </Card>

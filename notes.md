@@ -220,4 +220,9 @@ RabbitMQ:
 		* Motion functions er ganske enklelt representert nå. Ikke sikkert et DSL vil gjøre ting enklere.
 	* Simplifisere kontroller ved å flytte alle motionfunctions til egen fil. Har da separerert motion functions fra resten av kode.
 		* Flytt motion functions og la de ta inn robot som argument.
-	
+* FRONTEND:
+	* Kanskje ha 3 forskjellige Grids med knapper: POSITIVE, NEUTRAL, NEGATIVE. Der hvert grid har en farget border rundt seg eller bakgrunnsfarge
+	* Kunne legge til flere knapper ved contextmenu
+	* Kunne slette knapper med contextmenu
+	* Kunne dra knapper rundt? Ikke så viktig
+	* Hva skjer med state-variabler når server restarter? (lagt til mange knapper men så forsvinner de)
