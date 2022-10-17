@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import { Grid } from '@mui/material';
 import './App.css';
-import FetchButton from './components/FetchButton';
-import MoodCard from './components/MoodCard';
 import NavBar from './components/Navbar';
+import MoodGrid from './components/MoodGrid';
 
 function App() {
 
@@ -21,23 +19,7 @@ function App() {
     <>
       <NavBar />
       <div style={{margin:50}}>
-        <Grid container spacing={3}>
-          <Grid item>
-            <MoodCard title='Cheer'/>
-          </Grid>
-          <Grid item>
-            <MoodCard title='Nod'/>
-          </Grid>
-          <Grid item>
-            <MoodCard title='Wave'/>
-          </Grid>
-          <Grid item>
-            <MoodCard title='ShakeHead'/>
-          </Grid>
-          <Grid item>
-            <MoodCard title='Thinking'/>
-          </Grid>
-        </Grid>
+        <MoodGrid />
       </div>
     </>
   );
