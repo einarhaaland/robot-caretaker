@@ -9,7 +9,7 @@ const Navbar = () => {
                     <SmartToy />
                 </IconButton>
                 <Typography variant="h6" sx={{flexGrow: 1}}>
-                    My Robotic Caretaker
+                    Robot Emotion Controller
                 </Typography>
                 <Stack direction="row" spacing={2}>
                     <Button color="inherit">About</Button>
