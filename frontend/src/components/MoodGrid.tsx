@@ -40,11 +40,16 @@ function MoodGrid() {
 
   const handleSubmitDelete = (e: any) => {
     e.preventDefault();
-    for (const card in cards) {
-      //if card.child.props.title == e.target.mood.value remove card from list
+    for (let i = 0; i < cards.length; i++) {
+      if (cards[i].props.children.props.title == e.target.mood.value) {
+        setCards( (arr) => {
+          arr.splice(i, 1);
+          return arr;
+        });
+        break;
+      }
     }
-    //setCards((old) => [...old, <Grid item><MoodCard title={e.target.mood.value}/></Grid>])
-    setShowFormAdd(false)
+    setShowFormDelete(false)
   }
 
 
