@@ -229,3 +229,5 @@ RabbitMQ:
 * Check out URDF format
 * del opp/abstract motion functions enda mer (shoulder(right, pitch, position, acceleration, speed, delay?))
 * generaliser robot.run()
+	* Lage getMotions() med liste av motion-function navn
+	* utføre den motion-function som ligner mest på instruction som kommer inn så lenge den er lik nok.
