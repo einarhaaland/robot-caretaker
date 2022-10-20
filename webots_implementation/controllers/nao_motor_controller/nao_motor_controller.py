@@ -15,6 +15,7 @@ import sys
 import os
 import threading
 import yaml
+import Levenshtein
 import motion_functions
 from controller import Robot, Motor
 
@@ -40,9 +41,32 @@ class NaoMotorController(SuperController):
     def messageCallback(self, channel, method, properties, body):
         self.instruction = body.decode("utf-8")
 
-    def getMotionFunctions():
-        '''Returns a list of all motion-functions available in motion_functions.py'''
-        return [motion_function for motion_function in dir(motion_functions) if not motion_function.startswith('__')]
+    
+
+    def findMatchingMotionFunction(self, s):
+        '''
+        Finds the closest matching motion-function to match argument using Levenshtein.
+        Returns None if minimum edit distance found is >= 5
+
+        ARGS:
+            s (str): The string to match on
+
+        RETURNS:
+            The name of the closest matching motion-function
+        '''
+
+        def getMotionFunctions():
+            '''Returns a list of all motion-functions available in motion_functions.py'''
+            return [motion_function for motion_function in dir(motion_functions) if not motion_function.startswith('__')]
+
+        func_list = getMotionFunctions()
+        min_edit_distance = 5 # The maximum distance allowed
+        for func in func_list:
+            edit_distance = Levenshtein.distance(s, func)
+            if  edit_distance < min_edit_distance:
+                min_edit_distance = edit_distance
+                closest_match = func
+        return closest_match
 
     # Controller loop
     def run(self):
