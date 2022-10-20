@@ -40,6 +40,10 @@ class NaoMotorController(SuperController):
     def messageCallback(self, channel, method, properties, body):
         self.instruction = body.decode("utf-8")
 
+    def getMotionFunctions():
+        '''Returns a list of all motion-functions available in motion_functions.py'''
+        return [motion_function for motion_function in dir(motion_functions) if not motion_function.startswith('__')]
+
     # Controller loop
     def run(self):
         while True:
