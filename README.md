@@ -42,8 +42,8 @@
     - Password: `guest`
 
 ## Robot Simulation:
-- `pip install pika` (Webots do not support Virtual environments)
-- `pip install pyyaml`
+- `cd` terminal to webots project folder (`robot-caretaker/webots_implementation`)
+- `pip install -r requirements.txt` (Webots do not support Virtual environments as of version 2022b)
 - Open `robot-caretaker\webots_implementation\worlds\example.wbt` in Webots
 - Simulation should start automatically
 
@@ -83,8 +83,8 @@
 
 - `frontend` React app
     - `src`
-        - `components` React components (navbar, moodcards..)
-        - `App.tsx` Main page, moodcards are added here
+        - `components` React components (navbar, moodgrid, moodcards..)
+        - `App.tsx` Main page
 
 - `webots_implementation`
     - `controllers` 

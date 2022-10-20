@@ -203,6 +203,17 @@ Using nao_motor_controller:
 RabbitMQ:
 * nye queues blir laget hver gang uten at de blir slettet.
 
+# Edit distance
+For å kompensere for skrivefeil på moodcards, brukes edit distance for å velge hvilken motion function som blir brukt.
+Mulige typer edit distance:
+* The Levenshtein distance allows deletion, insertion and substitution.
+	* endte opp med å bruke denne.
+* The longest common subsequence (LCS) distance allows only insertion and deletion, not substitution.
+* The Hamming distance allows only substitution, hence, it only applies to strings of the same length.
+* The Damerau–Levenshtein distance allows insertion, deletion, substitution, and the transposition of two adjacent characters.
+	* foreløpig lyst å bruke denne fordi den kan transpose bokstaver (vanlig skrivefeil) og performance ikke er et issue med så få functions, kanskje overkill for mitt bruksområde.
+* The Jaro distance allows only transposition.
+
 # TODO:
 * motor bevegelse Done
 * use case diagram (se dat250/1 rapport) Done
