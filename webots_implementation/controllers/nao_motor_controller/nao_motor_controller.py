@@ -39,9 +39,7 @@ class NaoMotorController(SuperController):
 
     # Callback when receiving message through messaging system
     def messageCallback(self, channel, method, properties, body):
-        self.instruction = body.decode("utf-8")
-
-    
+        self.instruction = self.findMatchingMotionFunction(body.decode("utf-8"))
 
     def findMatchingMotionFunction(self, s):
         '''
@@ -71,30 +69,19 @@ class NaoMotorController(SuperController):
     # Controller loop
     def run(self):
         while True:
-                instruction = self.instruction
+            if self.instruction == '':
+                continue
+            elif self.instruction is None:
+                print("Could not find matching motion, please check spelling of MoodCard")
+            else:
+                print("Performed: " + self.instruction)
+                eval("motion_functions." + self.instruction + "(self)") # See issue #33 for safer use (maybe not needed)
+            
+            self.instruction = ''
 
-                # Add call to Motion-Functions here
-                if instruction == 'Wave':
-                    motion_functions.wave(self)
-                elif instruction == 'Nod':
-                    motion_functions.nod(self)
-                elif instruction == 'Cheer':
-                    motion_functions.cheer(self)
-                elif instruction == 'ShakeHead':
-                    motion_functions.shakeHead(self)
-                elif instruction == 'Thinking':
-                    motion_functions.thinking(self)
-                elif instruction != '':
-                    print("Received unknown command:")
-                
-                # Reset instruction
-                if instruction != '':
-                    print('Performed: ' + instruction)
-                    self.instruction = ''
-
-                # Break simulation
-                if nao.step(self.timeStep) == -1:
-                    break
+            # Break simulation
+            if nao.step(self.timeStep) == -1:
+                break
 
             
 # Read config.yaml
