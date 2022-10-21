@@ -59,6 +59,7 @@ class NaoMotorController(SuperController):
 
         func_list = getMotionFunctions()
         min_edit_distance = 5 # The maximum distance allowed
+        closest_match = None
         for func in func_list:
             edit_distance = Levenshtein.distance(s, func)
             if  edit_distance < min_edit_distance:
@@ -70,16 +71,16 @@ class NaoMotorController(SuperController):
     def run(self):
         while True:
             if self.instruction == '':
-                continue
+                pass
             elif self.instruction is None:
-                print("Could not find matching motion, please check spelling of MoodCard")
+                print("Could not find matching motion, please check spelling of MoodCard..")
             else:
-                print("Performed: " + self.instruction)
-                eval("motion_functions." + self.instruction + "(self)") # See issue #33 for safer use (maybe not needed)
+                print(f'Performing motion "{self.instruction}"')
+                eval("motion_functions." + self.instruction + "(self)") # See issue #33 for safer use (should not be needed because only existing motion-functions are executed)
             
             self.instruction = ''
 
-            # Break simulation
+            # Break simulation (https://cyberbotics.com/doc/reference/robot#wb_robot_step)
             if nao.step(self.timeStep) == -1:
                 break
 
