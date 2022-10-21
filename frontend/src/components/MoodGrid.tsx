@@ -5,7 +5,12 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
-function MoodGrid() {
+interface GridProps {
+  moodCards: string[],
+}
+
+
+function MoodGrid(props: GridProps) {
   const [cards, setCards] = useState<React.ReactElement[]>([]);
   const [showFormAdd, setShowFormAdd] = useState(false)
   const [showFormDelete, setShowFormDelete] = useState(false)
@@ -13,23 +18,9 @@ function MoodGrid() {
 
   useEffect(() => {
     //Cards can be fetched from your database here to keep custom cards when server resets
-    setCards([
-        <Grid item>
-          <MoodCard title='Cheer'/>
-        </Grid>,
-        <Grid item >
-          <MoodCard title='Nod'/>
-        </Grid>,
-        <Grid item>
-          <MoodCard title='Wave'/>
-        </Grid>,
-        <Grid item>
-          <MoodCard title='ShakeHead'/>
-        </Grid>,
-        <Grid item>
-          <MoodCard title='Thinking'/>
-        </Grid>
-    ])
+    for (let i = 0; i < props.moodCards.length; i++) {
+      setCards((oldArray) => [...oldArray, <Grid item><MoodCard title={props.moodCards[i]}/></Grid>])
+    }
   }, []);
 
   const handleSubmitAdd = (e: any) => {
