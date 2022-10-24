@@ -236,4 +236,5 @@ Mulige typer edit distance:
 	* Kunne dra knapper rundt? Ikke så viktig
 	* Hva skjer med state-variabler når server restarter? (lagt til mange knapper men så forsvinner de)
 * Check out URDF format
+* Lage CLI for å sette opp prosjekt?
 * del opp/abstract motion functions enda mer (shoulder(right, pitch, position, acceleration, speed, delay?))

@@ -66,12 +66,11 @@ To hide the input field, refresh the page.
 
 # Adding a new robot
 **This system allows you to easily add any robot:**
-* Create a new folder `<your_controller_name>` in `/webots_implementation/controllers`
-* Create a controller `<your_controller_name>.py` in `/controllers/<your_controller_name>`
-* Fill in values for joint motors and sensors in `/controllers/<your_controller_name>/config.yaml`
-* Create Motion-Functions akin to functions `wave(), nod(), etc` in `/controllers/nao_motor_controller/nao_motor_controller`
-* Call Motion-Function in the run() function of your controller i.e `elif instruction == 'your_instruction': self.<motion_function>()`
-* To send custom instructions from frontend, you currently have to add your own MoodCard in `frontend/src/App.tsx` with `title='<YourInstuction>'`
+* Copy `/webots_implementation` directory
+* Add a new robot to the Webots simulation and change its controller to `nao_motor_controller.py`
+* Fill in values for joint motors and sensors in `/controllers/nao_motor_controller/config.yaml`
+* Create Motion-Functions akin to functions `wave(), nod(), etc` in `/controllers/nao_motor_controller/motion_functions.py`
+* Create a MoodCard in the frontend by clicking the green `+` button. In the input field, enter a name similar to coresponding motion-function and press `Enter`
 * **Done!**
 
 # Troubleshooting
