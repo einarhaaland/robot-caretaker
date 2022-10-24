@@ -4,6 +4,7 @@
 # Table of Contents
 - [Requirements](#requirements)
 - [Setup (Windows)](#setup-windows)
+- [How to use](#how-to-use)
 - [Adding a new Robot](#adding-a-new-robot)
 - [Troubleshooting](#troubleshooting)
 - [Navigating this Repository](#navigating-this-repository)
@@ -54,10 +55,13 @@
 # How to use
 On the webpage there are several large buttons coresponding to a robot motion.
 Clicking one of these will result in the robot performing that motion.
+
 To add a motion button, click the green "+" button in the bottom right corner of the webpage.
 An input field will appear. Enter the name of the new motion (name should be similar to motion-function) and press `ENTER`.
+
 To delete a motion button, click the red trashcan in the bottom right corner of the webpage.
 An input field will appea. Enter the exact name of the motion button you would like to delete and press `ENTER`.
+
 To hide the input field, refresh the page. 
 
 # Adding a new robot
