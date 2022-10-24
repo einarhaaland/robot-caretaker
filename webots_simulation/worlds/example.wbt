@@ -19,5 +19,5 @@ RectangleArena {
   floorSize 3 3
 }
 Nao {
-  controller "nao_motor_controller"
+  controller "robot_controller"
 }
