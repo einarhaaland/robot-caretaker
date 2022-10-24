@@ -17,7 +17,7 @@
 - Python
 - RabbitMQ
     - `choco install rabbitmq`
-- Webots (to run robot example)
+- Webots (R2022b or newer)
 
 # Setup (Windows)
 ## Web application:
@@ -53,14 +53,18 @@
 *Try clicking a button in the web-UI and see if it is sent to the robot simulation.*
 
 # How to use
+**For Users:**
+
 On the webpage there are several large buttons coresponding to a robot motion.
 Clicking one of these will result in the robot performing that motion.
+
+**For Experts:**
 
 To add a motion button, click the green `+` button in the bottom right corner of the webpage.
 An input field will appear. Enter the name of the new motion (name should be similar to motion-function) and press `ENTER`.
 
 To delete a motion button, click the red trashcan in the bottom right corner of the webpage.
-An input field will appea. Enter the exact name of the motion button you would like to delete and press `ENTER`.
+An input field will appear. Enter the exact name of the motion button you would like to delete and press `ENTER`.
 
 To hide the input field, refresh the page. 
 
@@ -71,7 +75,8 @@ To hide the input field, refresh the page.
 * Fill in values for joint motors and sensors in `/controllers/nao_motor_controller/config.yaml`
 * Create Motion-Functions akin to functions `wave(), nod(), etc` in `/controllers/nao_motor_controller/motion_functions.py`
 * Create a MoodCard in the frontend by clicking the green `+` button. In the input field, enter a name similar to coresponding motion-function and press `Enter`
-* **Done!**
+
+*The system should now be functional with your newly added robot.*
 
 # Troubleshooting
 - **Added a new robot and it won't run an instruction?**
@@ -83,7 +88,7 @@ To hide the input field, refresh the page.
 - **Fatal error in launcher when trying to `pip install`?**
     - Use `python -m pip install <package_to_be_installed>`
 - **Webots simulator does not run (timestep stuck at 0.00)?**
-    - Restart Webots. 
+    - Restart Webots.
 - **SSL tag mismatch?**
     - Some requirements does not like to be downloaded/installed over 5Ghz connection. Try 2.4Ghz or Ethernet.
 
