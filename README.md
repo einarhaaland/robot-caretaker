@@ -51,6 +51,15 @@
 
 *Try clicking a button in the web-UI and see if it is sent to the robot simulation.*
 
+# How to use
+On the webpage there are several large buttons coresponding to a robot motion.
+Clicking one of these will result in the robot performing that motion.
+To add a motion button, click the green "+" button in the bottom right corner of the webpage.
+An input field will appear. Enter the name of the new motion (name should be similar to motion-function) and press `ENTER`.
+To delete a motion button, click the red trashcan in the bottom right corner of the webpage.
+An input field will appea. Enter the exact name of the motion button you would like to delete and press `ENTER`.
+To hide the input field, refresh the page. 
+
 # Adding a new robot
 **This system allows you to easily add any robot:**
 * Create a new folder `<your_controller_name>` in `/webots_implementation/controllers`
