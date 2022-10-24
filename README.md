@@ -56,7 +56,7 @@
 On the webpage there are several large buttons coresponding to a robot motion.
 Clicking one of these will result in the robot performing that motion.
 
-To add a motion button, click the green "+" button in the bottom right corner of the webpage.
+To add a motion button, click the green `+` button in the bottom right corner of the webpage.
 An input field will appear. Enter the name of the new motion (name should be similar to motion-function) and press `ENTER`.
 
 To delete a motion button, click the red trashcan in the bottom right corner of the webpage.
