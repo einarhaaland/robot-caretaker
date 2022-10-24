@@ -1,6 +1,4 @@
-# Configure to your robot 
-
-name: "NAO"
+name: NAO
 devices:
   cameras: NULL
   gyroscopes: NULL
@@ -9,206 +7,206 @@ devices:
 
 joints: {
   # HEAD
-  "HeadYaw": {
-    motor: "HeadYaw",
-    sensor: "HeadYawS"
+  HeadYaw: {
+    motor: HeadYaw,
+    sensor: HeadYawS
   },
-  "HeadPitch": {
-    motor: "HeadPitch",
-    sensor: "HeadPitchS"
+  HeadPitch: {
+    motor: HeadPitch,
+    sensor: HeadPitchS
   },
-  "HeadRoll": {
+  HeadRoll: {
     motor: NULL,
     sensor: NULL
   },
   
   # LEFT ARM
-  "LFinger1": {
+  LFinger1: {
     motor: NULL,
     sensor: NULL
   },
-  "LFinger2": {
+  LFinger2: {
     motor: NULL,
     sensor: NULL
   },
-  "LFinger3": {
-    motor: NULL,
-    sensor: NULL
-  },
-
-  "LWristPitch": {
-    motor: NULL,
-    sensor: NULL
-  },
-  "LWristYaw": {
-    motor: "LWristYaw",
-    sensor: "LWristYawS"
-  },
-  "LWristRoll": {
+  LFinger3: {
     motor: NULL,
     sensor: NULL
   },
 
-  "LElbowYaw": {
-    motor: "LElbowYaw",
-    sensor: "LElbowYawS"
+  LWristPitch: {
+    motor: NULL,
+    sensor: NULL
   },
-  "LElbowRoll": {
-    motor: "LElbowRoll",
-    sensor: "LElbowRollS"
+  LWristYaw: {
+    motor: LWristYaw,
+    sensor: LWristYawS
+  },
+  LWristRoll: {
+    motor: NULL,
+    sensor: NULL
   },
 
-  "LShoulderPitch": {
-    motor: "LShoulderPitch",
-    sensor: "LShoulderPitchS"
+  LElbowYaw: {
+    motor: LElbowYaw,
+    sensor: LElbowYawS
   },
-  "LShoulderRoll": {
-    motor: "LShoulderRoll",
-    sensor: "LShoulderRollS"
+  LElbowRoll: {
+    motor: LElbowRoll,
+    sensor: LElbowRollS
+  },
+
+  LShoulderPitch: {
+    motor: LShoulderPitch,
+    sensor: LShoulderPitchS
+  },
+  LShoulderRoll: {
+    motor: LShoulderRoll,
+    sensor: LShoulderRollS
   },
 
   # RIGHT ARM
-  "RFinger1": {
+  RFinger1: {
     motor: NULL,
     sensor: NULL
   },
-  "RFinger2": {
+  RFinger2: {
     motor: NULL,
     sensor: NULL
   },
-  "RFinger3": {
-    motor: NULL,
-    sensor: NULL
-  },
-
-  "RWristPitch": {
-    motor: NULL,
-    sensor: NULL
-  },
-  "RWristYaw": {
-    motor: "RWristYaw",
-    sensor: "RWristYawS"
-  },
-  "RWristRoll": {
+  RFinger3: {
     motor: NULL,
     sensor: NULL
   },
 
-  "RElbowYaw": {
-    motor: "RElbowYaw",
-    sensor: "RElbowYawS"
+  RWristPitch: {
+    motor: NULL,
+    sensor: NULL
   },
-  "RElbowRoll": {
-    motor: "RElbowRoll",
-    sensor: "RElbowRollS"
+  RWristYaw: {
+    motor: RWristYaw,
+    sensor: RWristYawS
+  },
+  RWristRoll: {
+    motor: NULL,
+    sensor: NULL
   },
 
-  "RShoulderPitch": {
-    motor: "RShoulderPitch",
-    sensor: "RShoulderPitchS"
+  RElbowYaw: {
+    motor: RElbowYaw,
+    sensor: RElbowYawS
   },
-  "RShoulderRoll": {
-    motor: "RShoulderRoll",
-    sensor: "RShoulderRollS"
+  RElbowRoll: {
+    motor: RElbowRoll,
+    sensor: RElbowRollS
+  },
+
+  RShoulderPitch: {
+    motor: RShoulderPitch,
+    sensor: RShoulderPitchS
+  },
+  RShoulderRoll: {
+    motor: RShoulderRoll,
+    sensor: RShoulderRollS
   },
   
   # BODY
-  "SpinePitch": {
+  SpinePitch: {
     motor: NULL,
     sensor: NULL
   },
-  "SpineYaw": {
+  SpineYaw: {
     motor: NULL,
     sensor: NULL
   },
-  "SpineRoll": {
+  SpineRoll: {
     motor: NULL,
     sensor: NULL
   },
 
-  "LowerSpinePitch": {
+  LowerSpinePitch: {
     motor: NULL,
     sensor: NULL
   },
-  "LowerSpineYaw": {
+  LowerSpineYaw: {
     motor: NULL,
     sensor: NULL
   },
-  "LowerSpineRoll": {
+  LowerSpineRoll: {
     motor: NULL,
     sensor: NULL
   },
   
   # LEFT LEG
-  "LHipPitch": {
-    motor: "LHipPitch",
-    sensor: "LHipPitchS"
+  LHipPitch: {
+    motor: LHipPitch,
+    sensor: LHipPitchS
   },
-  "LHipYaw": {
-    motor: "LHipYawPitch",
-    sensor: "LHipYawPitchS"
+  LHipYaw: {
+    motor: LHipYawPitch,
+    sensor: LHipYawPitchS
   },
-  "LHipRoll": {
-    motor: "LHipRoll",
-    sensor: "LHipRollS"
-  },
-
-  "LKneePitch": {
-    motor: "LKneePitch",
-    sensor: "LKneePitchS"
+  LHipRoll: {
+    motor: LHipRoll,
+    sensor: LHipRollS
   },
 
-  "LAnklePitch": {
-    motor: "LAnklePitch",
-    sensor: "LAnklePitchS"
+  LKneePitch: {
+    motor: LKneePitch,
+    sensor: LKneePitchS
   },
-  "LAnkleYaw": {
+
+  LAnklePitch: {
+    motor: LAnklePitch,
+    sensor: LAnklePitchS
+  },
+  LAnkleYaw: {
     motor: NULL,
     sensor: NULL
   },
-  "LAnkleRoll": {
-    motor: "LAnkleRoll",
-    sensor: "LAnkleRollS"
+  LAnkleRoll: {
+    motor: LAnkleRoll,
+    sensor: LAnkleRollS
   },
 
-  "LToes": {
+  LToes: {
     motor: NULL,
     sensor: NULL
   },
 
   # RIGHT LEG
-  "RHipPitch": {
-    motor: "RHipPitch",
-    sensor: "RHipPitchS"
+  RHipPitch: {
+    motor: RHipPitch,
+    sensor: RHipPitchS
   },
-  "RHipYaw": {
-    motor: "RHipYawPitch",
-    sensor: "RHipYawPitchS"
+  RHipYaw: {
+    motor: RHipYawPitch,
+    sensor: RHipYawPitchS
   },
-  "RHipRoll": {
-    motor: "RHipRoll",
-    sensor: "RHipRollS"
-  },
-
-  "RKneePitch": {
-    motor: "RKneePitch",
-    sensor: "RKneePitchS"
+  RHipRoll: {
+    motor: RHipRoll,
+    sensor: RHipRollS
   },
 
-  "RAnklePitch": {
-    motor: "RAnklePitch",
-    sensor: "RAnklePitchS"
+  RKneePitch: {
+    motor: RKneePitch,
+    sensor: RKneePitchS
   },
-  "RAnkleYaw": {
+
+  RAnklePitch: {
+    motor: RAnklePitch,
+    sensor: RAnklePitchS
+  },
+  RAnkleYaw: {
     motor: NULL,
     sensor: NULL
   },
-  "RAnkleRoll": {
-    motor: "RAnkleRoll",
-    sensor: "RAnkleRollS"
+  RAnkleRoll: {
+    motor: RAnkleRoll,
+    sensor: RAnkleRollS
   },
 
-  "RToes": {
+  RToes: {
     motor: NULL,
     sensor: NULL
   }

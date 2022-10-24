@@ -215,8 +215,6 @@ Mulige typer edit distance:
 * The Jaro distance allows only transposition.
 
 # TODO:
-* motor bevegelse Done
-* use case diagram (se dat250/1 rapport) Done
 * deep dive i litteratur (husk å dokumentere søk)
 * langium for generering av kontroller (ANTLR, Xtext..)
 	* generere ved hjelp av config (hvilket format? .json, .yaml ...) fil som fylles ut av bruker?
@@ -239,6 +237,3 @@ Mulige typer edit distance:
 	* Hva skjer med state-variabler når server restarter? (lagt til mange knapper men så forsvinner de)
 * Check out URDF format
 * del opp/abstract motion functions enda mer (shoulder(right, pitch, position, acceleration, speed, delay?))
-* generaliser robot.run()
-	* Lage getMotions() med liste av motion-function navn
-	* utføre den motion-function som ligner mest på instruction som kommer inn så lenge den er lik nok.
