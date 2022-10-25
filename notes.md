@@ -238,3 +238,4 @@ Mulige typer edit distance:
 * Check out URDF format
 * Lage CLI for å sette opp prosjekt?
 * del opp/abstract motion functions enda mer (shoulder(right, pitch, position, acceleration, speed, delay?))
+	* lage eksempler på flere abstraksjonsnivåer i motion_functions.py
