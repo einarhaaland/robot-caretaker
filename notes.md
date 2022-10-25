@@ -239,3 +239,5 @@ Mulige typer edit distance:
 * Lage CLI for å sette opp prosjekt?
 * del opp/abstract motion functions enda mer (shoulder(right, pitch, position, acceleration, speed, delay?))
 	* lage eksempler på flere abstraksjonsnivåer i motion_functions.py
+	* combine all abstraction functions into one def move():
+		* maybe move it to motion_functions.py

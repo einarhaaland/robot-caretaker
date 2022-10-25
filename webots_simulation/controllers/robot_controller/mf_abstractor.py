@@ -14,130 +14,268 @@ If you feel a function is not detailed enough to describe your robot's joint, fe
         * Add this functionality in the already existing function.
 
 Arguments are represented with strings instead of enums to avoid extra syntax for non-coders.
+
+Optional arguments are currently not used.
 '''
 
-def head(rotation, position, acceleration=None, speed=None, delay=None):
+
+def head(robot, rotation, position, sync, acceleration=None, speed=None, delay=250):
     '''
-    Moves the head joint.
+    Moves the Head joint.
 
     ARGS:
-        rotation    ("roll", "pitch" or "yaw"):    Which rotation to apply to joint.
+        robot       (robot):                       The robot to move the joint.
+        side        ("R" or "L"):                  Which of the left or right joint to move.
+        rotation    ("Roll", "Pitch" or "Yaw"):    Which rotation to apply to joint.
         position    (float):                       What position to move the joint to.
+        sync        (True or False):               Whether this motion is the last motion in the current keyframe.
 
     OPTIONAL ARGS:
         acceleration    (float):                   Max acceleration of joint.
         speed           (float):                   Max speed of joint.
         delay           (integer):                 The delay before moving on to next instruction.
     '''
-    pass
+    if rotation in ('Roll', 'Pitch', 'Yaw'):
+        motor_name = "Head" + rotation
+    else:
+        raise Exception('"rotation" argument should be "Roll" or "Pitch" or "Yaw" (case sensitive)')
+    
+    if not sync:
+        robot.motors[motor_name].setPosition(position)
+    else:
+        robot.motor_set_position_sync(robot.motors[motor_name], robot.sensors[motor_name], position, delay)
 
-def shoulder(side, rotation, position, acceleration=None, speed=None, delay=None):
+
+def shoulder(robot, side, rotation, position, sync, acceleration=None, speed=None, delay=250):
     '''
-    Moves a shoulder joint.
+    Moves a Shoulder joint.
 
     ARGS:
-        side        ("right" or "left"):           Which of the joints to move.
-        rotation    ("roll" or "pitch"):           Which rotation to apply to joint.
+        robot       (robot):                       The robot to move the joint.
+        side        ("R" or "L"):                  Which of the left or right joint to move.
+        rotation    ("Roll" or "Pitch"):           Which rotation to apply to joint.
         position    (float):                       What position to move the joint to.
+        sync        (True or False):               Whether this motion is the last motion in the current keyframe.
 
     OPTIONAL ARGS:
         acceleration    (float):                   Max acceleration of joint.
         speed           (float):                   Max speed of joint.
         delay           (integer):                 The delay before moving on to next instruction.
     '''
-    pass
+    if side in ('R', 'L'):
+        motor_name = side
+    else:
+        raise Exception('"side" argument should be "R" or "L" (case sensitive)')
 
-def elbow(side, rotation, position, acceleration=None, speed=None, delay=None):
-    '''
-    Moves an elbow joint.
+    motor_name += "Shoulder"
 
-    ARGS:
-        side        ("right" or "left"):           Which of the joints to move.
-        rotation    ("roll" or "yaw"):             Which rotation to apply to joint.
-        position    (float):                       What position to move the joint to.
+    if rotation in ('Roll', 'Pitch', 'Yaw'):
+        motor_name += rotation
+    else:
+        raise Exception('"rotation" argument should be "Roll" or "Pitch" or "Yaw" (case sensitive)')
+    
+    if not sync:
+        robot.motors[motor_name].setPosition(position)
+    else:
+        robot.motor_set_position_sync(robot.motors[motor_name], robot.sensors[motor_name], position, delay)
 
-    OPTIONAL ARGS:
-        acceleration    (float):                   Max acceleration of joint.
-        speed           (float):                   Max speed of joint.
-        delay           (integer):                 The delay before moving on to next instruction.
-    '''
-    pass
 
-def wrist(side, rotation, position, acceleration=None, speed=None, delay=None):
-    '''
-    Moves a wrist joint.
-
-    ARGS:
-        side        ("right" or "left"):           Which of the joints to move.
-        rotation    ("roll", "pitch" or "yaw"):    Which rotation to apply to joint.
-        position    (float):                       What position to move the joint to.
-
-    OPTIONAL ARGS:
-        acceleration    (float):                   Max acceleration of joint.
-        speed           (float):                   Max speed of joint.
-        delay           (integer):                 The delay before moving on to next instruction.
-    '''
-    pass
-
-def finger(side, position, acceleration=None, speed=None, delay=None):
-    '''
-    Moves a finger joint.
-
-    ARGS:
-        side        ("right" or "left"):           Which of the joints to move.
-        position    (float):                       What position to move the joint to.
-
-    OPTIONAL ARGS:
-        acceleration    (float):                   Max acceleration of joint.
-        speed           (float):                   Max speed of joint.
-        delay           (integer):                 The delay before moving on to next instruction.
-    '''
-    pass
-
-def hip(side, rotation, position, acceleration=None, speed=None, delay=None):
-    '''
-    Moves a hip joint.
-
-    ARGS:
-        side        ("right" or "left"):           Which of the joints to move.
-        rotation    ("roll", "pitch" or "yaw"):    Which rotation to apply to joint.
-        position    (float):                       What position to move the joint to.
-
-    OPTIONAL ARGS:
-        acceleration    (float):                   Max acceleration of joint.
-        speed           (float):                   Max speed of joint.
-        delay           (integer):                 The delay before moving on to next instruction.
-    '''
-    pass
-
-def knee(side, position, acceleration=None, speed=None, delay=None):
-    '''
-    Moves a knee joint.
-
-    ARGS:
-        side        ("right" or "left"):           Which of the joints to move.
-        position    (float):                       What position to move the joint to.
-
-    OPTIONAL ARGS:
-        acceleration    (float):                   Max acceleration of joint.
-        speed           (float):                   Max speed of joint.
-        delay           (integer):                 The delay before moving on to next instruction.
-    '''
-    pass
-
-def ankle(side, rotation, position, acceleration=None, speed=None, delay=None):
+def elbow(robot, side, rotation, position, sync, acceleration=None, speed=None, delay=250):
     '''
     Moves an ankle joint.
 
     ARGS:
-        side        ("right" or "left"):           Which of the joints to move.
-        rotation    ("roll", "pitch" or "yaw"):    Which rotation to apply to joint.
+        robot       (robot):                       The robot to move the joint.
+        side        ("R" or "L"):                  Which of the left or right joint to move.
+        rotation    ("Roll" or "Yaw"):             Which rotation to apply to joint.
         position    (float):                       What position to move the joint to.
+        sync        (True or False):               Whether this motion is the last motion in the current keyframe.
 
     OPTIONAL ARGS:
         acceleration    (float):                   Max acceleration of joint.
         speed           (float):                   Max speed of joint.
         delay           (integer):                 The delay before moving on to next instruction.
     '''
+    if side in ('R', 'L'):
+        motor_name = side
+    else:
+        raise Exception('"side" argument should be "R" or "L" (case sensitive)')
+
+    motor_name += "Elbow"
+
+    if rotation in ('Roll', 'Pitch', 'Yaw'):
+        motor_name += rotation
+    else:
+        raise Exception('"rotation" argument should be "Roll" or "Pitch" or "Yaw" (case sensitive)')
+    
+    if not sync:
+        robot.motors[motor_name].setPosition(position)
+    else:
+        robot.motor_set_position_sync(robot.motors[motor_name], robot.sensors[motor_name], position, delay)
+
+
+def wrist(robot, side, rotation, position, sync, acceleration=None, speed=None, delay=250):
+    '''
+    Moves an ankle joint.
+
+    ARGS:
+        robot       (robot):                       The robot to move the joint.
+        side        ("R" or "L"):                  Which of the left or right joint to move.
+        rotation    ("Roll", "Pitch" or "Yaw"):    Which rotation to apply to joint.
+        position    (float):                       What position to move the joint to.
+        sync        (True or False):               Whether this motion is the last motion in the current keyframe.
+
+    OPTIONAL ARGS:
+        acceleration    (float):                   Max acceleration of joint.
+        speed           (float):                   Max speed of joint.
+        delay           (integer):                 The delay before moving on to next instruction.
+    '''
+    if side in ('R', 'L'):
+        motor_name = side
+    else:
+        raise Exception('"side" argument should be "R" or "L" (case sensitive)')
+
+    motor_name += "Wrist"
+
+    if rotation in ('Roll', 'Pitch', 'Yaw'):
+        motor_name += rotation
+    else:
+        raise Exception('"rotation" argument should be "Roll" or "Pitch" or "Yaw" (case sensitive)')
+    
+    if not sync:
+        robot.motors[motor_name].setPosition(position)
+    else:
+        robot.motor_set_position_sync(robot.motors[motor_name], robot.sensors[motor_name], position, delay)
+
+
+def hip(robot, side, rotation, position, sync, acceleration=None, speed=None, delay=250):
+    '''
+    Moves an ankle joint.
+
+    ARGS:
+        robot       (robot):                       The robot to move the joint.
+        side        ("R" or "L"):                  Which of the left or right joint to move.
+        rotation    ("Roll", "Pitch" or "Yaw"):    Which rotation to apply to joint.
+        position    (float):                       What position to move the joint to.
+        sync        (True or False):               Whether this motion is the last motion in the current keyframe.
+
+    OPTIONAL ARGS:
+        acceleration    (float):                   Max acceleration of joint.
+        speed           (float):                   Max speed of joint.
+        delay           (integer):                 The delay before moving on to next instruction.
+    '''
+    if side in ('R', 'L'):
+        motor_name = side
+    else:
+        raise Exception('"side" argument should be "R" or "L" (case sensitive)')
+
+    motor_name += "Hip"
+
+    if rotation in ('Roll', 'Pitch', 'Yaw'):
+        motor_name += rotation
+    else:
+        raise Exception('"rotation" argument should be "Roll" or "Pitch" or "Yaw" (case sensitive)')
+    
+    if not sync:
+        robot.motors[motor_name].setPosition(position)
+    else:
+        robot.motor_set_position_sync(robot.motors[motor_name], robot.sensors[motor_name], position, delay)
+
+
+def knee(robot, side, position, sync, acceleration=None, speed=None, delay=250):
+    '''
+    Moves an ankle joint.
+
+    ARGS:
+        robot       (robot):                       The robot to move the joint.
+        side        ("R" or "L"):                  Which of the left or right joint to move.
+        position    (float):                       What position to move the joint to.
+        sync        (True or False):               Whether this motion is the last motion in the current keyframe.
+
+    OPTIONAL ARGS:
+        acceleration    (float):                   Max acceleration of joint.
+        speed           (float):                   Max speed of joint.
+        delay           (integer):                 The delay before moving on to next instruction.
+    '''
+    if side in ('R', 'L'):
+        motor_name = side
+    else:
+        raise Exception('"side" argument should be "R" or "L" (case sensitive)')
+
+    motor_name += "KneePitch"
+    
+    if not sync:
+        robot.motors[motor_name].setPosition(position)
+    else:
+        robot.motor_set_position_sync(robot.motors[motor_name], robot.sensors[motor_name], position, delay)
     pass
+
+def ankle(robot, side, rotation, position, sync, acceleration=None, speed=None, delay=250):
+    '''
+    Moves an ankle joint.
+
+    ARGS:
+        robot       (robot):                       The robot to move the joint.
+        side        ("R" or "L"):                  Which of the left or right joint to move.
+        rotation    ("Roll", "Pitch" or "Yaw"):    Which rotation to apply to joint.
+        position    (float):                       What position to move the joint to.
+        sync        (True or False):               Whether this motion is the last motion in the current keyframe.
+
+    OPTIONAL ARGS:
+        acceleration    (float):                   Max acceleration of joint.
+        speed           (float):                   Max speed of joint.
+        delay           (integer):                 The delay before moving on to next instruction.
+    '''
+    if side in ('R', 'L'):
+        motor_name = side
+    else:
+        raise Exception('"side" argument should be "R" or "L" (case sensitive)')
+
+    motor_name += "Ankle"
+
+    if rotation in ('Roll', 'Pitch', 'Yaw'):
+        motor_name += rotation
+    else:
+        raise Exception('"rotation" argument should be "Roll" or "Pitch" or "Yaw" (case sensitive)')
+    
+    if not sync:
+        robot.motors['LShoulderPitch'].setPosition(1.49797)
+    else:
+        robot.motor_set_position_sync(robot.motors[motor_name], robot.sensors[motor_name], position, delay)
+
+
+def move(robot, joint, side, rotation, position, sync, acceleration=None, speed=None, delay=250):
+    '''
+    Moves the specified joint.
+
+    ARGS:
+        robot       (robot):                       The robot to move the joint.
+        joint       (string):                      The joint to move (Shoulder, Ankle...)
+        side        ("R" or "L"):                  Which of the left or right joint to move.
+        rotation    ("Roll", "Pitch" or "Yaw"):    Which rotation to apply to joint.
+        position    (float):                       What position to move the joint to.
+        sync        (True or False):               Whether this motion is the last motion in the current keyframe.
+
+    OPTIONAL ARGS:
+        acceleration    (float):                   Max acceleration of joint.
+        speed           (float):                   Max speed of joint.
+        delay           (integer):                 The delay before moving on to next instruction.
+    '''
+    if side in ('R', 'L'):
+        motor_name = side
+    else:
+        raise Exception('"side" argument should be "R" or "L" (case sensitive)')
+
+    motor_name += joint
+
+    if rotation in ('Roll', 'Pitch', 'Yaw'):
+        motor_name += rotation
+    
+    try:
+        if not sync:
+            robot.motors[motor_name].setPosition(position)
+        else:
+            robot.motor_set_position_sync(robot.motors[motor_name], robot.sensors[motor_name], position, delay)
+    except:
+        raise Exception('Please ensure your given arguments are correct')
 
