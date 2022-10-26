@@ -127,3 +127,5 @@ To hide the input field, refresh the page.
     
 # To Forkers:
 *I recommend to take a look at and re-implement/revert commit `55d7766aae460bb51158d65ffc621db554ca462b` to make application more secure.*
+
+*Fonts and other real-time retrieved assets will not work on Intranet. To fix, include assets in project*
