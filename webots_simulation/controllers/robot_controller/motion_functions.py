@@ -1,18 +1,34 @@
 '''
-MOTION-FUNCTIONS
+MOTION FUNCTIONS
 
-A Motion-Function is a python function that makes a robot do an animation.
+A Motion Function is a python function that makes a robot do an animation.
 
-On Motion-Functions:
+On Motion Functions:
     * Contains Keyframes in which motors positions are set. 
-    * Each Keyframe should use motor_set_position_sync() ONCE to avoid async issues. Motions are skipped if not used.
+    * Each Keyframe should use sync=True or motor_set_position_sync() ONCE to avoid async issues. Motions are skipped if not used.
     * The last keyframe resets all motors used in the motion to the default position.
     * You should also be able to adjust motor acceleration and more by using the Webots API.
 
 Future Work: 
-    * Motion functions should be generated along with robot.run()
+    * Motion functions should be generated
     * Motions should be created using an editor 
 '''
+def abstracted_wave(robot):
+    # Keyframe 1
+    move(robot, False, 1.49797, "Shoulder", "Pitch", "L")
+    move(robot, True, -1.5, "Shoulder", "Pitch", "R")
+    # Keyframe 2
+    move(robot, True, 0.3, "Shoulder", "Roll", "R")
+    # Keyframe 3
+    move(robot, True, -0.5, "Shoulder", "Roll", "R")
+    # Keyframe 4
+    move(robot, True, 0.3, "Shoulder", "Roll", "R")
+    # Keyframe 5
+    move(robot, True, -0.5, "Shoulder", "Roll", "R")
+    # Keyframe 6
+    move(robot, True, 0, "Shoulder", "Roll", "R")
+    # Reset motor positions
+    move(robot, True, 1.5, "Shoulder", "Pitch", "R")
 
 def wave(robot):
     # Keyframe 1
