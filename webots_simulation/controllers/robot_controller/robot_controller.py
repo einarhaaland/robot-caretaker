@@ -1,15 +1,5 @@
 '''
-This controller accesses motors to perform animation. Webots Motions are not used.
-
-HOW TO IMPLEMENT YOUR OWN ROBOT:
-    * Copy file structure
-    * Rename files appropriatly
-    * Fill in relevant values in config file (you can add more devices)
-    * Create motion functions akin to those below: wave(), nod()..
-    * Call motion function in run() ( add elif instruction == 'your instruction': self.<motionfunction()> )
-    * Add robot to webot world and change its controller
-    * Start system (see README.me)
-
+This controller listens for incomming messages and accesses motors to perform the given animation / instruction.
 '''
 import sys
 import os

@@ -10,8 +10,8 @@ On Motion Functions:
     * You should also be able to adjust motor acceleration and more by using the Webots API.
 
 Future Work: 
-    * Motion functions should be generated
-    * Motions should be created using an editor 
+    * Motions should be created using a GUI / editor 
+    * Motion functions should be generated after creating them in the GUI / editor
 '''
 def abstracted_wave(robot):
     # Keyframe 1
@@ -190,6 +190,14 @@ def thinking(robot):
     robot.motor_set_position_sync(robot.motors['LShoulderPitch'], robot.sensors['LShoulderPitch'], 1.5, 250)
 
 
+
+'''
+This function abstracts the syntax required to create motion functions, allowing more non-experts to create motion functions.
+
+Arguments are represented with strings instead of enums to avoid extra syntax for non-coders.
+
+Arguments "acceleration" and "speed" are not used. You should be able to use the webots API to enable them.
+'''
 def move(robot, sync, position, joint, rotation='', side='', delay=250, acceleration=None, speed=None):
     '''
     Moves the specified joint.

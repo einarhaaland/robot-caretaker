@@ -3,17 +3,15 @@ import pika
 
 class Subscriber:
     '''
-    Class that implements the subscriber logic in messaging system.
-
-    IMPORTANT:
-    The supplied callback function must be available in the file where this class is used.
+    Class that implements the subscriber logic in the messaging system.
     '''
 
     def __init__(self, exchange, routing_key, callback, exchange_type='fanout',):
         '''
-        exchange: name of exchange (str)
-        routing_key: name of routing key (str)
-        callback: name of callback-function (Callable)
+        ARGS:
+            * exchange: name of exchange (str)
+            * routing_key: name of routing key (str)
+            * callback: name of callback-function (Callable)
         '''
         self.exchange = exchange
         self.routing_key = routing_key

@@ -39,7 +39,7 @@ class SuperController(Robot):
 
     def startMotion(self, motion):
         '''
-        Starts a motion.
+        Starts a motion. (This is only used by controllers using .motion files to play animations)
 
         ARGS:
             motion: the motion to start (Motion)

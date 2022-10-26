@@ -3,7 +3,7 @@ import pika
 '''
 Publishes a message using Pika -> RabbitMQ
 
-Queue is declared and bound to exhange in the Consumer,
+Queue is declared and bound to exhange in the Consumer.
 
 ARGS:
     body:           The content to send                         (JSON)
