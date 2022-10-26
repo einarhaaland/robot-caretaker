@@ -244,38 +244,4 @@ def ankle(robot, side, rotation, position, sync, acceleration=None, speed=None, 
         robot.motor_set_position_sync(robot.motors[motor_name], robot.sensors[motor_name], position, delay)
 
 
-def move(robot, joint, side, rotation, position, sync, acceleration=None, speed=None, delay=250):
-    '''
-    Moves the specified joint.
-
-    ARGS:
-        robot       (robot):                       The robot to move the joint.
-        joint       (string):                      The joint to move (Shoulder, Ankle...)
-        side        ("R" or "L"):                  Which of the left or right joint to move.
-        rotation    ("Roll", "Pitch" or "Yaw"):    Which rotation to apply to joint.
-        position    (float):                       What position to move the joint to.
-        sync        (True or False):               Whether this motion is the last motion in the current keyframe.
-
-    OPTIONAL ARGS:
-        acceleration    (float):                   Max acceleration of joint.
-        speed           (float):                   Max speed of joint.
-        delay           (integer):                 The delay before moving on to next instruction.
-    '''
-    if side in ('R', 'L'):
-        motor_name = side
-    else:
-        raise Exception('"side" argument should be "R" or "L" (case sensitive)')
-
-    motor_name += joint
-
-    if rotation in ('Roll', 'Pitch', 'Yaw'):
-        motor_name += rotation
-    
-    try:
-        if not sync:
-            robot.motors[motor_name].setPosition(position)
-        else:
-            robot.motor_set_position_sync(robot.motors[motor_name], robot.sensors[motor_name], position, delay)
-    except:
-        raise Exception('Please ensure your given arguments are correct')
 

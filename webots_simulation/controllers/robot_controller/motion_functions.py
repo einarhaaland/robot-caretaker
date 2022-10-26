@@ -172,3 +172,39 @@ def thinking(robot):
     robot.motors['HeadYaw'].setPosition(0)
     robot.motors['HeadPitch'].setPosition(0)
     robot.motor_set_position_sync(robot.motors['LShoulderPitch'], robot.sensors['LShoulderPitch'], 1.5, 250)
+
+
+def move(robot, sync, position, joint, rotation='', side='', delay=250, acceleration=None, speed=None):
+    '''
+    Moves the specified joint.
+
+    ARGS:
+        * robot       (robot):                       The robot to move the joint.
+        * sync        (True or False):               Whether this motion is the last motion in the current keyframe.
+        * position    (float):                       What position to move the joint to.
+        * joint       (string):                      The joint to move ("Shoulder", "Ankle"...)
+        * rotation    ("Roll", "Pitch" or "Yaw"):    Which rotation to apply to joint. (Optional)
+        * side        ("R" or "L"):                  Which of the left or right joint to move. (Optional)
+        * delay       (integer):                     The delay before moving on to next instruction. (Optional)
+        * acceleration(float):                       Max acceleration of joint. (Optional) (Not Used)
+        * speed       (float):                       Max speed of joint. (Optional) (Not Used)
+    '''
+    if side in ('R', 'L'):
+        motor = side
+    elif side != '':
+        raise Exception("Argument 'side' should be 'R' or 'L' or not specified...")
+
+    motor += joint
+
+    if rotation in ('Roll', 'Pitch', 'Yaw'):
+        motor += rotation
+    elif rotation != '':
+        raise Exception("Argument 'rotation' should be 'Roll' or 'Pitch' or 'Yaw' or not specified...")
+    
+    try:
+        if not sync:
+            robot.motors[motor].setPosition(position)
+        else:
+            robot.motor_set_position_sync(robot.motors[motor], robot.sensors[motor], position, delay)
+    except:
+        raise Exception(f'Wrong args. Your args resulted in trying to move "{motor}"...')
