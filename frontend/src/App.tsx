@@ -18,9 +18,9 @@ function App() {
   return (
     <>
       <NavBar />
-      <div style={{margin:50}}>
-        <MoodGrid moodCards={["Cheer", "Nod", "Wave", "ShakeHead", "Thinking"]} />
-      </div>
+      <MoodGrid moodCards={["Cheer", "Nod"]} color="#e7e6f7" />
+      <MoodGrid moodCards={["Wave", "Thinking"]} color="#e3d0d8" />
+      <MoodGrid moodCards={["ShakeHead"]} color="#aea3b0" />
     </>
   );
 }

@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 interface GridProps {
   moodCards: string[],
+  color: string
 }
 
 
@@ -47,7 +48,7 @@ function MoodGrid(props: GridProps) {
   return (
     <>
 
-      <Grid container spacing={3}>
+      <Grid container xs={4} spacing={3} style={{backgroundColor: props.color, margin: "0px", display: "inline-flex", height: "100vh"}}>
         {cards}
       </Grid>
 
