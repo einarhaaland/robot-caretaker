@@ -54,8 +54,8 @@ function App() {
 
       {
         showFormAdd && 
-        <form onSubmit={handleSubmitAdd} style={{position:'absolute', left:'30%', bottom:'50%'}}>
-            Enter name of new mood-function:
+        <form onSubmit={handleSubmitAdd} style={{position:'absolute', left:'38.4%', bottom:'40%', fontFamily: 'roboto', backgroundColor: 'lightblue', padding: '20px', borderRadius: '5px'}}>
+            <p>Enter name and sentiment of new mood-function:</p>
             <input type={"text"} name={"mood"}/>
             <select defaultValue={"Positive"} name={"sentiment"}>
               <option value={"Positive"}>Positive</option>
@@ -66,8 +66,8 @@ function App() {
       }
       {
         showFormDelete && 
-        <form onSubmit={handleSubmitDelete} style={{position:'absolute', left:'30%', bottom:'50%'}}>
-            Enter name of mood-function to delete:
+        <form onSubmit={handleSubmitDelete} style={{position:'absolute', left:'38.4%', bottom:'40%', fontFamily: 'roboto', backgroundColor: 'lightblue', padding: '20px', borderRadius: '5px'}}>
+            <p>Enter name and sentiment of mood-function to delete:</p>
             <input type={"text"} name={"mood"}/>
             <select defaultValue={"Positive"} name={"sentiment"}>
               <option value={"Positive"}>Positive</option>
