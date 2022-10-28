@@ -43,10 +43,9 @@
     - Password: `guest`
 
 ## Robot Simulation:
-- `cd` terminal to webots project folder (`robot-caretaker/webots_implementation`)
+- `cd` terminal to webots project folder (`robot-caretaker/webots_simulation`)
 - `pip install -r requirements.txt` (Webots do not support Virtual environments as of version 2022b)
-- Open `robot-caretaker\webots_implementation\worlds\example.wbt` in Webots
-- Simulation should start automatically
+- Open `robot-caretaker\webots_simulation\worlds\example.wbt` in Webots. (Simulation starts automatically)
 
 **The system should now be running end-to-end.**
 
@@ -61,20 +60,20 @@ Clicking one of these will result in the robot performing that motion.
 **For Experts:**
 
 To add a motion button, click the green `+` button in the bottom right corner of the webpage.
-An input field will appear. Enter the name of the new motion (name should be similar to motion-function) and press `ENTER`.
+An input field will appear. Enter the name and sentiment of the new motion (name should be similar to motion-function) and press `ENTER`.
 
 To delete a motion button, click the red trashcan in the bottom right corner of the webpage.
-An input field will appear. Enter the exact name of the motion button you would like to delete and press `ENTER`.
+An input field will appear. Enter the exact name and sentiment of the motion button you would like to delete and press `ENTER`.
 
 To hide the input field, refresh the page. 
 
 # Adding a new robot
 **This system allows you to easily add any robot:**
-* Copy `/webots_implementation` directory
-* Add a new robot to the Webots simulation and change its controller to `nao_motor_controller.py`
-* Fill in values for joint motors and sensors in `/controllers/nao_motor_controller/config.yaml`
-* Create Motion-Functions akin to functions `wave(), nod(), etc` in `/controllers/nao_motor_controller/motion_functions.py`
-* Create a MoodCard in the frontend by clicking the green `+` button. In the input field, enter a name similar to coresponding motion-function and press `Enter`
+* Copy `/webots_simulation` directory
+* Add a new robot to the Webots simulation and change its controller to `robot_controller.py`
+* Fill in values for joint motors and sensors in `/controllers/robot_controller/config.yaml`
+* Create Motion-Functions akin to functions `wave(), nod(), etc` in `/controllers/robot_controller/motion_functions.py`
+* Create a MoodCard in the frontend by clicking the green `+` button. In the input field, enter a name similar to coresponding motion-function along with fitting sentiment and press `Enter`
 
 *The system should now be functional with your newly added robot.*
 
@@ -103,13 +102,13 @@ To hide the input field, refresh the page.
         - `components` React components (navbar, moodgrid, moodcards..)
         - `App.tsx` Main page
 
-- `webots_implementation`
+- `webots_simulation`
     - `controllers` 
-        - `nao_emotion_controller` Example implementation of Webots controller for the Nao robot using MOTION files.
-        - `nao_motor_controller` Example implementation of Webots controller for the Nao robot using its motors.
+        - `nao_motion_controller` Example implementation of Webots controller for the Nao robot using .MOTION files.
+        - `robot_controller` Example implementation of Webots controller for the Nao robot using its motors.
             - `config.yaml` Config file used when initializing the robots devices
             - `motion_functions.py` Here you can add more motion-functions for your robot to perform.
-            - `nao_motor_controller.py` This is the robot controller. Edit run() to make your robot perform more motion-functions.
+            - `robot_controller.py` This is the robot controller. Edit run() to make your robot perform more motion-functions.
         - `subscriber.py` Subscriber logic. Used in `supercontroller.py`
         - `super_controller.py` General controller. Robot-specific controllers inherit from this.
     - `motions` .motion files used for pre-existing animations
@@ -119,7 +118,7 @@ To hide the input field, refresh the page.
 - **Controller** or **Robot Controller**
     - This is a script that tells the robot what to do.
 - **Motion-Function**
-    - A function of motor-setting sequences resulting in an animation/motion. Use motor_set_position_sync() once every keyframe to avoid async issues.
+    - A function of motor-setting sequences resulting in an animation/motion. Use sync=True / motor_set_position_sync() once every keyframe to avoid async issues.
 - **Instruction**
     - What the robot will perform e.g wave, smile, cheer...
 - **MoodCard**
