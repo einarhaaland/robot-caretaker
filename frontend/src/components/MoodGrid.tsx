@@ -13,11 +13,12 @@ function MoodGrid(props: GridProps) {
   const [cards, setCards] = useState<React.ReactElement[]>([]);
 
   useEffect(() => {
-    //setCards([]);
+    setCards([]);
+    console.log("GRID RENDERED")
     for (let i = 0; i < props.moodCards.length; i++) {
       setCards((oldArray) => [...oldArray, <Grid item><MoodCard title={props.moodCards[i]}/></Grid>])
     }
-  }, []);
+  }, [props.moodCards]);
 
   return (
     <>

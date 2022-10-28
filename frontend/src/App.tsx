@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import NavBar from './components/Navbar';
 import MoodGrid from './components/MoodGrid';
@@ -13,34 +13,54 @@ function App() {
   const [showFormAdd, setShowFormAdd] = useState(false)
   const [showFormDelete, setShowFormDelete] = useState(false)
 
+  useEffect(() => {
+    console.log("APP RENDERED")
+  })
+
   const handleSubmitAdd = (e: any) => {
     e.preventDefault();
+    if (e.target.sentiment.value === "Positive") {
+      setPosCards((arr) => [...arr, e.target.mood.value]);
+    }
+    else if (e.target.sentiment.value === "Neutral") {
+      setNeuCards( (arr) => [...arr, e.target.mood.value]);
+    }
+    else if (e.target.sentiment.value === "Negative") {
+      setNegCards( (arr) => [...arr, e.target.mood.value]);
+    }
     setShowFormAdd(false)
   }
 
   const handleSubmitDelete = (e: any) => {
     e.preventDefault();
-    for (let i = 0; i < posCards.length; i++) {
-      if (posCards[i] == e.target.mood.value) {
-        if (e.target.sentiment.value == "Positive") {
+    if (e.target.sentiment.value === "Positive") {
+      for (let i = 0; i < posCards.length; i++) {
+        if (e.target.mood.value === posCards[i]) {
           setPosCards( (arr) => {
             arr.splice(i, 1);
             return arr;
           });
         }
-        else if (e.target.sentiment.value == "Neutral") {
+      }
+    }
+    else if (e.target.sentiment.value === "Neutral") {
+      for (let i = 0; i < neuCards.length; i++) {
+        if (e.target.mood.value === neuCards[i]) {
           setNeuCards( (arr) => {
             arr.splice(i, 1);
             return arr;
           });
         }
-        else if (e.target.sentiment.value == "Positive") {
+      }
+    }
+    else if (e.target.sentiment.value === "Negative") {
+      for (let i = 0; i < negCards.length; i++) {
+        if (e.target.mood.value === negCards[i]) {
           setNegCards( (arr) => {
             arr.splice(i, 1);
             return arr;
           });
         }
-        break;
       }
     }
     setShowFormDelete(false)
@@ -58,6 +78,11 @@ function App() {
         <form onSubmit={handleSubmitAdd} style={{position:'absolute', left:'30%', bottom:'50%'}}>
             Enter name of new mood-function:
             <input type={"text"} name={"mood"}/>
+            <select defaultValue={"Positive"} name={"sentiment"}>
+              <option value={"Positive"}>Positive</option>
+              <option value={"Neutral"}>Neutral</option>
+              <option value={"Negative"}>Negative</option>
+            </select>
         </form> 
       }
       {
@@ -65,6 +90,11 @@ function App() {
         <form onSubmit={handleSubmitDelete} style={{position:'absolute', left:'30%', bottom:'50%'}}>
             Enter name of mood-function to delete:
             <input type={"text"} name={"mood"}/>
+            <select defaultValue={"Positive"} name={"sentiment"}>
+              <option value={"Positive"}>Positive</option>
+              <option value={"Neutral"}>Neutral</option>
+              <option value={"Negative"}>Negative</option>
+            </select>
         </form> 
       }
 
