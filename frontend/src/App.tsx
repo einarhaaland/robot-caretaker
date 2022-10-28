@@ -34,34 +34,13 @@ function App() {
   const handleSubmitDelete = (e: any) => {
     e.preventDefault();
     if (e.target.sentiment.value === "Positive") {
-      for (let i = 0; i < posCards.length; i++) {
-        if (e.target.mood.value === posCards[i]) {
-          setPosCards( (arr) => {
-            arr.splice(i, 1);
-            return arr;
-          });
-        }
-      }
+      setPosCards( (arr) => arr.filter( (mood) => mood!== e.target.mood.value))
     }
     else if (e.target.sentiment.value === "Neutral") {
-      for (let i = 0; i < neuCards.length; i++) {
-        if (e.target.mood.value === neuCards[i]) {
-          setNeuCards( (arr) => {
-            arr.splice(i, 1);
-            return arr;
-          });
-        }
-      }
+      setNeuCards( (arr) => arr.filter( (mood) => mood!== e.target.mood.value))
     }
     else if (e.target.sentiment.value === "Negative") {
-      for (let i = 0; i < negCards.length; i++) {
-        if (e.target.mood.value === negCards[i]) {
-          setNegCards( (arr) => {
-            arr.splice(i, 1);
-            return arr;
-          });
-        }
-      }
+      setNegCards( (arr) => arr.filter( (mood) => mood!== e.target.mood.value))
     }
     setShowFormDelete(false)
   }
