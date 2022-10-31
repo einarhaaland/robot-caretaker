@@ -86,9 +86,9 @@ function App() {
         <DeleteIcon fontSize='inherit'/>
       </IconButton>
 
-      <SentimentLabel style={{left: "5.55%"}} label="Positive" />
-      <SentimentLabel style={{left: "38.88%"}} label="Neutral" />
-      <SentimentLabel style={{left: "72.21%"}} label="Negative" />
+      <SentimentLabel style={{left: "5.6%"}} label="Positive" />
+      <SentimentLabel style={{left: "38.93%"}} label="Neutral" />
+      <SentimentLabel style={{left: "72.26%"}} label="Negative" />
 
     </>
   );
