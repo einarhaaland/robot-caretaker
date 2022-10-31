@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import MoodCard from './MoodCard';
 import { Grid } from '@mui/material';
+import SentimentLabel from './SentimentLabel';
 
 
 interface GridProps {
   moodCards: string[],
-  color: string
+  color: string,
 }
 
 

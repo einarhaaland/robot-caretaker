@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import NavBar from './components/Navbar';
 import MoodGrid from './components/MoodGrid';
+import SentimentLabel from './components/SentimentLabel';
 import { IconButton } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -48,9 +49,9 @@ function App() {
   return (
     <>
       <NavBar />
-      <MoodGrid moodCards={posCards} color="#e7e6f7" />
-      <MoodGrid moodCards={neuCards} color="#e3d0d8" />
-      <MoodGrid moodCards={negCards} color="#aea3b0" />
+      <MoodGrid moodCards={posCards} color="#e7e6f7"/>
+      <MoodGrid moodCards={neuCards} color="#e3d0d8"/>
+      <MoodGrid moodCards={negCards} color="#aea3b0"/>
 
       {
         showFormAdd && 
@@ -77,13 +78,18 @@ function App() {
         </form> 
       }
 
-      <IconButton aria-label="add" size="large" onClick={() => setShowFormAdd(true)} sx={{position:'absolute', bottom:0, right:100, fontSize:"5rem", color:'#4CAF50'}}>
+      <IconButton aria-label="add" size="large" onClick={() => setShowFormAdd(true)} sx={{position:'absolute', bottom:40, right:100, fontSize:"5rem", color:'#4CAF50'}}>
         <AddCircleIcon fontSize='inherit'/>
       </IconButton>
 
-      <IconButton aria-label="add" size="large" onClick={() => setShowFormDelete(true)} sx={{position:'absolute', bottom:0, right:0, fontSize:"5rem", color:'#e41b36'}}>
+      <IconButton aria-label="add" size="large" onClick={() => setShowFormDelete(true)} sx={{position:'absolute', bottom:40, right:0, fontSize:"5rem", color:'#e41b36'}}>
         <DeleteIcon fontSize='inherit'/>
       </IconButton>
+
+      <SentimentLabel style={{left: "5.55%"}} label="Positive" />
+      <SentimentLabel style={{left: "38.88%"}} label="Neutral" />
+      <SentimentLabel style={{left: "72.21%"}} label="Negative" />
+
     </>
   );
 }
