@@ -245,6 +245,12 @@ Mulige typer edit distance:
 # DSL
 * et DSL modelerer text -> kode objekter slik at jeg kan bruke teksten i min kode.
 * grammar definerer hvordan syntaksen på dsl skal se ut.
-	* ved å lagre tekst i variabler som NAME, kan jeg bruke det i min egen kode etter at DSL er kompilert.
+	* ved å lagre tekst i variabler som NAME, kan jeg bruke det i min egen kode etter at DSL er kompilert. alternativt se under
 * ANTLR, xText, Langium, TextX
 	* kan jeg bruke tekst parset i  f.eks ANTLR parser (som parser til java) i min python kode? Må jeg bruke TextX som er python?
+		* translate til xml eller lignende? XEMBLY
+		* "every time you see something in the syntax, you generate xml tag/file"
+
+* Bra video: https://www.youtube.com/watch?v=I9xyZVSo-HY time: 28:08 for tabs
+
+* Lage nytt repo som er bibliotek av RobmoLang, RobmoLang funksjoner og deres genererte xml? Publishe som Py package? importe den i mitt system og tolke xml.
