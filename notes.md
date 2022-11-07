@@ -241,3 +241,10 @@ Mulige typer edit distance:
 	* lage eksempler på flere abstraksjonsnivåer i motion_functions.py
 	* combine all abstraction functions into one def move():
 		* maybe move it to motion_functions.py
+
+# DSL
+* et DSL modelerer text -> kode objekter slik at jeg kan bruke teksten i min kode.
+* grammar definerer hvordan syntaksen på dsl skal se ut.
+	* ved å lagre tekst i variabler som NAME, kan jeg bruke det i min egen kode etter at DSL er kompilert.
+* ANTLR, xText, Langium, TextX
+	* kan jeg bruke tekst parset i  f.eks ANTLR parser (som parser til java) i min python kode? Må jeg bruke TextX som er python?
