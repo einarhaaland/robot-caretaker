@@ -253,4 +253,8 @@ Mulige typer edit distance:
 
 * Bra video: https://www.youtube.com/watch?v=I9xyZVSo-HY time: 28:08 for tabs
 
-* Lage nytt repo som er bibliotek av RobmoLang, RobmoLang funksjoner og deres genererte xml? Publishe som Py package? importe den i mitt system og tolke xml.
+* Lage nytt repo som er bibliotek av RobmoLang, RobmoLang funksjoner og deres genererte xml? Publishe som lib? importe den i mitt system og tolke xml.
+
+* Langium har ikke blitt testet med python-like indenting.
+	* er "repeat" ambiguous? repeat 1 kjører en eller to ganger?
+	* multiline funker sannsynligvis ikke som forventet. Se "synthetic tokens" https://github.com/langium/langium/discussions/663
