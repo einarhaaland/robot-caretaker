@@ -258,3 +258,4 @@ Mulige typer edit distance:
 * Langium har ikke blitt testet med python-like indenting.
 	* er "repeat" ambiguous? repeat 1 kjører en eller to ganger?
 	* multiline funker sannsynligvis ikke som forventet. Se "synthetic tokens" https://github.com/langium/langium/discussions/663
+	* Må kanskje lage egen generator for å recompile grammar og sånn?
