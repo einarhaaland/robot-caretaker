@@ -261,7 +261,10 @@ Mulige typer edit distance:
 	* Må kanskje lage egen generator for å recompile grammar og sånn?
 
 ## PLAN
-* lage monaco editor på add-motion side i frontend med grønn "SAVE" knapp på siden (https://www.npmjs.com/package/@monaco-editor/react) (https://www.typefox.io/blog/langium-web-browser)
+* lage monaco editor på add-motion side i frontend med grønn "SAVE" knapp på siden 
+	* (https://www.npmjs.com/package/@monaco-editor/react) 
+	* (https://www.typefox.io/blog/langium-web-browser)
+	* (https://github.com/langium/langium-website/pull/86/commits/d33b7d3bd1b6942f52b2d4bbc2c91bdbd71f90ac) DENNE HER
 * gjøre om DSL -> JSON i frontend
 * Sende JSON til backend endepunkt
 * Sende JSON fra backend -> RabbitMQ -> RobotController
