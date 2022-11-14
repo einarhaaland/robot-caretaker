@@ -15,7 +15,6 @@ function MoodGrid(props: GridProps) {
 
   useEffect(() => {
     setCards([]);
-    console.log("GRID RENDERED")
     for (let i = 0; i < props.moodCards.length; i++) {
       setCards((oldArray) => [...oldArray, <Grid item><MoodCard title={props.moodCards[i]}/></Grid>])
     }
