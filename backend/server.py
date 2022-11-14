@@ -21,6 +21,11 @@ def mood(mood):
     send(mood)
     return {"mood": mood}
 
+@app.route("/motion")
+def motion():
+    # Send JSONifyed motion function
+    pass
+
 
 if __name__ == "__main__":
     app.run(debug=True)
