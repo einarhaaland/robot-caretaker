@@ -52,15 +52,24 @@
 *Try clicking a button in the web-UI and see if it is sent to the robot simulation.*
 
 # How to use
-**For Users:**
+## Make Robot Perform Motion
 
 On the webpage there are several large buttons coresponding to a robot motion.
 Clicking one of these will result in the robot performing that motion.
 
-**For Experts:**
+## Adding a New Motion
+**First, let's create a new motion**
+* Click the `Add Motion` button in the navigation bar at the top of the page.
+* You are presented with a Code Editor.
+* Follow the RobotMotionLanguage guide to create a motion.
+* Click the `SAVE` Button to save your motion function to the system.
 
-To add a motion button, click the green `+` button in the bottom right corner of the webpage.
-An input field will appear. Enter the name and sentiment of the new motion (name should be similar to motion-function) and press `ENTER`.
+**Let's add a button for performing the motion**
+* Click the green `+` button in the bottom right corner of the webpage.
+* An input field will appear. Enter the name and sentiment of the new motion (name should be similar to motion-function) and press `ENTER`.
+
+**The robot should now perform the motion when clicking the button!**
+
 
 To delete a motion button, click the red trashcan in the bottom right corner of the webpage.
 An input field will appear. Enter the exact name and sentiment of the motion button you would like to delete and press `ENTER`.
@@ -78,8 +87,10 @@ To hide the input field, refresh the page.
 *The system should now be functional with your newly added robot.*
 
 # Troubleshooting
-- **Added a new robot and it won't run an instruction?**
+- **My robot won't perform a motion?**
     - Make sure all motors and sensors in the Motion-Function you are trying to run is set in your config.yaml
+    - Make sure your robot supports all the joints used in the Motion you are trying to run.
+    - Make sure your mood card name is as close as possible to the motion you are trying to perform.
 - **Can't activate Virtual environment?**
     - Open powershell as admin and type: `Set-ExecutionPolicy RemoteSigned`
 - **Frontend won't run?**
@@ -100,6 +111,7 @@ To hide the input field, refresh the page.
 - `frontend` React app
     - `src`
         - `components` React components (navbar, moodgrid, moodcards..)
+        - `pages` The pages the React-router browses between
         - `App.tsx` Main page
 
 - `webots_simulation`
