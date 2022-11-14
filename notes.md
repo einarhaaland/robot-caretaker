@@ -259,3 +259,10 @@ Mulige typer edit distance:
 	* er "repeat" ambiguous? repeat 1 kjører en eller to ganger?
 	* multiline funker sannsynligvis ikke som forventet. Se "synthetic tokens" https://github.com/langium/langium/discussions/663
 	* Må kanskje lage egen generator for å recompile grammar og sånn?
+
+## PLAN
+* lage monaco editor på add-motion side i frontend med grønn "SAVE" knapp på siden (https://www.npmjs.com/package/@monaco-editor/react) (https://www.typefox.io/blog/langium-web-browser)
+* gjøre om DSL -> JSON i frontend
+* Sende JSON til backend endepunkt
+* Sende JSON fra backend -> RabbitMQ -> RobotController
+* Handle JSON ved å skrive til motionFunctions.py (python file append)
