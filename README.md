@@ -63,6 +63,7 @@ Clicking one of these will result in the robot performing that motion.
 * You are presented with a Code Editor.
 * Follow the RobotMotionLanguage guide to create a motion.
 * Click the `SAVE` Button to save your motion function to the system.
+*If the DSL does not meet your requirements, you can add motions directly in `motion_functions.py`*
 
 **Let's add a button for performing the motion**
 * Click the green `+` button in the bottom right corner of the webpage.
@@ -81,8 +82,6 @@ To hide the input field, refresh the page.
 * Copy `/webots_simulation` directory
 * Add a new robot to the Webots simulation and change its controller to `robot_controller.py`
 * Fill in values for joint motors and sensors in `/controllers/robot_controller/config.yaml`
-* Create Motion-Functions akin to functions `wave(), nod(), etc` in `/controllers/robot_controller/motion_functions.py`
-* Create a MoodCard in the frontend by clicking the green `+` button. In the input field, enter a name similar to coresponding motion-function along with fitting sentiment and press `Enter`
 
 *The system should now be functional with your newly added robot.*
 
