@@ -1,0 +1,12 @@
+{
+    "projectName": "RobotMotionLanguage",
+    "languages": [{
+        "id": "robot-motion-language",
+        "grammar": "src/language-server/robot-motion-language.langium",
+        "fileExtensions": [".rml"],
+        "textMate": {
+            "out": "syntaxes/robot-motion-language.tmLanguage.json"
+        }
+    }],
+    "out": "src/language-server/generated"
+}

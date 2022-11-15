@@ -1,0 +1,47 @@
+{
+  "name": "robot-motion-language",
+  "scopeName": "source.robot-motion-language",
+  "fileTypes": [
+    ".rml"
+  ],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "name": "keyword.control.robot-motion-language",
+      "match": "\\b(define|end|move|multimove|repeat|to)\\b"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.block.robot-motion-language",
+          "begin": "/\\*",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.robot-motion-language"
+            }
+          },
+          "end": "\\*/",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.robot-motion-language"
+            }
+          }
+        },
+        {
+          "begin": "//",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.whitespace.comment.leading.robot-motion-language"
+            }
+          },
+          "end": "(?=$)",
+          "name": "comment.line.robot-motion-language"
+        }
+      ]
+    }
+  }
+}
