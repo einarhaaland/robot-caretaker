@@ -21,10 +21,9 @@ def mood(mood):
     send(mood)
     return {"mood": mood}
 
-@app.route("/motion")
+@app.route("/motion", methods=["POST"])
 def motion():
-    # Send JSONifyed motion function
-    pass
+    send(request.json)
 
 
 if __name__ == "__main__":
