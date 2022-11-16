@@ -13,7 +13,7 @@ export function generateCommands(model: Model, filePath: string, destination: st
         fs.mkdirSync(data.destination, { recursive: true });
     }
 
-    // Generate JSON
+    // Start generate JSON from semantic model
     const result = generateModel(model);
     //
 
@@ -22,7 +22,7 @@ export function generateCommands(model: Model, filePath: string, destination: st
 }
 
 
-// GENERATE JSON
+// GENERATE JSON FROM SEMANTIC MODEL
 function generateModel(model: Model): Object {
     var result: Object[] = [];
     model.defs.forEach( d => {
@@ -34,6 +34,8 @@ function generateModel(model: Model): Object {
 function generateDefs(def: Def) : Object {
     var result: Object[] = [];
     def.stmt.forEach( s => {
+        console.log("PROCESSING STATEMENT:");
+        console.log(s);
         result.push(generateStmt(s));
     })
     return {'name': def.name, 'def': result};
@@ -49,7 +51,9 @@ function generateStmt(stmt: Stmt) : Object {
     else if (isMove(stmt)) {
         return generateMove(stmt);
     }
-    return {'error': 'stmt does not match any statement, maybe validation is insufficient?'}
+    else {
+        throw new Error(`stmt '${stmt}' does not match any of 'repeat', 'multimove', 'move'`);
+    }
 }
 
 function generateRepeat(repeat: Repeat) : {repeat: Object[], amount: number} {
