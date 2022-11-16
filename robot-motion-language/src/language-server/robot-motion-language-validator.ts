@@ -1,5 +1,5 @@
 import { ValidationAcceptor, ValidationChecks, ValidationRegistry } from 'langium';
-import { RobotMotionLanguageAstType, Model } from './generated/ast';
+import { RobotMotionLanguageAstType, Model, Repeat } from './generated/ast';
 import type { RobotMotionLanguageServices } from './robot-motion-language-module';
 
 /**
@@ -12,7 +12,7 @@ export class RobotMotionLanguageValidationRegistry extends ValidationRegistry {
         const checks: ValidationChecks<RobotMotionLanguageAstType> = {
             // Add checks here
             Model: validator.checkUniqueDefs, 
-            //Def: validator.checkRepeatAmountIsInt,
+            Repeat: validator.checkRepeatAmountIsInt,
         };
         this.register(checks, validator);
     }
@@ -34,13 +34,11 @@ export class RobotMotionLanguageValidator {
             reported.add(d.name);
         })
     }
-/*
-    checkRepeatAmountIsInt(def: Def, accept: ValidationAcceptor): void {
-        def.repeats.forEach(r => {
-            if (!Number.isInteger(r.amount)) {
-                accept('error', `Repeat amount '${r.amount}' should be an integer.`, {node: r, property: 'amount'});
+
+    checkRepeatAmountIsInt(repeat: Repeat, accept: ValidationAcceptor): void {
+            if (!Number.isInteger(repeat.amount)) {
+                accept('error', `Repeat amount '${repeat.amount}' should be an integer.`, {node: repeat, property: 'amount'});
             }
-        })
-    }*/
+    }
 
 }
