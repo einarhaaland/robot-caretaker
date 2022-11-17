@@ -1,6 +1,7 @@
 define wave
     repeat 3
         multimove
+            move left finger yaw to 0
         end
     end
 end

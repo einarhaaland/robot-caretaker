@@ -4,9 +4,19 @@
     {
       "repeat": [
         {
-          "multimove": []
+          "multimove": [
+            {
+              "move": {
+                "side": "left",
+                "joint": "finger",
+                "rotation": "yaw",
+                "position": 0
+              }
+            }
+          ]
         }
-      ]
+      ],
+      "amount": 3
     }
   ]
 }

@@ -14,13 +14,7 @@ export function generateCommands(model: Model, filePath: string, destination: st
     }
 
     // Start generate JSON from semantic model
-    console.log("MODEL:");
-    console.log(model);
     const result = generateModel(model);
-    console.log("GENERATED OBJECT");
-    console.log(result);
-    console.log("EXPANDED [OBJECT]:");
-    //console.log(Object(result)["commands"][0]["move"]);
 
     fs.writeFileSync(generatedFilePath, JSON.stringify(result, undefined, 2));
     return generatedFilePath;
@@ -62,17 +56,17 @@ function generateRepeat(repeat: Repeat) : Object {
             res.push(generateMove(s));
         }
     })
-    return {'repeat': res};
+    return {'repeat': res, 'amount': repeat.amount};
 }
 
 function generateMultiMove(multimove: MultiMove) : Object {
     var res: Object[] = [];
     multimove.compositeMoves.forEach(m => {
-        res.push({'move': m})
+        res.push(generateMove(m));
     })
     return {'multimove': res};
 }
 
 function generateMove(move: Move) : Object {
-    return {'move': move};
+    return {'move': {'side': move.side, 'joint': move.joint, 'rotation': move.rotation, 'position': move.position}};
 }

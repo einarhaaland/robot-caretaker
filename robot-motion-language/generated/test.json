@@ -1,0 +1,54 @@
+{
+  "def": "wave",
+  "commands": [
+    {
+      "move": {
+        "side": "right",
+        "joint": "shoulder",
+        "rotation": "pitch",
+        "position": -1.5
+      }
+    },
+    {
+      "repeat": [
+        {
+          "multimove": [
+            {
+              "move": {
+                "side": "right",
+                "joint": "shoulder",
+                "rotation": "roll",
+                "position": 0.3
+              }
+            },
+            {
+              "move": {
+                "side": "right",
+                "joint": "shoulder",
+                "rotation": "roll",
+                "position": -0.5
+              }
+            }
+          ]
+        }
+      ],
+      "amount": 3
+    },
+    {
+      "move": {
+        "side": "right",
+        "joint": "shoulder",
+        "rotation": "roll",
+        "position": 0
+      }
+    },
+    {
+      "move": {
+        "side": "right",
+        "joint": "shoulder",
+        "rotation": "pitch",
+        "position": 1.5
+      }
+    }
+  ]
+}
