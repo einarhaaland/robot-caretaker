@@ -10,7 +10,7 @@ import { AstNode, AstReflection, ReferenceInfo, isAstNode, TypeMetaData } from '
 export interface Def extends AstNode {
     readonly $container: Model;
     name: string
-    stmt: Array<Move | MultiMove | Repeat>
+    stmts: Array<Move | MultiMove | Repeat>
 }
 
 export const Def = 'Def';
@@ -45,7 +45,7 @@ export function isMove(item: unknown): item is Move {
 
 export interface MultiMove extends AstNode {
     readonly $container: Def | Repeat;
-    compositemoves: Array<Move>
+    compositeMoves: Array<Move>
 }
 
 export const MultiMove = 'MultiMove';
@@ -57,7 +57,7 @@ export function isMultiMove(item: unknown): item is MultiMove {
 export interface Repeat extends AstNode {
     readonly $container: Def;
     amount: number
-    stmt: Array<Move | MultiMove>
+    stmtsToRepeat: Array<Move | MultiMove>
 }
 
 export const Repeat = 'Repeat';
@@ -104,7 +104,7 @@ export class RobotMotionLanguageAstReflection implements AstReflection {
                 return {
                     name: 'Def',
                     mandatory: [
-                        { name: 'stmt', type: 'array' }
+                        { name: 'stmts', type: 'array' }
                     ]
                 };
             }
@@ -112,7 +112,7 @@ export class RobotMotionLanguageAstReflection implements AstReflection {
                 return {
                     name: 'MultiMove',
                     mandatory: [
-                        { name: 'compositemoves', type: 'array' }
+                        { name: 'compositeMoves', type: 'array' }
                     ]
                 };
             }
@@ -120,7 +120,7 @@ export class RobotMotionLanguageAstReflection implements AstReflection {
                 return {
                     name: 'Repeat',
                     mandatory: [
-                        { name: 'stmt', type: 'array' }
+                        { name: 'stmtsToRepeat', type: 'array' }
                     ]
                 };
             }

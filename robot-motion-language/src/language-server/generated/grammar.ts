@@ -57,7 +57,7 @@ export const RobotMotionLanguageGrammar = (): Grammar => loadedRobotMotionLangua
           },
           {
             "$type": "Assignment",
-            "feature": "stmt",
+            "feature": "stmts",
             "operator": "+=",
             "terminal": {
               "$type": "Alternatives",
@@ -65,7 +65,7 @@ export const RobotMotionLanguageGrammar = (): Grammar => loadedRobotMotionLangua
                 {
                   "$type": "RuleCall",
                   "rule": {
-                    "$refText": "Repeat"
+                    "$refText": "Move"
                   },
                   "arguments": []
                 },
@@ -79,7 +79,7 @@ export const RobotMotionLanguageGrammar = (): Grammar => loadedRobotMotionLangua
                 {
                   "$type": "RuleCall",
                   "rule": {
-                    "$refText": "Move"
+                    "$refText": "Repeat"
                   },
                   "arguments": []
                 }
@@ -124,7 +124,7 @@ export const RobotMotionLanguageGrammar = (): Grammar => loadedRobotMotionLangua
           },
           {
             "$type": "Assignment",
-            "feature": "stmt",
+            "feature": "stmtsToRepeat",
             "operator": "+=",
             "terminal": {
               "$type": "Alternatives",
@@ -132,14 +132,14 @@ export const RobotMotionLanguageGrammar = (): Grammar => loadedRobotMotionLangua
                 {
                   "$type": "RuleCall",
                   "rule": {
-                    "$refText": "MultiMove"
+                    "$refText": "Move"
                   },
                   "arguments": []
                 },
                 {
                   "$type": "RuleCall",
                   "rule": {
-                    "$refText": "Move"
+                    "$refText": "MultiMove"
                   },
                   "arguments": []
                 }
@@ -172,7 +172,7 @@ export const RobotMotionLanguageGrammar = (): Grammar => loadedRobotMotionLangua
           },
           {
             "$type": "Assignment",
-            "feature": "compositemoves",
+            "feature": "compositeMoves",
             "operator": "+=",
             "terminal": {
               "$type": "RuleCall",

@@ -1,0 +1,12 @@
+{
+  "def": "wave",
+  "commands": [
+    {
+      "repeat": [
+        {
+          "multimove": []
+        }
+      ]
+    }
+  ]
+}

@@ -4,13 +4,13 @@ entry Model:
     def=Def;
 
 Def: 
-    'define' name=ID stmt+=(Repeat | MultiMove | Move)* 'end';
+    'define' name=ID stmts+=( Move | MultiMove | Repeat )* 'end';
 
 Repeat:
-    'repeat' amount=NUMBER stmt+=(MultiMove | Move)* 'end';
+    'repeat' amount=NUMBER stmtsToRepeat+=(  Move | MultiMove )* 'end';
 
 MultiMove:
-    'multimove' (compositemoves+=Move)* 'end';
+    'multimove' compositeMoves+=(Move)* 'end';
 
 Move:
     'move' (side=SIDE)? joint=JOINT (rotation=ROT)? 'to' position=NUMBER;

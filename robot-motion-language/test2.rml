@@ -1,3 +1,6 @@
 define wave
-    move right shoulder pitch to -1.5
+    repeat 3
+        multimove
+        end
+    end
 end
