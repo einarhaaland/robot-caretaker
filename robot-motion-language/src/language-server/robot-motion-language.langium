@@ -1,16 +1,13 @@
 grammar RobotMotionLanguage
 
 entry Model:
-    (defs+=Def)*;
+    def=Def;
 
 Def: 
-    'define' name=ID (stmt+=Stmt)* 'end';
-
-Stmt: 
-    (Move | MultiMove | Repeat)*; //potential left-recursion
+    'define' name=ID stmt+=(Repeat | MultiMove | Move)* 'end';
 
 Repeat:
-    'repeat' amount=NUMBER (stmt+=Stmt)* 'end';
+    'repeat' amount=NUMBER stmt+=(MultiMove | Move)* 'end';
 
 MultiMove:
     'multimove' (compositemoves+=Move)* 'end';

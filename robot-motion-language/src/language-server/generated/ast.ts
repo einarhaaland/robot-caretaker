@@ -7,18 +7,10 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import { AstNode, AstReflection, ReferenceInfo, isAstNode, TypeMetaData } from 'langium';
 
-export type Stmt = Move | MultiMove | Repeat;
-
-export const Stmt = 'Stmt';
-
-export function isStmt(item: unknown): item is Stmt {
-    return reflection.isInstance(item, Stmt);
-}
-
 export interface Def extends AstNode {
     readonly $container: Model;
     name: string
-    stmt: Array<Stmt>
+    stmt: Array<Move | MultiMove | Repeat>
 }
 
 export const Def = 'Def';
@@ -28,7 +20,7 @@ export function isDef(item: unknown): item is Def {
 }
 
 export interface Model extends AstNode {
-    defs: Array<Def>
+    def: Def
 }
 
 export const Model = 'Model';
@@ -52,7 +44,7 @@ export function isMove(item: unknown): item is Move {
 }
 
 export interface MultiMove extends AstNode {
-    readonly $container: Def | MultiMove | Repeat;
+    readonly $container: Def | Repeat;
     compositemoves: Array<Move>
 }
 
@@ -63,9 +55,9 @@ export function isMultiMove(item: unknown): item is MultiMove {
 }
 
 export interface Repeat extends AstNode {
-    readonly $container: Def | MultiMove | Repeat;
+    readonly $container: Def;
     amount: number
-    stmt: Array<Stmt>
+    stmt: Array<Move | MultiMove>
 }
 
 export const Repeat = 'Repeat';
@@ -74,12 +66,12 @@ export function isRepeat(item: unknown): item is Repeat {
     return reflection.isInstance(item, Repeat);
 }
 
-export type RobotMotionLanguageAstType = 'Def' | 'Model' | 'Move' | 'MultiMove' | 'Repeat' | 'Stmt';
+export type RobotMotionLanguageAstType = 'Def' | 'Model' | 'Move' | 'MultiMove' | 'Repeat';
 
 export class RobotMotionLanguageAstReflection implements AstReflection {
 
     getAllTypes(): string[] {
-        return ['Def', 'Model', 'Move', 'MultiMove', 'Repeat', 'Stmt'];
+        return ['Def', 'Model', 'Move', 'MultiMove', 'Repeat'];
     }
 
     isInstance(node: unknown, type: string): boolean {
@@ -91,11 +83,6 @@ export class RobotMotionLanguageAstReflection implements AstReflection {
             return true;
         }
         switch (subtype) {
-            case Move:
-            case MultiMove:
-            case Repeat: {
-                return this.isSubtype(Stmt, supertype);
-            }
             default: {
                 return false;
             }
@@ -118,14 +105,6 @@ export class RobotMotionLanguageAstReflection implements AstReflection {
                     name: 'Def',
                     mandatory: [
                         { name: 'stmt', type: 'array' }
-                    ]
-                };
-            }
-            case 'Model': {
-                return {
-                    name: 'Model',
-                    mandatory: [
-                        { name: 'defs', type: 'array' }
                     ]
                 };
             }

@@ -2,7 +2,7 @@ import fs from 'fs';
 //import { CompositeGeneratorNode, NL, processGeneratorNode } from 'langium';
 import path from 'path';
 //import { resourceLimits } from 'worker_threads';
-import { Model, Def, Stmt, Move, MultiMove, Repeat, isRepeat, isMultiMove, isMove } from '../language-server/generated/ast';
+import { Model, Def, Move, MultiMove, Repeat, isRepeat, isMultiMove, isMove } from '../language-server/generated/ast';
 import { extractDestinationAndName } from './cli-util';
 
 export function generateCommands(model: Model, filePath: string, destination: string | undefined): string {
@@ -14,6 +14,7 @@ export function generateCommands(model: Model, filePath: string, destination: st
     }
 
     // Start generate JSON from semantic model
+    console.log(model);
     const result = generateModel(model);
     //
 
@@ -21,61 +22,50 @@ export function generateCommands(model: Model, filePath: string, destination: st
     return generatedFilePath;
 }
 
-
-// GENERATE JSON FROM SEMANTIC MODEL
-function generateModel(model: Model): Object {
-    var result: Object[] = [];
-    model.defs.forEach( d => {
-        result.push(generateDefs(d));
-    })
-    return {'model': result};
+function generateModel(model: Model) : Object {
+    return {'def': model.def.name, 'commands': generateDef(model.def)}
 }
 
-function generateDefs(def: Def) : Object {
-    var result: Object[] = [];
+function generateDef(def: Def) : Object[] {
+    var result: Object[] = []
     def.stmt.forEach( s => {
-        console.log("PROCESSING STATEMENT:");
-        console.log(s);
-        result.push(generateStmt(s));
+        if (isRepeat(s)) {
+            result.push(generateRepeat(s));
+        }
+        else if (isMultiMove(s)) {
+            result.push(generateMultiMove(s));
+        }
+        else if (isMove(s)) {
+            result.push(generateMove(s));
+        }
+        else {
+            throw new Error(`'${s}' is not a known statement.`)
+        }
     })
-    return {'name': def.name, 'def': result};
+    return result;
 }
 
-function generateStmt(stmt: Stmt) : Object {
-    if (isRepeat(stmt)) {
-        return generateRepeat(stmt);
-    }
-    else if (isMultiMove(stmt)) {
-        return generateMultiMove(stmt);
-    }
-    else if (isMove(stmt)) {
-        return generateMove(stmt);
-    }
-    else {
-        throw new Error(`stmt '${stmt}' does not match any of 'repeat', 'multimove', 'move'`);
-    }
-}
-
-function generateRepeat(repeat: Repeat) : {repeat: Object[], amount: number} {
-    var result: Object[] = [];
-
-    repeat.stmt.forEach( s => {
-        result.push(generateStmt(s));
+function generateRepeat(repeat: Repeat) : Object {
+    var res: Object[] = [];
+    repeat.stmt.forEach(s => {
+        if (isMultiMove(s)) {
+            res.push(generateMultiMove(s));
+        }
+        else if (isMove(s)) {
+            res.push(generateMove(s));
+        }
     })
-
-    return {'repeat': result, 'amount': repeat.amount};
+    return {'repeat': res};
 }
 
-function generateMultiMove(multimove: MultiMove) : {multimove: Object[]} {
-    var result: Object[] = [];
-
-    multimove.compositemoves.forEach( m => {
-        result.push(generateMove(m));
+function generateMultiMove(multimove: MultiMove) : Object {
+    var res: Object[] = [];
+    multimove.compositemoves.forEach(m => {
+        res.push({'move': m})
     })
-        
-    return {'multimove': result};
+    return {'multimove': res};
 }
 
-function generateMove(move: Move): {move: Move} {
+function generateMove(move: Move) : Object {
     return {'move': move};
 }

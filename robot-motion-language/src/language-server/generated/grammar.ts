@@ -17,16 +17,15 @@ export const RobotMotionLanguageGrammar = (): Grammar => loadedRobotMotionLangua
       "entry": true,
       "definition": {
         "$type": "Assignment",
-        "feature": "defs",
-        "operator": "+=",
+        "feature": "def",
+        "operator": "=",
         "terminal": {
           "$type": "RuleCall",
           "rule": {
             "$refText": "Def"
           },
           "arguments": []
-        },
-        "cardinality": "*"
+        }
       },
       "definesHiddenTokens": false,
       "fragment": false,
@@ -61,11 +60,30 @@ export const RobotMotionLanguageGrammar = (): Grammar => loadedRobotMotionLangua
             "feature": "stmt",
             "operator": "+=",
             "terminal": {
-              "$type": "RuleCall",
-              "rule": {
-                "$refText": "Stmt"
-              },
-              "arguments": []
+              "$type": "Alternatives",
+              "elements": [
+                {
+                  "$type": "RuleCall",
+                  "rule": {
+                    "$refText": "Repeat"
+                  },
+                  "arguments": []
+                },
+                {
+                  "$type": "RuleCall",
+                  "rule": {
+                    "$refText": "MultiMove"
+                  },
+                  "arguments": []
+                },
+                {
+                  "$type": "RuleCall",
+                  "rule": {
+                    "$refText": "Move"
+                  },
+                  "arguments": []
+                }
+              ]
             },
             "cardinality": "*"
           },
@@ -74,43 +92,6 @@ export const RobotMotionLanguageGrammar = (): Grammar => loadedRobotMotionLangua
             "value": "end"
           }
         ]
-      },
-      "definesHiddenTokens": false,
-      "entry": false,
-      "fragment": false,
-      "hiddenTokens": [],
-      "parameters": [],
-      "wildcard": false
-    },
-    {
-      "$type": "ParserRule",
-      "name": "Stmt",
-      "definition": {
-        "$type": "Alternatives",
-        "elements": [
-          {
-            "$type": "RuleCall",
-            "rule": {
-              "$refText": "Move"
-            },
-            "arguments": []
-          },
-          {
-            "$type": "RuleCall",
-            "rule": {
-              "$refText": "MultiMove"
-            },
-            "arguments": []
-          },
-          {
-            "$type": "RuleCall",
-            "rule": {
-              "$refText": "Repeat"
-            },
-            "arguments": []
-          }
-        ],
-        "cardinality": "*"
       },
       "definesHiddenTokens": false,
       "entry": false,
@@ -146,11 +127,23 @@ export const RobotMotionLanguageGrammar = (): Grammar => loadedRobotMotionLangua
             "feature": "stmt",
             "operator": "+=",
             "terminal": {
-              "$type": "RuleCall",
-              "rule": {
-                "$refText": "Stmt"
-              },
-              "arguments": []
+              "$type": "Alternatives",
+              "elements": [
+                {
+                  "$type": "RuleCall",
+                  "rule": {
+                    "$refText": "MultiMove"
+                  },
+                  "arguments": []
+                },
+                {
+                  "$type": "RuleCall",
+                  "rule": {
+                    "$refText": "Move"
+                  },
+                  "arguments": []
+                }
+              ]
             },
             "cardinality": "*"
           },
