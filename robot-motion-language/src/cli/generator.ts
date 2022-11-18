@@ -22,7 +22,6 @@ export function generateCommands(model: Model, filePath: string, destination: st
 
 //
 // GENERATE MODEL OBJECT
-
 function generateModel(model: Model) : Object {
     return {'def': model.def.name, 'commands': generateDef(model.def)}
 }

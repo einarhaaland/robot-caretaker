@@ -315,17 +315,113 @@ export const RobotMotionLanguageGrammar = (): Grammar => loadedRobotMotionLangua
         "$type": "TerminalAlternatives",
         "elements": [
           {
-            "$type": "CharacterRange",
-            "left": {
-              "$type": "Keyword",
-              "value": "finger"
-            }
+            "$type": "TerminalAlternatives",
+            "elements": [
+              {
+                "$type": "TerminalAlternatives",
+                "elements": [
+                  {
+                    "$type": "TerminalAlternatives",
+                    "elements": [
+                      {
+                        "$type": "TerminalAlternatives",
+                        "elements": [
+                          {
+                            "$type": "TerminalAlternatives",
+                            "elements": [
+                              {
+                                "$type": "TerminalAlternatives",
+                                "elements": [
+                                  {
+                                    "$type": "TerminalAlternatives",
+                                    "elements": [
+                                      {
+                                        "$type": "TerminalAlternatives",
+                                        "elements": [
+                                          {
+                                            "$type": "CharacterRange",
+                                            "left": {
+                                              "$type": "Keyword",
+                                              "value": "head"
+                                            }
+                                          },
+                                          {
+                                            "$type": "CharacterRange",
+                                            "left": {
+                                              "$type": "Keyword",
+                                              "value": "fingers"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "$type": "CharacterRange",
+                                        "left": {
+                                          "$type": "Keyword",
+                                          "value": "wrist"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "$type": "CharacterRange",
+                                    "left": {
+                                      "$type": "Keyword",
+                                      "value": "elbow"
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "$type": "CharacterRange",
+                                "left": {
+                                  "$type": "Keyword",
+                                  "value": "shoulder"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "$type": "CharacterRange",
+                            "left": {
+                              "$type": "Keyword",
+                              "value": "torso"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "$type": "CharacterRange",
+                        "left": {
+                          "$type": "Keyword",
+                          "value": "hip"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "$type": "CharacterRange",
+                    "left": {
+                      "$type": "Keyword",
+                      "value": "knee"
+                    }
+                  }
+                ]
+              },
+              {
+                "$type": "CharacterRange",
+                "left": {
+                  "$type": "Keyword",
+                  "value": "ankle"
+                }
+              }
+            ]
           },
           {
             "$type": "CharacterRange",
             "left": {
               "$type": "Keyword",
-              "value": "shoulder"
+              "value": "toes"
             }
           }
         ]

@@ -18,7 +18,7 @@ Move:
 
 terminal NUMBER returns number: /[+-]?[0-9]+(\.[0-9]*)?/;
 terminal SIDE: ('right' | 'left');
-terminal JOINT: ('finger' | 'shoulder');
+terminal JOINT: ('head'|'fingers'|'wrist'|'elbow'|'shoulder'|'torso'|'hip'|'knee'|'ankle'|'toes');
 terminal ROT: ('pitch' | 'roll' | 'yaw');
 terminal ID: /[_a-zA-Z][\w_]*/;
 
