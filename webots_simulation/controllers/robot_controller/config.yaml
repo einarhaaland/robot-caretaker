@@ -1,9 +1,4 @@
 name: NAO
-devices:
-  cameras: NULL
-  gyroscopes: NULL
-  accelerometers: NULL
-  sensors: NULL
 
 joints: {
   # HEAD
@@ -111,28 +106,15 @@ joints: {
   },
   
   # BODY
-  SpinePitch: {
+  TorsoPitch: {
     motor: NULL,
     sensor: NULL
   },
-  SpineYaw: {
+  TorsoYaw: {
     motor: NULL,
     sensor: NULL
   },
-  SpineRoll: {
-    motor: NULL,
-    sensor: NULL
-  },
-
-  LowerSpinePitch: {
-    motor: NULL,
-    sensor: NULL
-  },
-  LowerSpineYaw: {
-    motor: NULL,
-    sensor: NULL
-  },
-  LowerSpineRoll: {
+  TorsoRoll: {
     motor: NULL,
     sensor: NULL
   },
