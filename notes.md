@@ -269,3 +269,10 @@ Mulige typer edit distance:
 * Sende JSON til backend endepunkt
 * Sende JSON fra backend -> RabbitMQ -> RobotController
 * Handle JSON ved å skrive til motionFunctions.py (python file append)
+
+
+# Evaluasjon
+* Frontend
+* DSL
+	* repeat er vanskelig å skjønne, utføres "repeat 3" 3 eller 4 ganger?
+* Adding robot
