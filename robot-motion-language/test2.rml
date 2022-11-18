@@ -1,7 +1,6 @@
 define wave
-    repeat 3
-        multimove
-            move left finger yaw to 0
-        end
-    end
+    move right wrist pitch to 0
+    move head roll to 1
+    move left knee to 2.4
+    move head roll to 0
 end

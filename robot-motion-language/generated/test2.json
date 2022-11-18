@@ -2,21 +2,33 @@
   "def": "wave",
   "commands": [
     {
-      "repeat": [
-        {
-          "multimove": [
-            {
-              "move": {
-                "side": "left",
-                "joint": "finger",
-                "rotation": "yaw",
-                "position": 0
-              }
-            }
-          ]
-        }
-      ],
-      "amount": 3
+      "move": {
+        "side": "right",
+        "joint": "wrist",
+        "rotation": "pitch",
+        "position": 0
+      }
+    },
+    {
+      "move": {
+        "joint": "head",
+        "rotation": "roll",
+        "position": 1
+      }
+    },
+    {
+      "move": {
+        "side": "left",
+        "joint": "knee",
+        "position": 2.4
+      }
+    },
+    {
+      "move": {
+        "joint": "head",
+        "rotation": "roll",
+        "position": 0
+      }
     }
   ]
 }
