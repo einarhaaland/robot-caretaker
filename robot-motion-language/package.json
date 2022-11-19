@@ -51,7 +51,7 @@
         "watch": "tsc -b tsconfig.json --watch",
         "langium:generate": "langium generate",
         "langium:watch": "langium generate --watch",
-        "build:worker": "esbuild ./src/main.ts --bundle --format=iife --outfile=./public/languageServerWorker.js"
+        "build:worker": "esbuild --minify ./out/language-server/main-browser.js --bundle --format=iife --outfile=./public/rml-server-worker.js"
     },
     "dependencies": {
         "chalk": "^4.1.2",
