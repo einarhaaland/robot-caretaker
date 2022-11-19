@@ -10,17 +10,26 @@
         "Programming Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "robot-motion-language",
-            "aliases": ["Robot Motion Language", "robot-motion-language"],
-            "extensions": [".rml"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "robot-motion-language",
-            "scopeName": "source.robot-motion-language",
-            "path": "./syntaxes/robot-motion-language.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "robot-motion-language",
+                "aliases": [
+                    "Robot Motion Language",
+                    "robot-motion-language"
+                ],
+                "extensions": [
+                    ".rml"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "robot-motion-language",
+                "scopeName": "source.robot-motion-language",
+                "path": "./syntaxes/robot-motion-language.tmLanguage.json"
+            }
+        ]
     },
     "activationEvents": [
         "onLanguage:robot-motion-language"
@@ -40,11 +49,12 @@
         "watch": "tsc -b tsconfig.json --watch",
         "lint": "eslint src --ext ts",
         "langium:generate": "langium generate",
-        "langium:watch": "langium generate --watch"
+        "langium:watch": "langium generate --watch",
+        "build:worker": "esbuild ./src/main.ts --bundle --format=iife --outfile=./public/languageServerWorker.js"
     },
     "dependencies": {
-        "chevrotain": "^9.1.0",
         "chalk": "^4.1.2",
+        "chevrotain": "^9.1.0",
         "commander": "^8.0.0",
         "langium": "^0.5.0",
         "vscode-languageclient": "^8.0.2",
@@ -56,6 +66,7 @@
         "@types/vscode": "^1.56.0",
         "@typescript-eslint/eslint-plugin": "^5.28.0",
         "@typescript-eslint/parser": "^5.28.0",
+        "esbuild": "^0.15.14",
         "eslint": "^8.17.0",
         "langium-cli": "^0.5.0",
         "typescript": "^4.7.4"
