@@ -63,6 +63,7 @@ function CodeEditor() {
         editorConfig.setUseLanguageClient(true);
         editorConfig.setUseWebSocket(false);
 
+
         const workerURL = new URL('../../public/rml-server-worker.js', import.meta.url);
         console.log(workerURL.href);
 
