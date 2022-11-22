@@ -6,7 +6,7 @@ function AddMotion() {
 
   return (
     <>
-      <div>
+      <div id='monaco-editor-root'>
         <CodeEditor />
       </div>
         <SendMotionButton />
