@@ -1,16 +1,10 @@
 import React from 'react';
-import { MonacoEditorLanguageClientWrapper } from 'monaco-editor-wrapper/.';
+import { MonacoEditorLanguageClientWrapper } from 'monaco-editor-wrapper';
 import { buildWorkerDefinition } from 'monaco-editor-workers';
 
 
 function CodeEditor() {
-    const style = {
-        display: "flex",
-        flexDirection: "column",
-        width: "100%",
-        height: "100%",
-        flexGrow: "1"
-    }
+    console.log(`HERHEHR: ${document.getElementById('monaco-editor-root')}`);
 
     buildWorkerDefinition('../../node_modules/monaco-editor-workers/dist/', new URL('', window.location.href).href, false); //might need to change url
 
@@ -28,6 +22,8 @@ function CodeEditor() {
         operators: [
     
         ],
+
+        symbols: /\/\//,
     
         tokenizer: {
             initial: [
@@ -76,7 +72,7 @@ function CodeEditor() {
     });
     client.setWorker(lsWorker);
 
-    client.startEditor(document.getElementById('monaco-editor-root')); // needs adaption to react
+    client.startEditor(ReactDOM.findDOMNode(this).parentElement)); // needs adaption to react
 
     window.addEventListener('resize', () => client.updateLayout());
 

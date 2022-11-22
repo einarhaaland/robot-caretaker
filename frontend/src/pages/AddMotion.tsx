@@ -6,7 +6,9 @@ function AddMotion() {
 
   return (
     <>
+      <div>
         <CodeEditor />
+      </div>
         <SendMotionButton />
     </>
   );
