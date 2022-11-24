@@ -78,6 +78,8 @@ Usage:
         repeat <amount> <move(s) and/or multimove(s)> end
         multimove <moves> end
         move <right/left> <joint> <pitch/roll/yaw> to <position>
+
+For more details, see: https://github.com/einarhaaland/robot-caretaker#RML
 */`);
 
         editorConfig.setTheme('vs-dark');
