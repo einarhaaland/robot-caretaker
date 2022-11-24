@@ -53,4 +53,5 @@ body {
   flex-grow: 1;
   width: 50vw;
   height: 100vh;
+  float: left;
 }

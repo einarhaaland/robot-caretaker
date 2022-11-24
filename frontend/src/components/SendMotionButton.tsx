@@ -19,7 +19,7 @@ function SendMotionButton() {
     }
 
     return (
-        <Button variant='contained' onClick={handleClick} color='success'>{buttonText}</Button>
+        <Button variant='contained' onClick={handleClick} color='success' size='large'>{buttonText}</Button>
     );
 }
 
