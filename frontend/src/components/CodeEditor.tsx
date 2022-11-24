@@ -45,19 +45,40 @@ function CodeEditor() {
             }
         });
 
-        editorConfig.setMainCode(`
-        define wave
-            move right shoulder pitch to -1.5
-            repeat 3
-                multimove
-                    move right shoulder roll to 0.3
-                    move right shoulder roll to -0.5
-                end
-            end
-            move right shoulder roll to 0.0
-            move right shoulder pitch to 1.5
+        editorConfig.setMainCode(`/* 
+This green text will teach you the basics of RML (Robot Motion Language)!
+    (If you are familiar with the language, this can safely be deleted.)
+
+Below is an example of a MOTION defined in RML. Modify it or replace it with your own:
+*/
+
+define wave
+    move right shoulder pitch to -1.5
+    repeat 3
+        multimove
+            move right shoulder roll to 0.3
+            move right shoulder roll to -0.5
         end
-        `);
+    end
+    move right shoulder roll to 0.0
+    move right shoulder pitch to 1.5
+end
+
+/*
+Keywords:
+        Keywords in RML includes "define", "move", "multimove" and "repeat".
+        * define: "define wave" will define a motion called "wave".
+        * repeat: "repeat 3" anything between "repeat" and its "end" will be performed three times
+        * multimove: "multimove" moves between "multimove" and its "end" will be performed
+                        simultainously rather than in sequence.
+        * move: "move right shoulder pitch to 0.5" joint will move to position 0.5 
+        * //: is used for single-line comments. Anything you type after will be ignored by RML.
+Usage:
+        define <your_motion_name_here> end
+        repeat <amount> <move(s) and/or multimove(s)> end
+        multimove <moves> end
+        move <right/left> <joint> <pitch/roll/yaw> to <position>
+*/`);
 
         editorConfig.setTheme('vs-dark');
         editorConfig.setUseLanguageClient(true);
