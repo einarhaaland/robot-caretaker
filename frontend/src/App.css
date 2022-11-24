@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
 }
@@ -39,4 +40,17 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+.monaco-editor {
+    width: 100%!important;
+    height: 100%!important;
+    display: flex;
+    flex-direction: column;
+}
+  
+#monaco-editor-root {
+  flex-grow: 1;
+  width: 50vw;
+  height: 100vh;
 }

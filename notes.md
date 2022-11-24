@@ -282,4 +282,4 @@ Mulige typer edit distance:
 * virker ikke som om warningsene gjør det https://stackoverflow.com/questions/18425841/angular-min-js-map-not-found-what-is-it-exactly
 * npm install monaco editor
 * bruke webpack i stedet?
-* 
+* Funker det til tross for warnings???
