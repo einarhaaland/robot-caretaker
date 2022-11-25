@@ -4,15 +4,30 @@ import { Model } from '../language-server/generated/ast';
 import { RobotMotionLanguageLanguageMetaData } from '../language-server/generated/module';
 import { createRobotMotionLanguageServices } from '../language-server/robot-motion-language-module';
 import { extractAstNode, extractDocument } from './cli-util';
-import { generateCommands } from './generator';
+import { generateCommands } from '../generator/generator';
 import { NodeFileSystem } from 'langium/node';
+import { extractDestinationAndName } from './cli-util';
+import path from 'path';
+import fs from 'fs';
 
 export const generateAction = async (fileName: string, opts: GenerateOptions): Promise<void> => {
     const services = createRobotMotionLanguageServices(NodeFileSystem).RobotMotionLanguage;
     const model = await extractAstNode<Model>(fileName, services);
-    const generatedFilePath = generateCommands(model, fileName, opts.destination);
-    console.log(chalk.green(`RML commands generated successfully: ${generatedFilePath}`));
+
+    // invoke generator to get commands
+    const cmds = generateCommands(model);
+
+    // handle file related functionality here now
+    const data = extractDestinationAndName(fileName, opts.destination);
+    const generatedFilePath = `${path.join(data.destination, data.name)}.json`;
+    if (!fs.existsSync(data.destination)) {
+        fs.mkdirSync(data.destination, { recursive: true });
+    }
+    fs.writeFileSync(generatedFilePath, JSON.stringify(cmds, undefined, 2));
+
+    console.log(chalk.green(`MiniLogo commands generated successfully: ${generatedFilePath}`));
 };
+
 
 export type GenerateOptions = {
     destination?: string;

@@ -20,6 +20,8 @@
 - Webots (R2022b or newer)
 
 # Setup (Windows)
+## Robot-Motion-Language:
+- run `npm run build:web` from `/robot-motion-language` directory if you have made any changes to RML
 ## Web application:
 - `cd` two terminals to project folder
 - Terminal 1:
