@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react';
 import { MonacoEditorLanguageClientWrapper } from 'monaco-editor-wrapper';
 import { buildWorkerDefinition } from 'monaco-editor-workers';
 
+var client: MonacoEditorLanguageClientWrapper;
 
-function CodeEditor() {
+export function setupMonacoEditor() {
 
-    useEffect(() => {
         buildWorkerDefinition('../../public/monaco-editor-workers/workers', new URL('', window.location.href).href, false);
 
         MonacoEditorLanguageClientWrapper.addMonacoStyles('monaco-editor-styles');
         MonacoEditorLanguageClientWrapper.addCodiconTtf();
 
-        const client = new MonacoEditorLanguageClientWrapper('42');
+        client = new MonacoEditorLanguageClientWrapper('42');
+
         const editorConfig = client.getEditorConfig();
         editorConfig.setMainLanguageId('robot-motion-language');
 
@@ -96,16 +96,13 @@ For more details, see: https://github.com/einarhaaland/robot-caretaker#RML
         });
         client.setWorker(lsWorker);
 
+        //This ID needs to exist
         client.startEditor(document.getElementById('monaco-editor-root')!);
 
         window.addEventListener('resize', () => client.updateLayout());
 
-    }, [])
-
-    
-    return (
-        <></>
-    );
 }
 
-export default CodeEditor;
+export function getEditorValue() {
+    return client.getMainCode();
+}
