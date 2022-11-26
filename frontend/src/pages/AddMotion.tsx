@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CodeEditor from '../components/CodeEditor';
 import SendMotionButton from '../components/SendMotionButton';
 
 function AddMotion() {
+  useEffect(() => {
+    const script = document.createElement('script');
+    
+    script.src = '../../public/rml-generator.js';
+    script.async = true;
+
+    document.body.appendChild(script)
+
+    //call util function creating monaco editor
+
+  }, []);
 
   return (
     <>
