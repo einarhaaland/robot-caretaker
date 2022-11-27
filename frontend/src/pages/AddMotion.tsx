@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import CodeEditor from '../components/CodeEditor';
 import SendMotionButton from '../components/SendMotionButton';
-import { setupMonacoEditor, getEditorValue } from '../utils/monaco-setup';
+import { setupMonacoEditor, generate } from '../../public/monaco-setup';
 import Button from '@mui/material/Button';
 
 
@@ -9,20 +9,19 @@ function AddMotion() {
   useEffect(() => {
     // Make generator bundle available
     const script = document.createElement('script');
-    script.src = '../../public/rml-generator.js';
+    script.src = './rml-generator.js';
     script.async = true;
     document.body.appendChild(script)
 
-    // Setup monaco editor. Doing it this way instead of in a component makes it load a bit later than the rest of the page
+    // Setup monaco editor. Doing it this way instead of in a component makes it load a bit later than the rest of the page. Probably move this to a script tag like above and then window.parse = RML.parse
     setupMonacoEditor();
   }, []);
 
   const handleClick = (async () => {
     //Get code from editor
-    const value = getEditorValue();
+    const rml = await generate();
 
-    // Parse & Generate
-    const rml = await RML.parseAndGenerate(value); // Global name RML does not seem to exist
+    console.log(rml);
 
     //JSONIFY AST
     const motion = JSON.stringify(rml);
