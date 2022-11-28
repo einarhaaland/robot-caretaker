@@ -34,7 +34,7 @@ class NaoMotorController(SuperController):
         if 'instruction' in body:
             self.instruction = self.findMatchingMotionFunction(body['instruction'])
         else:
-            print("SHOULD CREATE MOTION", body)
+            self.createNewMotion(body)
 
     def findMatchingMotionFunction(self, s):
         '''
@@ -61,6 +61,46 @@ class NaoMotorController(SuperController):
                 min_edit_distance = edit_distance
                 closest_match = func
         return closest_match
+
+        def createNewMotion(body):
+            '''Creates a new motion function in motion_functions.py from an RML JSON body'''
+
+            # Check if name already exists
+            existing = getMotionFunctions()
+            if body['def'] in existing:
+                print("A motion function with the same name already exist, please change the name")
+                return
+
+            # Open file
+            with open("motion_functions.py" as f):
+                # Write to file
+                f.write('\n')
+
+                # define function
+                f.write(f"def {body['def']}:\n")
+
+                # Function Content
+                for cmd in body['commands']:
+                    f.write("\t# Keyframe\n")
+                    if 'repeat' in cmd:
+                        pass
+                    else if 'multimove' in cmd:
+                        for i in range(len(cmd['multimove'])):
+                            sync = True if i+1 == len(cmd['multimove']) else False
+                            pos = cmd['multimove'][i]['position']
+                            joint = cmd['multimove'][i]['joint'].capitalize()
+                            side = cmd['multimove'][i]['side'][0].capitalize() if 'side' in cmd['multimove'][i] else ''
+                            rot = cmd['multimove'][i]['rotation'] if 'rotation' in cmd['multimove'][i] else ''
+                            f.write(f"\tmove(robot, {sync}, {pos}, {joint}, {rot}, {side})\n")
+                    else if 'move' in cmd:
+                        pos = cmd['position']
+                        joint = cmd['joint'].capitalize()
+                        side = cmd['side'][0].capitalize() if 'side' in cmd else ''
+                        rot = cmd['rotation'] if 'rotation' in cmd else ''
+                        f.write(f"\tmove(robot, True, {pos}, {joint}, {rot}, {side})\n")
+
+
+            
 
     # Controller loop
     def run(self):
