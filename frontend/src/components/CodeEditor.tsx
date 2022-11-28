@@ -99,6 +99,7 @@ For more details, see: https://github.com/einarhaaland/robot-caretaker#RML
         client.startEditor(document.getElementById('monaco-editor-root')!);
 
         window.addEventListener('resize', () => client.updateLayout());
+        window.client = client;
 
     }, [])
 
