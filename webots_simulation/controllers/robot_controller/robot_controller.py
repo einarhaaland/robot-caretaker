@@ -76,28 +76,50 @@ class NaoMotorController(SuperController):
                 # Write to file
                 f.write('\n')
 
-                # define function
+                # Define function
                 f.write(f"def {body['def']}:\n")
 
-                # Function Content
+                # Write function content
                 for cmd in body['commands']:
-                    f.write("\t# Keyframe\n")
                     if 'repeat' in cmd:
-                        pass
+                        writeRepeat(cmd['repeat'], cmd['amount'])
                     else if 'multimove' in cmd:
-                        for i in range(len(cmd['multimove'])):
-                            sync = True if i+1 == len(cmd['multimove']) else False
-                            pos = cmd['multimove'][i]['position']
-                            joint = cmd['multimove'][i]['joint'].capitalize()
-                            side = cmd['multimove'][i]['side'][0].capitalize() if 'side' in cmd['multimove'][i] else ''
-                            rot = cmd['multimove'][i]['rotation'] if 'rotation' in cmd['multimove'][i] else ''
-                            f.write(f"\tmove(robot, {sync}, {pos}, {joint}, {rot}, {side})\n")
+                        writeNewKeyframe()
+                        writeMultimove(cmd['multimove'])
                     else if 'move' in cmd:
-                        pos = cmd['position']
-                        joint = cmd['joint'].capitalize()
-                        side = cmd['side'][0].capitalize() if 'side' in cmd else ''
-                        rot = cmd['rotation'] if 'rotation' in cmd else ''
-                        f.write(f"\tmove(robot, True, {pos}, {joint}, {rot}, {side})\n")
+                        writeNewKeyframe()
+                        writeMove(cmd['move'], True)
+                    else:
+                        print(f"unknown command {cmd}")
+
+                ## Functions for writing to the file
+                def writeRepeat(repeat, amount):
+                    for i in range(amount):
+                        writeNewKeyframe()
+                        for cmd_to_repeat in repeat:
+                            if 'multimove' in cmd_to_repeat:
+                                writeMultimove(cmd_to_repeat['multimove'])
+                            else if 'move' in cmd_to_repeat:
+                                writeMove(cmd_to_repeat['move'], True)
+                            else:
+                                print(f"unknown command {cmd_to_repeat}")
+
+                def writeMultimove(multi):
+                    for i in range(len(multi)):
+                        if i+1 == len(multi):
+                            writeMove(multi[i], True)
+                        else:
+                            writeMove(multi[i], False)
+                
+                def writeMove(move, sync):
+                    pos = move['position']
+                    joint = move['joint'].capitalize()
+                    side = move['side'][0].capitalize() if 'side' in move else ''
+                    rot = move['rotation'] if 'rotation' in move else ''
+                    f.write(f"\tmove(robot, {sync}, {pos}, {joint}, {rot}, {side})\n")
+
+                def writeNewKeyframe():
+                    f.write("\t# Keyframe\n")
 
 
             
