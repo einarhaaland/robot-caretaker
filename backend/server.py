@@ -1,4 +1,5 @@
-from flask import Flask
+import json
+from flask import Flask, request
 from flask_cors import CORS
 from messaging.send import send
 
@@ -18,12 +19,14 @@ def test_robot_connection():
 
 @app.route("/mood/<mood>")
 def mood(mood):
-    send(mood)
+    body = json.dumps({"instruction": mood})
+    send(body)
     return {"mood": mood}
 
 @app.route("/motion", methods=["POST"])
 def motion():
-    send(request.json)
+    send(json.dumps(request.json))
+    return {"status": 200}
 
 
 if __name__ == "__main__":

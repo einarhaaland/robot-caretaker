@@ -19,7 +19,8 @@ function AddMotion() {
     // Generate RML object
     const rml = await window.RML.parseAndGenerate(value);
     console.log("Generated JSON From RML", rml);
-    /*
+
+    //if has errors, set error message and return
 
     //JSONIFY AST
     const motion = JSON.stringify(rml);
@@ -33,8 +34,8 @@ function AddMotion() {
 
     // Send JSON
     console.log("CREATING NEW MOTION..")
-    fetch("http://localhost:5000/add-motion", requestOptions)*/
-    
+    fetch("http://localhost:5000/motion", requestOptions)
+      .then(res => console.log(res.ok ? "MOTION CREATED" : "COULD NOT CREATE"));
   });
 
   return (

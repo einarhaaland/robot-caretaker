@@ -4,6 +4,7 @@ This controller listens for incomming messages and accesses motors to perform th
 import sys
 import os
 import threading
+import json
 import yaml
 import Levenshtein
 import motion_functions
@@ -29,7 +30,11 @@ class NaoMotorController(SuperController):
 
     # Callback when receiving message through messaging system
     def messageCallback(self, channel, method, properties, body):
-        self.instruction = self.findMatchingMotionFunction(body.decode("utf-8"))
+        body = json.loads(body)
+        if 'instruction' in body:
+            self.instruction = self.findMatchingMotionFunction(body['instruction'])
+        else:
+            print("SHOULD CREATE MOTION", body)
 
     def findMatchingMotionFunction(self, s):
         '''
