@@ -52,16 +52,21 @@ This green text will teach you the basics of RML (Robot Motion Language)!
 Below is an example of a MOTION defined in RML. Modify it or replace it with your own:
 */
 
-define wave
-    move right shoulder pitch to -1.5
+define swing_arms
     repeat 3
         multimove
-            move right shoulder roll to 0.3
-            move right shoulder roll to -0.5
+            move right shoulder pitch to 1
+            move left shoulder pitch to 2
+        end
+        multimove
+            move right shoulder pitch to 2
+            move left shoulder pitch to 1
         end
     end
-    move right shoulder roll to 0.0
-    move right shoulder pitch to 1.5
+    multimove
+            move right shoulder pitch to 1.5
+            move left shoulder pitch to 1.5
+    end
 end
 
 /*
