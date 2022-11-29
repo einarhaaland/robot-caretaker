@@ -2,7 +2,7 @@ import React from 'react';
 import CodeEditor from '../components/CodeEditor';
 import Button from '@mui/material/Button';
 
-// This is a workaround to make typescript not complain on added properties to window object
+// This makes typescript not complain on added properties to window object
 declare global {
       interface Window {
         client: any;

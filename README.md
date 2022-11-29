@@ -6,7 +6,7 @@
 - [Setup (Windows)](#setup-windows)
 - [How to use](#how-to-use)
 - [Adding a new Robot](#adding-a-new-robot)
-- [Robot Motion Language](#robot-motion-language-(rml))
+- [Robot Motion Language](#robot-motion-language-rml)
 - [Troubleshooting](#troubleshooting)
 - [Navigating this Repository](#navigating-this-repository)
 - [Glossary](#glossary)
