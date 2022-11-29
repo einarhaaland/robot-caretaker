@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
-import CheckIcon from '@mui/icons-material/Check';
 
 function SendMotionButton() {
     const [buttonText, setButtonText] = useState<any>("SAVE");
 
     const handleClick = () => {
+
+        setButtonText("DONE");
         
         //Get AST from DSL
 
@@ -18,7 +19,7 @@ function SendMotionButton() {
     }
 
     return (
-        <Button variant='contained' onClick={handleClick} color='success'>{buttonText}</Button>
+        <Button variant='contained' onClick={handleClick} color='success' size='large'>{buttonText}</Button>
     );
 }
 

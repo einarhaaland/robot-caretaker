@@ -7,10 +7,16 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  <App />
+);
+
+
+/*
+This is here so i can add it later if i want
+<React.StrictMode>
     <App />
   </React.StrictMode>
-);
+*/
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

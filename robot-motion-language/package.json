@@ -51,7 +51,9 @@
         "watch": "tsc -b tsconfig.json --watch",
         "langium:generate": "langium generate",
         "langium:watch": "langium generate --watch",
-        "build:worker": "esbuild --minify ./out/language-server/main-browser.js --bundle --format=iife --outfile=./public/rml-server-worker.js"
+        "build:worker": "esbuild --minify ./out/language-server/main-browser.js --bundle --format=iife --outfile=../frontend/public/rml-server-worker.js",
+        "build:generator": "esbuild --minify ./out/web/index.js --bundle --global-name=RML --outfile=../frontend/public/rml-generator.js",
+        "build:web": "npm run langium:generate && npm run build && npm run build:worker && npm run build:generator"
     },
     "dependencies": {
         "chalk": "^4.1.2",

@@ -276,3 +276,10 @@ Mulige typer edit distance:
 * DSL
 	* repeat er vanskelig å skjønne, utføres "repeat 3" 3 eller 4 ganger?
 * Adding robot
+
+# Editor funker ikke
+* npm ci gjør ingenting
+* virker ikke som om warningsene gjør det https://stackoverflow.com/questions/18425841/angular-min-js-map-not-found-what-is-it-exactly
+* npm install monaco editor
+* bruke webpack i stedet?
+* Funker det til tross for warnings???

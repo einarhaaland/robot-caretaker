@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import MoodGrid from '../components/MoodGrid';
 import SentimentLabel from '../components/SentimentLabel';
 import { IconButton } from '@mui/material';

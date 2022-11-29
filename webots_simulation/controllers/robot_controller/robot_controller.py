@@ -4,9 +4,11 @@ This controller listens for incomming messages and accesses motors to perform th
 import sys
 import os
 import threading
+import json
 import yaml
 import Levenshtein
 import motion_functions
+import helpers
 from controller import Robot, Motor
 
 # import supercontroller
@@ -29,7 +31,11 @@ class NaoMotorController(SuperController):
 
     # Callback when receiving message through messaging system
     def messageCallback(self, channel, method, properties, body):
-        self.instruction = self.findMatchingMotionFunction(body.decode("utf-8"))
+        body = json.loads(body)
+        if 'instruction' in body:
+            self.instruction = self.findMatchingMotionFunction(body['instruction'])
+        else:
+            helpers.createNewMotion(body)
 
     def findMatchingMotionFunction(self, s):
         '''
@@ -42,12 +48,7 @@ class NaoMotorController(SuperController):
         RETURNS:
             The name of the closest matching motion-function
         '''
-
-        def getMotionFunctions():
-            '''Returns a list of all motion-functions available in motion_functions.py'''
-            return [motion_function for motion_function in dir(motion_functions) if not motion_function.startswith('__')]
-
-        func_list = getMotionFunctions()
+        func_list = helpers.getMotionFunctions()
         min_edit_distance = 5 # The maximum distance allowed
         closest_match = None
         for func in func_list:

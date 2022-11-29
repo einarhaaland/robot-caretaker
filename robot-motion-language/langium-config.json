@@ -6,6 +6,9 @@
         "fileExtensions": [".rml"],
         "textMate": {
             "out": "syntaxes/robot-motion-language.tmLanguage.json"
+        },
+        "monarch": {
+            "out": "syntaxes/robot-motion-language.monarch.ts"
         }
     }],
     "out": "src/language-server/generated"
