@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MoodGrid from '../components/MoodGrid';
 import SentimentLabel from '../components/SentimentLabel';
 import { IconButton } from '@mui/material';
@@ -6,11 +6,30 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 function Frontpage() {
+  // Cards displayed
   const [posCards, setPosCards] = useState(["Cheer", "Nod"])
   const [neuCards, setNeuCards] = useState(["Wave", "Thinking"])
   const [negCards, setNegCards] = useState(["ShakeHead"])
+
+  // Form for adding/deleting cards
   const [showFormAdd, setShowFormAdd] = useState(false)
   const [showFormDelete, setShowFormDelete] = useState(false)
+
+  // Scheduled cards
+  const[scheduledCards, setScheduledCards] = useState<string[]>([])
+
+  const wrapperSetScheduledCards = (newCard: string) => setScheduledCards((arr) => [...arr, newCard])
+
+  const clearScheduledCards = () => {
+    setScheduledCards(() => [])
+  }
+
+  useEffect(() => {
+    console.log("IS SCHEDULED: " + scheduledCards)
+  });
+
+
+
 
   const handleSubmitAdd = (e: any) => {
     e.preventDefault();
@@ -42,9 +61,9 @@ function Frontpage() {
 
   return (
     <>
-      <MoodGrid moodCards={posCards} color="#e7e6f7"/>
-      <MoodGrid moodCards={neuCards} color="#e3d0d8"/>
-      <MoodGrid moodCards={negCards} color="#aea3b0"/>
+      <MoodGrid moodCards={posCards} color="#e7e6f7" addScheduled={wrapperSetScheduledCards}/>
+      <MoodGrid moodCards={neuCards} color="#e3d0d8" addScheduled={wrapperSetScheduledCards}/>
+      <MoodGrid moodCards={negCards} color="#aea3b0" addScheduled={wrapperSetScheduledCards}/>
 
       {
         showFormAdd && 

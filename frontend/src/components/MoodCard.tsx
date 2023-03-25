@@ -1,8 +1,9 @@
 import React from 'react';
 import { Card, CardActionArea, Typography } from '@mui/material';
 
-interface MoodProps {
-    title: string,
+type MoodProps = {
+    title: string;
+    addScheduled: (val: string) => void;
 }
 
 
@@ -17,9 +18,15 @@ function MoodCard(props: MoodProps) {
             })
     }
 
+    const handleRightClick = (e: any) =>  {
+        e.preventDefault();
+        console.log("SCHEDULED MOTION: " + e.target.innerText)
+        props.addScheduled(e.target.innerText)
+    }
+
     return (
         <Card variant='outlined' sx={{ width: 240, height: 150 }}>
-            <CardActionArea onClick={handleClick} sx={{ width: 240, height: 150 }}>
+            <CardActionArea onClick={handleClick} onContextMenu={handleRightClick} sx={{ width: 240, height: 150 }}>
                 <Typography align='center'>{props.title}</Typography>
             </CardActionArea>
         </Card>

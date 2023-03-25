@@ -6,6 +6,7 @@ import { Grid } from '@mui/material';
 interface GridProps {
   moodCards: string[],
   color: string,
+  addScheduled: any
 }
 
 
@@ -15,7 +16,7 @@ function MoodGrid(props: GridProps) {
   useEffect(() => {
     setCards([]);
     for (let i = 0; i < props.moodCards.length; i++) {
-      setCards((oldArray) => [...oldArray, <Grid item><MoodCard title={props.moodCards[i]}/></Grid>])
+      setCards((oldArray) => [...oldArray, <Grid item><MoodCard title={props.moodCards[i]} addScheduled={props.addScheduled}/></Grid>])
     }
   }, [props.moodCards]);
 
