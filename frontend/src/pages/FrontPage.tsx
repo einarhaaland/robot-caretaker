@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MoodGrid from '../components/MoodGrid';
+import ScheduledMotions from '../components/ScheduledMotions';
 import SentimentLabel from '../components/SentimentLabel';
 import { IconButton } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -101,6 +102,11 @@ function Frontpage() {
       <SentimentLabel style={{left: "5.6%"}} label="Positive" />
       <SentimentLabel style={{left: "38.93%"}} label="Neutral" />
       <SentimentLabel style={{left: "72.26%"}} label="Negative" />
+
+      {
+        (scheduledCards.length > 0) && 
+        <ScheduledMotions cards={scheduledCards} clearScheduled={clearScheduledCards}/>
+      }
 
     </>
   );
