@@ -27,6 +27,7 @@ class NaoMotorController(SuperController):
     def __init__(self, config):
         self.config = config
         self.instruction = ''
+        self.scheduled = []
         super().__init__(config)
 
     # Callback when receiving message through messaging system
@@ -35,7 +36,7 @@ class NaoMotorController(SuperController):
         if 'instruction' in body:
             self.instruction = self.findMatchingMotionFunction(body['instruction'])
         elif 'schedule' in body:
-            print(body)
+            self.scheduled = [self.findMatchingMotionFunction(instruction) for instruction in body['schedule']]
         else:
             helpers.createNewMotion(body)
 
@@ -63,11 +64,15 @@ class NaoMotorController(SuperController):
     # Controller loop
     def run(self):
         while True:
-            if self.instruction == '':
-                pass
-            elif self.instruction is None:
+            # Schedule instruction
+            if len(self.scheduled) > 0:
+                if self.instruction == '':
+                    self.instruction = self.scheduled.pop(0)
+            
+            # Perform instruction
+            if self.instruction is None:
                 print("Could not find matching motion, please check spelling of MoodCard..")
-            else:
+            elif len(self.instruction) > 0:
                 print(f'Performing motion "{self.instruction}"')
                 eval("motion_functions." + self.instruction + "(self)") # See issue #33 for safer use (should not be needed because only existing motion-functions are executed)
             
