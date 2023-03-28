@@ -34,6 +34,8 @@ class NaoMotorController(SuperController):
         body = json.loads(body)
         if 'instruction' in body:
             self.instruction = self.findMatchingMotionFunction(body['instruction'])
+        elif 'schedule' in body:
+            print(body)
         else:
             helpers.createNewMotion(body)
 

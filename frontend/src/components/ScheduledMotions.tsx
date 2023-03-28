@@ -13,7 +13,20 @@ type scheduledProps = {
 function ScheduledMotions(props: scheduledProps) {
 
     const sendSchedule = () => {
+        // Set request Options
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({"schedule": props.cards})
+        }
 
+        // Send JSON
+        console.log("Sending Scheduled..")
+        fetch("http://localhost:5000/schedule", requestOptions)
+            .then(res => console.log(res.ok ? "SCHEDULE PERFORMED" : "COULD NOT PERFORM"));
+
+        // Clear Schedule
+        props.clearScheduled()
     }
 
     return (

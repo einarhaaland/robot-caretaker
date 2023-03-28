@@ -23,6 +23,11 @@ def mood(mood):
     send(body)
     return {"mood": mood}
 
+@app.route("/schedule", methods=["POST"])
+def schedule():
+    send(json.dumps(request.json))
+    return {"status": 200}
+
 @app.route("/motion", methods=["POST"])
 def motion():
     send(json.dumps(request.json))
