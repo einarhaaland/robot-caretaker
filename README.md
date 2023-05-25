@@ -59,13 +59,15 @@
 On the webpage there are several large buttons coresponding to a robot motion.
 Clicking one of these will result in the robot performing that motion.
 
+Right-clicking on the buttons will result in creating a sequence of motions that will be performed in order when clicking the green `Perform` button.
+
 ## Adding a New Motion
 **First, let's create a new motion**
 * Click the `Add Motion` button in the navigation bar at the top of the page.
 * You are presented with a Code Editor.
 * Follow the RobotMotionLanguage guide to create a motion.
 * Click the `SAVE` Button to save your motion function to the system.
-*If the DSL does not meet your requirements, you can add motions directly in `motion_functions.py`*
+* Restart the Webots simulation
 
 **Let's add a button for performing the motion**
 * Click the green `+` button in the bottom right corner of the webpage.
@@ -81,9 +83,12 @@ To hide the input field, refresh the page.
 
 # Adding a new robot
 **This system allows you to easily add any robot:**
-* Copy `/webots_simulation` directory
-* Add a new robot to the Webots simulation and change its controller to `robot_controller.py`
-* Fill in values for joint motors and sensors in `/controllers/robot_controller/config.yaml`
+* Duplicate the `/webots_simulation` directory (or create a new Webots world file)
+* Open the new Webots world file and stop the simulation
+* Delete any existing robots in the scene
+* Add the new robot to the Webots world and change its controller to `robot_controller.py`
+* Fill in values for joint motors and sensors in `/controllers/robot_controller/config.yaml` (any joint-rotation not present in the config file can safely be added. Use the naming convention of the other joints)
+* Start the simulation
 
 *The system should now be functional with your newly added robot.*
 
@@ -216,9 +221,9 @@ Note that \<side\> and \<rotation\> is not always needed depending on the joint.
     - The cards/button in the frontend you click to make the robot perform an instruction
     
 # To Forkers:
-*I recommend to take a look at and re-implement/revert commit `55d7766aae460bb51158d65ffc621db554ca462b` to make application more secure.*
+*The RML input is not currently sanitized before it is stored in the system*
 
-*Do not use in an official capacity until checks have been implemented for errors in monaco editor before allowing sending the RML program*
+*The RML bundle in frontend is added to VC for ease of developing. This is not recommended and should be added to .gitignore. This is the reason it says this repo is 99.5% JS*
 
 *Styling in frontend is largely in-line, feel free to redo*
 
