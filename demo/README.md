@@ -23,7 +23,7 @@ This video demonstrates:
 
 This video demonstrates:
 - How an admin would add support for a new robot in Webots
-- 
+
 *You can restructure the robotend however you like as long as a Webots world has access to the files in the robotend. This means you can add multiple worlds, robots and configs.*
 
 *If a joint on your robot is not already listed in config.yaml, you can just add it. However, if the joint is not supported by RML, you should extend the language to avoid validation or parsing errors when creating motions with the new joint. This is done by adding the new joint to the grammar file and re-building the language module.*
