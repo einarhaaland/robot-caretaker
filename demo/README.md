@@ -1,5 +1,5 @@
 # Demonstation Videos
-It is highly recommended to watch these demonstration videos to visualize the syste, when reading the thesis.
+It is highly recommended to watch these demonstration videos to visualize the system, when reading the thesis.
 
 ## Demo 1: Controller UI
 - Link to video: https://youtu.be/516dw7-RR6k
