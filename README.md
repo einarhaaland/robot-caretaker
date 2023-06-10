@@ -198,14 +198,11 @@ Note that \<side\> and \<rotation\> is not always needed depending on the joint.
 
 - `webots_simulation`
     - `controllers` 
-        - `nao_motion_controller` Deprecated. Example implementation of Webots controller for the Nao robot using .MOTION files.
         - `robot_controller` General controller for robots in Webots.
             - `config.yaml` Config file used as resolver for robot-device naming and initialization.
             - `motion_functions.py` File with motions that robots can perform. This file will be appended to when creating a new motion in the frontend.
             - `robot_controller.py` This is the robot controller.
-        - `subscriber.py` Subscriber logic. Used in `supercontroller.py`
-        - `super_controller.py` General controller. Robot controllers inherit from this.
-    - `motions` Deprecated. .motion files used for pre-existing animations
+            - `subscriber.py` Subscriber logic. Used in `supercontroller.py`
     - `worlds` .wbt file to open in Webots
     
 # Glossary
