@@ -1,6 +1,3 @@
-'''
-This controller listens for incomming messages and accesses motors to perform the given animation / instruction.
-'''
 import sys
 import os
 import threading
@@ -10,25 +7,48 @@ import Levenshtein
 import motion_functions
 import helpers
 from controller import Robot, Motor
-
-# import supercontroller
-controller_path = os.path.join(os.getcwd(), os.pardir)
-sys.path.insert(0, controller_path)
-from super_controller import SuperController
+from subscriber import Subscriber
 
 
-class NaoMotorController(SuperController):
-    '''
-    Motor controller.
-    Sub class of ../Controller.py
-    '''
-
-    # Constructor
+class RobotController(Robot):
     def __init__(self, config):
+
+        # Resolver config file
         self.config = config
+
+        # Instance variable instruction
         self.instruction = ''
+
+        # Instance variable scheduled
         self.scheduled = []
-        super().__init__(config)
+
+        # Initialize Robot from Webots API
+        super().__init__()
+
+        # Initialize subscriber/listener
+        self.subscriber = Subscriber('routing_exchange', 'webots', self.messageCallback)
+
+        # Initialize devices (motors, sensors, cameras..)
+        self.findAndEnableDevices(config)
+
+
+    def findAndEnableDevices(self, config):
+        # Time step (Webots)
+        self.timeStep = int(self.getBasicTimeStep())
+        
+        # Motors
+        self.motors = {}
+
+        # Motor Position Sensors
+        self.sensors = {}
+
+        # Populate Motors and motor position sensors from config file (dict of {joint_name : Webots unique_tag})
+        for key, val in config['joints'].items():
+            if val['motor'] is not None:
+                self.motors[key] = self.getDevice(val['motor'])
+            if val['sensor'] is not None:
+                self.sensors[key] = self.getDevice(val['sensor'])
+
 
     # Callback when receiving message through messaging system
     def messageCallback(self, channel, method, properties, body):
@@ -39,6 +59,7 @@ class NaoMotorController(SuperController):
             self.scheduled = [self.findMatchingMotionFunction(instruction) for instruction in body['schedule']]
         else:
             helpers.createNewMotion(body)
+
 
     def findMatchingMotionFunction(self, s):
         '''
@@ -61,6 +82,37 @@ class NaoMotorController(SuperController):
                 closest_match = func
         return closest_match
 
+
+    def motor_set_position_sync(self, tag_motor, tag_sensor, target, delay):
+        '''
+        Sets motor position and waits for it to reach target position.
+        This stops target-positions to be overwritten.
+
+        ARGS:
+            tag_motor: (Webots tag) tag of motor to activate
+            tag_sensor: (Webots tag) tag of position sensor for motor
+            target: (Radians) target position of motor
+            delay: (int) delay to apply
+
+        USAGE:
+            Use for one motion every keyframe (preferably on motor where target position is changed next keyframe). 
+        '''
+        DELTA = 0.001;  # max tolerated difference
+        tag_motor.setPosition(target)
+        tag_sensor.enable(self.timeStep)
+
+        condition = True # flag for emulating "do while"
+
+        while condition:
+            # Break simulation
+            if self.step(self.timeStep) == -1:
+                break
+            delay -= self.timeStep
+            effective = tag_sensor.getValue() # effective position
+            condition = (abs(target - effective) > DELTA and delay > 0)
+        tag_sensor.disable()
+
+
     # Controller loop
     def run(self):
         while True:
@@ -74,25 +126,28 @@ class NaoMotorController(SuperController):
                 print("Could not find matching motion, please check spelling of MoodCard..")
             elif len(self.instruction) > 0:
                 print(f'Performing motion "{self.instruction}"')
-                eval("motion_functions." + self.instruction + "(self)") # See issue #33 for safer use (should not be needed because only existing motion-functions are executed)
+                eval("motion_functions." + self.instruction + "(self)") # Should be safe as it only invokes non-dunder-functions in ./motion_functions.py
             
             self.instruction = ''
 
             # Break simulation (https://cyberbotics.com/doc/reference/robot#wb_robot_step)
-            if nao.step(self.timeStep) == -1:
+            if robot_controller.step(self.timeStep) == -1:
                 break
 
-            
+
+
+######## RUNS ON SIMULATION START ########
+
 # Read config.yaml
 with open('config.yaml') as f:
   config = yaml.safe_load(f)
 
-# Init robotcontroller
-nao = NaoMotorController(config)
+# Init robot controller
+robot_controller = RobotController(config)
 
 # Create threads
-controller_thread = threading.Thread(target=nao.run)
-message_listener_thread = threading.Thread(target=nao.subscriber.listener)
+controller_thread = threading.Thread(target=robot_controller.run)
+message_listener_thread = threading.Thread(target=robot_controller.subscriber.listener)
 
 # Run threads
 controller_thread.start()

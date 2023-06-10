@@ -45,12 +45,8 @@ function CodeEditor() {
             }
         });
 
-        editorConfig.setMainCode(`/* 
-This green text will teach you the basics of RML (Robot Motion Language)!
-    (If you are familiar with the language, this can safely be deleted.)
-
-Below is an example of a MOTION defined in RML. Modify it or replace it with your own:
-*/
+        editorConfig.setMainCode(`// Welcome to the RML (Robot Motion Language) editor!
+// See https://github.com/einarhaaland/robot-caretaker#robot-motion-language-rml for a tutorial.
 
 define swing_arms
     repeat 3
@@ -70,21 +66,36 @@ define swing_arms
 end
 
 /*
-Keywords:
-        Keywords in RML includes "define", "move", "multimove" and "repeat".
-        * define: "define wave" will define a motion called "wave".
-        * repeat: "repeat 3" anything between "repeat" and its "end" will be performed three times
-        * multimove: "multimove" moves between "multimove" and its "end" will be performed
-                        simultainously rather than in sequence.
-        * move: "move right shoulder pitch to 0.5" joint will move to position 0.5 
-        * //: is used for single-line comments. Anything you type after will be ignored by RML.
-Usage:
-        define <your_motion_name_here> end
-        repeat <amount> <move(s) and/or multimove(s)> end
-        multimove <moves> end
-        move <right/left> <joint> <pitch/roll/yaw> to <position>
-
-For more details, see: https://github.com/einarhaaland/robot-caretaker#RML
+USAGE
+--------------------------------------------------------------------------------------------------
+define <your_motion_name>
+    <Rest of RML code is indented and goes here>
+end
+* Note that <your_motion_name> is arbitrary, but don't include spaces.
+--------------------------------------------------------------------------------------------------
+repeat <amount>
+    <RML code to be repeated is indented and goes here>
+end
+* Note that <amount> is an arbitrary integer.
+--------------------------------------------------------------------------------------------------
+multimove
+    <RML to be performed simultainously is indented>
+end
+--------------------------------------------------------------------------------------------------
+move <side> <joint> <rotation> to <position>
+* Note that <side> and <rotation> is not always needed depending on the joint.
+==================================================================================================
+Available options for <side>:
+    right | left
+--------------------------------------------------------------------------------------------------
+Available options for <joint>:
+    head | fingers | wrist | elbow | shoulder | torso | hip | knee | ankle | toes
+--------------------------------------------------------------------------------------------------
+Available options for <rotation>:
+    pitch | roll | yaw
+--------------------------------------------------------------------------------------------------
+<position> is the position the joint will end up in. It is specified in Radians away from the 
+robot's default position.
 */`);
 
         editorConfig.setTheme('vs-dark');
