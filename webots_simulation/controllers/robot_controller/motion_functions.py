@@ -217,6 +217,8 @@ def move(robot, sync, position, joint, rotation='', side='', delay=250, accelera
         motor = side
     elif side != '':
         raise Exception("Argument 'side' should be 'R' or 'L' or not specified...")
+    else:
+        motor = ''
 
     motor += joint
 
