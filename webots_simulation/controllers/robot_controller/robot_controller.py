@@ -9,12 +9,6 @@ import helpers
 from controller import Robot, Motor
 from subscriber import Subscriber
 
-# import supercontroller
-'''
-controller_path = os.path.join(os.getcwd(), os.pardir)
-sys.path.insert(0, controller_path)
-from super_controller import SuperController
-'''
 
 class RobotController(Robot):
     def __init__(self, config):
